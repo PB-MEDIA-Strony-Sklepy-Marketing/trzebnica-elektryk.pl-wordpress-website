@@ -1,0 +1,85 @@
+name: SEO Monitoring
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # Daily at 6 AM
+  workflow_dispatch:
+
+jobs:
+  seo-check:
+    name: 📊 SEO Analysis
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: 🔍 Check Sitemap
+        run: |
+          curl -f https://trzebnica-elektryk.pl/sitemap.xml || exit 1
+          
+      - name: 🤖 Check Robots.txt
+        run: |
+          curl -f https://trzebnica-elektryk.pl/robots.txt || exit 1
+          
+      - name: 📈 Run Lighthouse SEO Audit
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            https://trzebnica-elektryk.pl
+            https://trzebnica-elektryk.pl/uslugi
+            https://trzebnica-elektryk.pl/kontakt
+          configPath: './lighthouse-seo.json'
+          uploadArtifacts: true
+          
+      - name: 🔗 Check Broken Links
+        run: |
+          npx linkinator https://trzebnica-elektryk.pl \
+            --recurse \
+            --timeout 60000 \
+            --verbosity error \
+            --format json > broken-links.json
+            
+      - name: 📊 Schema.org Validation
+        run: |
+          npx schema-validator https://trzebnica-elektryk.pl
+          
+      - name: 🏷️ Meta Tags Check
+        run: |
+          npx metatags-checker https://trzebnica-elektryk.pl \
+            --pages 10 \
+            --output meta-report.json
+            
+      - name: 📝 Generate SEO Report
+        run: |
+          node scripts/generate-seo-report.js
+          
+      - name: 📤 Upload SEO Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: seo-reports
+          path: |
+            lighthouse-report.html
+            broken-links.json
+            meta-report.json
+            seo-summary.html
+          retention-days: 30
+          
+      - name: 📧 Send SEO Report Email
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: '📊 Daily SEO Report - trzebnica-elektryk.pl'
+          to: seo@pb-media.pl
+          from: SEO Monitor
+          html_body: file://seo-summary.html
+          attachments: seo-reports.zip
