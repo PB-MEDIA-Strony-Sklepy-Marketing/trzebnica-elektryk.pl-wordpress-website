@@ -33,6 +33,27 @@ function child_theme_enqueue_custom_css_bootstrap_w3() {
 }
 add_action( 'wp_enqueue_scripts', 'child_theme_enqueue_custom_css_bootstrap_w3' );
 
+// Enqueue brand system styles
+add_action('wp_enqueue_scripts', 'voltmont_enqueue_brand_styles', 20);
+function voltmont_enqueue_brand_styles()
+{
+    // Brand System Variables
+    wp_enqueue_style(
+        'voltmont-brand-system',
+        get_stylesheet_directory_uri() . '/assets/css/brand-system.css',
+        array(),
+        '2.0.0'
+    );
+
+    // Child Theme Main Styles
+    wp_enqueue_style(
+        'voltmont-child-style',
+        get_stylesheet_uri(),
+        array('voltmont-brand-system'),
+        '2.0.0'
+    );
+}
+
 // Funkcja ładująca pliki JS w stopce z async i defer
 function child_theme_enqueue_custom_js_bootstrap_w3() {
 
