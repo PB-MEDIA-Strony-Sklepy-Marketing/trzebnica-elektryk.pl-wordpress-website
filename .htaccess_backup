@@ -1,0 +1,68 @@
+<FilesMatch "wp-config.*\.php|\.htaccess|readme\.html">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# BEGIN WordPress
+# Dyrektywy zawarte między „BEGIN WordPress” oraz „END WordPress” są generowane dynamicznie i powinny być modyfikowane tylko za pomocą
+# filtrów WordPressa. Zmiany dokonane bezpośrednio tutaj będą nadpisywane.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+
+# BEGIN BETHEME
+<IfModule mod_expires.c>
+ExpiresActive On
+
+AddType font/woff2 .woff2
+
+# Images
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/gif "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType image/webp "access plus 1 year"
+ExpiresByType image/svg+xml "access plus 1 year"
+ExpiresByType image/x-icon "access plus 1 year"
+
+# Video
+ExpiresByType video/webm "access plus 1 year"
+ExpiresByType video/mp4 "access plus 1 year"
+ExpiresByType video/mpeg "access plus 1 year"
+
+# Fonts
+ExpiresByType font/ttf "access plus 1 year"
+ExpiresByType font/otf "access plus 1 year"
+ExpiresByType font/woff "access plus 1 year"
+ExpiresByType font/woff2 "access plus 1 year"
+
+ExpiresByType application/x-font-ttf "access plus 1 year"
+ExpiresByType application/font-woff "access plus 1 year"
+
+# CSS, JavaScript
+ExpiresByType text/css "access plus 6 months"
+ExpiresByType text/javascript "access plus 6 months"
+ExpiresByType application/javascript "access plus 6 months"
+
+# Others
+ExpiresByType application/pdf "access plus 6 months"
+ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+
+ExpiresDefault "access 1 month"
+
+</IfModule>
+# END BETHEME
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php84” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php84___lsphp .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
