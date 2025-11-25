@@ -74,7 +74,7 @@
     "lighthouse": "^11.4.0",
     "lint-staged": "^15.2.0",
     "mini-css-extract-plugin": "^2.7.6",
-    "pa11y-ci": "^3.1.0",
+    "pa11y-ci": "^4.0.1",
     "postcss": "^8.4.32",
     "postcss-loader": "^7.3.4",
     "prettier": "^3.1.1",
