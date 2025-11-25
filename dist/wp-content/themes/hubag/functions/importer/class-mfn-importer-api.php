@@ -93,7 +93,7 @@ class Mfn_Importer_API extends Mfn_API {
 			'timeout' 		=> 30,
 		);
 
-		$url = "https://f004.backblazeb2.com/file/gpltimes/betheme/demos/{$this->demo}.zip";
+		$url = "https://dl.gpltimes.com/file/gpltimes/betheme/demos/{$this->demo}.zip";
 
 
 		$response = wp_remote_get( $url, $args );

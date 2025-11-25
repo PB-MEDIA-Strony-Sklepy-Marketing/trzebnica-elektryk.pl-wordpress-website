@@ -1214,3 +1214,52 @@ function voltmont_redirect_404_to_home() {
     }
 }
 add_action('template_redirect', 'voltmont_redirect_404_to_home');
+
+/**
+ * ========================================================================
+ * Load Custom Functionality Modules
+ * ========================================================================
+ *
+ * Modular files for SEO, schema.org, performance, validation, and utilities
+ * All files located in /inc/ directory
+ *
+ * @since 2.0.0
+ */
+
+$voltmont_inc_files = array(
+    'schema-localbusiness.php',      // Schema.org LocalBusiness + Service structured data
+    'functions-seo.php',              // SEO meta tags, OpenGraph, Twitter Cards
+    'custom-shortcodes.php',          // Collection of 9 reusable shortcodes
+    'performance-optimization.php',   // Performance utilities and optimizations
+    'faq-schema.php',                 // FAQ schema with admin interface
+    'breadcrumbs.php',                // Breadcrumbs navigation with schema markup
+    'cf7-validation.php',             // Contact Form 7 Polish validation rules
+);
+
+foreach ($voltmont_inc_files as $inc_file) {
+    $filepath = get_stylesheet_directory() . '/inc/' . $inc_file;
+    if (file_exists($filepath)) {
+        require_once $filepath;
+    } else {
+        // Log missing file error (only for admin users)
+        if (current_user_can('manage_options')) {
+            error_log('Voltmont Theme: Missing inc file: ' . $inc_file);
+        }
+    }
+}
+
+/**
+ * Enqueue sections-offer.css (compiled from SCSS)
+ *
+ * @since 2.0.0
+ */
+function voltmont_enqueue_sections_offer_styles() {
+    wp_enqueue_style(
+        'voltmont-sections-offer',
+        get_stylesheet_directory_uri() . '/assets/css/sections-offer.css',
+        array(),
+        wp_get_theme()->get('Version'),
+        'all'
+    );
+}
+add_action('wp_enqueue_scripts', 'voltmont_enqueue_sections_offer_styles', 15);

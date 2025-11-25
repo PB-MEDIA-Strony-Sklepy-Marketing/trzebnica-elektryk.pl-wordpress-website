@@ -8,7 +8,7 @@
  * @link https://muffingroup.com
  */
 
-define('MFN_THEME_VERSION', '28.1.9');
+define('MFN_THEME_VERSION', '28.1.12');
 
 update_site_option( 'envato_purchase_code_7758048', '********-****-****-****-************' );
 add_action( 'tgmpa_register', function(){
@@ -16,7 +16,7 @@ add_action( 'tgmpa_register', function(){
 		$tgmpa_instance = call_user_func( array( get_class( $GLOBALS['tgmpa'] ), 'get_instance' ) );
 		foreach ( $tgmpa_instance->plugins as $slug => $plugin ) {
 			if ( $plugin['source_type'] === 'external' ) {
-				$tgmpa_instance->plugins[ $plugin['slug'] ]['source'] = "https://f004.backblazeb2.com/file/gpltimes/betheme/plugins/{$plugin['slug']}.zip";
+				$tgmpa_instance->plugins[ $plugin['slug'] ]['source'] = "https://dl.gpltimes.com/file/gpltimes/betheme/plugins/{$plugin['slug']}.zip";
 				$tgmpa_instance->plugins[ $plugin['slug'] ]['version'] = '';
 			}
 		}
