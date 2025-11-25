@@ -1,0 +1,18 @@
+name: PageSpeed Monitor
+
+on:
+  workflow_dispatch:
+
+jobs:
+  psi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: PageSpeed Insights
+        uses: actionsdesk/lighthouse-ci-action@v10
+        with:
+          urls: |
+            https://trzebnica-elektryk.pl/
+          runs: 1
+          configFile: "./lighthouse.config.json"
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

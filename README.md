@@ -1,236 +1,167 @@
-# ⚡ Voltmont - Instalacje Elektryczne | WordPress Website
+# trzebnica-elektryk.pl – Voltmont Instalacje Elektryczne
 
-[![WordPress](https://img.shields.io/badge/WordPress-6.4%2B-blue.svg)](https://wordpress.org/)
-[![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4.svg)](https://php.net/)
-[![BeTheme](https://img.shields.io/badge/BeTheme-27.5%2B-orange.svg)](https://themeforest.net/item/betheme-responsive-multipurpose-wordpress-theme/7758048)
-[![License](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
-[![WCAG 2.2](https://img.shields.io/badge/WCAG-2.2%20AA-green.svg)](https://www.w3.org/WAI/WCAG22/quickref/)
-[![PageSpeed](https://img.shields.io/badge/PageSpeed-90%2B-brightgreen.svg)](https://pagespeed.web.dev/)
+Repozytorium produkcyjne WordPress dla strony **[trzebnica-elektryk.pl](https://trzebnica-elektryk.pl)**, realizowanej dla firmy **Voltmont – Instalacje Elektryczne** (Trzebnica, Dolny Śląsk).
 
-## 🏢 **O Projekcie**
+Projekt opiera się na komercyjnym motywie **BeTheme**, z własnym motywem pochodnym:
 
-Profesjonalna strona internetowa dla firmy **Voltmont - Instalacje Elektryczne** z Trzebnicy, specjalizującej się w kompleksowych usługach elektrycznych na terenie Dolnego Śląska. Projekt oparty na WordPress z motywem BeTheme, zoptymalizowany pod kątem SEO lokalnego i wydajności.
+- Motyw finalny na produkcję: `dist/wp-content/themes/hubag/` (parent)  
+- Child theme (customizacje): `dist/wp-content/themes/hubag-child/`
+- Oryginalny motyw BeTheme: `src/wp-content/themes/betheme/`
+- Oryginalny child BeTheme: `src/wp-content/themes/betheme-child/`
+- Dokumentacja motywu: `docs/documentation/`
+- Brand colors (podstawowe): `docs/KOLORYSTYKA-ROOT-BRAND-COLOR-CSS.md`
+- Rozszerzona paleta brandowa: `docs/FULL-BRAND-COLORS.scss`
+- Brief projektu: `docs/BRIEF-PROJECT.md`
 
-### 🌐 **Live**: [trzebnica-elektryk.pl](https://trzebnica-elektryk.pl)
+## Technologie i założenia
 
-## 🎯 **Kluczowe Funkcjonalności**
+- **WordPress**: 6.4+
+- **PHP**: 8.0+
+- **BeTheme** (z Muffin Builderem)
+- **Child theme**: wszystkie customizacje w `hubag-child`
+- **Stylowanie**: BEM, SCSS/CSS
+- **SEO i UX**: lokalne pozycjonowanie na frazy związane z usługami elektrycznymi w Trzebnicy i Dolnym Śląsku
+- **Dostępność**: WCAG 2.2 AA (kontrast, focus, klawiatura, aria)
 
-- ✅ **Responsywny design** mobile-first (320px - 2560px)
-- ✅ **Optymalizacja SEO** dla fraz lokalnych
-- ✅ **System rezerwacji** terminów online
-- ✅ **Galeria realizacji** z lazy loading
-- ✅ **Formularz kontaktowy** z zabezpieczeniem reCAPTCHA
-- ✅ **Integracja Google My Business**
-- ✅ **Schema.org** dla Local Business
-- ✅ **WCAG 2.2 AA** compliance
-- ✅ **PageSpeed 90+** optimization
-- ✅ **Smart Home** showcase section
+## Struktura repozytorium
 
-## 🚀 **Quick Start**
+```text
+dist/
+  wp-content/
+    themes/
+      hubag/         # Motyw parent oparty na BeTheme, gotowy do produkcji
+      hubag-child/   # Customizacje dla trzebnica-elektryk.pl
 
-### **Wymagania systemowe**
+src/
+  wp-content/
+    themes/
+      betheme/       # Oryginalny motyw BeTheme
+      betheme-child/ # Oryginalny child BeTheme
 
-- PHP 8.0+
-- MySQL 5.7+ / MariaDB 10.3+
-- WordPress 6.4+
-- Node.js 18+ (dla build tools)
-- Composer 2.0+
-- WP-CLI (opcjonalnie)
+docs/
+  documentation/                 # Dokumentacja oryginalnego motywu
+  BRIEF-PROJECT.md              # Brief biznesowo-marketingowy
+  KOLORYSTYKA-ROOT-BRAND-COLOR-CSS.md
+  FULL-BRAND-COLORS.scss        # Rozszerzony system kolorów / design tokens
 
-### **Instalacja lokalna**
+.github/
+  workflows/
+    ci-wordpress.yml            # Lint PHP + weryfikacja pod WordPress
+    lint-and-style.yml          # Lint CSS/SCSS/JS
+    pagespeed-monitor.yml       # (opcjonalnie) Lighthouse / PageSpeed
+  ISSUE_TEMPLATE/
+    bug_report.md
+    feature_request.md
+  PULL_REQUEST_TEMPLATE.md
+  dependabot.yml
+```
+
+## Jak poruszać się po projekcie
+
+- **Front-end produkcyjny**: szukaj plików w `dist/wp-content/themes/hubag-child/`
+  - Custom CSS/SCSS: `style.css`, dodatkowe pliki w folderach `css/`, `scss/`
+  - Skrypty JS: `js/`
+  - Szablony: `*.php` (np. `header.php`, `footer.php`, `page-*.php`)
+- **Odwzorowanie BeTheme**:
+  - jeśli chcesz zobaczyć oryginalną implementację, sprawdź `src/wp-content/themes/betheme`
+- **Dokumentacja**:
+  - Techniczne informacje o BeTheme: `docs/documentation`
+  - Kontekst biznesowo-SEO: `docs/BRIEF-PROJECT.md`
+  - Kolory i design system: `docs/FULL-BRAND-COLORS.scss`
+
+## Brand & UI
+
+- Główne fonty: nowoczesne sans-serif (Inter / Poppins lub podobne)
+- Kolorystyka:
+  - Primary: `#4d81e9`
+  - Secondary: `#041028`
+  - Tło bazowe: `#163162`
+  - Tekst na ciemnym tle: `#edf0fd`
+- Pełna paleta i zmienne CSS/SCSS: `docs/FULL-BRAND-COLORS.scss`
+
+## Standardy kodowania
+
+- **PHP**: PSR-12, sprawdzany przez `php-cs-fixer` (`.php-cs-fixer.dist.php`)
+- **CSS/SCSS**: BEM, walidowany przez Stylelint (`.stylelintrc.json`)
+- **JS**: ESLint (`.eslint.config.mjs`)
+- **Markdown**: markdownlint (`.markdownlint.json`)
+
+### Uruchomienie narzędzi lokalnie (przykład)
 
 ```bash
-# 1. Sklonuj repozytorium
-git clone https://github.com/PB-MEDIA-Strony-Sklepy-Marketing/trzebnica-elektryk.pl-wordpress-website.git
-cd trzebnica-elektryk.pl-wordpress-website
+# PHP CS Fixer
+composer global require friendsofphp/php-cs-fixer
+php-cs-fixer fix
 
-# 2. Zainstaluj zależności PHP
-composer install
-
-# 3. Zainstaluj zależności Node.js
+# ESLint + Stylelint (jeśli istnieje package.json)
 npm install
-
-# 4. Skonfiguruj WordPress
-cp wp-config-sample.php wp-config.php
-# Edytuj wp-config.php z danymi bazy danych
-
-# 5. Zaimportuj bazę danych
-wp db import database/init.sql
-
-# 6. Ustaw właściwe uprawnienia
-chmod -R 755 wp-content
-chmod -R 644 wp-content/themes/hubag-child/style.css
-
-# 7. Build assets
-npm run build
-
-# 8. Uruchom lokalny serwer
-npm run dev
+npx eslint .
+npx stylelint "**/*.{css,scss}"
 ```
 
-### **Docker Setup** 🐳
+## Workflow CI
 
-```bash
-# Uruchom kontener WordPress z Docker Compose
-docker-compose up -d
+- `ci-wordpress.yml`:
+  - Lint PHP ( `php -l` ) w katalogach `src` i `dist`
+  - `php-cs-fixer` w trybie `--dry-run`
+- `lint-and-style.yml`:
+  - Uruchamia ESLint dla plików JS
+  - Uruchamia Stylelint dla plików CSS/SCSS
+- `pagespeed-monitor.yml` (opcjonalny):
+  - Możliwość monitorowania PageSpeed / Lighthouse dla wersji produkcyjnej
 
-# Strona dostępna pod: http://localhost:8080
-# phpMyAdmin: http://localhost:8081
-```
+## Integracja z BeTheme
 
-## 📁 **Struktura Projektu**
+- Customizacje umieszczaj w `dist/wp-content/themes/hubag-child/`
+- Wykorzystuj:
+  - Muffin Builder i krótkie kody BeTheme
+  - Hooki: `mfn_hook_top`, `mfn_hook_content_before` itp.
+- Szablony nadpisujące BeTheme:
+  - Twórz pliki o tej samej nazwie/ścieżce w child theme
+- Animacje:
+  - Delikatne, 0.3s `ease`, bez nadmiernych efektów – szczególnie dla CTA i sekcji usług
 
-```
-trzebnica-elektryk.pl-wordpress-website/
-├── 📂 wp-content/
-│   ├── 📂 themes/
-│   │   ├── 📂 hubag/                 # Parent theme (BeTheme)
-│   │   └── 📂 hubag-child/           # Child theme - wszystkie customizacje
-│   │       ├── 📄 style.css          # Główne style
-│   │       ├── 📄 functions.php      # Funkcje motywu
-│   │       ├── 📂 assets/            # Zasoby (CSS, JS, images)
-│   │       ├── 📂 template-parts/    # Komponenty wielokrotnego użytku
-│   │       └── 📂 page-templates/    # Szablony stron
-│   ├── 📂 plugins/                   # Wtyczki WordPress
-│   └── 📂 uploads/                   # Media
-├── 📂 docs/                          # Dokumentacja
-│   ├── 📂 _brand-trzebnica-elektryk/ # Branding materials
-│   ├── 📄 BRIEF-PROJECT.md          # Brief projektu
-│   └── 📄 KOLORYSTYKA-ROOT-BRAND-COLOR-CSS.md
-├── 📂 .github/
-│   └── 📂 workflows/                # GitHub Actions CI/CD
-├── 📄 composer.json                 # PHP dependencies
-├── 📄 package.json                  # Node dependencies
-├── 📄 webpack.config.js             # Build configuration
-├── 📄 .env.example                  # Environment variables template
-├── 📄 docker-compose.yml            # Docker configuration
-└── 📄 README.md                     # Ten plik
-```
+## SEO & schema.org
 
-## 🛠️ **Development**
+- Dla kluczowych podstron (instalacje, modernizacje, WLZ, nadzór, SMART, odgromowe):
+  - Używaj `LocalBusiness` + `Service` + `FAQPage` (JSON-LD)
+- Meta:
+  - Tytuł: 50–60 znaków
+  - Opis: 150–160 znaków
+- Open Graph:
+  - Ustalone meta tagi dla głównych stron + grafika social
+- Wewnętrzne linkowanie:
+  - Linkuj pomiędzy usługami (np. „instalacje odgromowe” → „modernizacja instalacji w blokach”, „nadzór elektryczny” itp.)
 
-### **Skrypty NPM**
+## Dalsze kroki
 
-```bash
-npm run dev        # Uruchom serwer deweloperski
-npm run build      # Build produkcyjny
-npm run watch      # Watch mode dla CSS/JS
-npm run lint       # Sprawdź kod (ESLint + Stylelint)
-npm run format     # Formatuj kod (Prettier)
-npm run test       # Uruchom testy
-npm run analyze    # Webpack Bundle Analyzer
-```
-
-### **WP-CLI Commands**
-
-```bash
-wp cache flush              # Wyczyść cache
-wp rewrite flush           # Odśwież permalinki
-wp theme activate hubag-child  # Aktywuj child theme
-wp plugin update --all     # Aktualizuj wszystkie pluginy
-wp db optimize            # Optymalizuj bazę danych
-```
-
-## 🎨 **Customizacja**
-
-### **Kolory brandowe (CSS Variables)**
-
-```css
-:root {
-    --color-theme-primary: #4d81e9;
-    --color-theme-secondary: #041028;
-    --text-color: #edf0fd;
-    --background-theme-color: #163162;
-    --color-electric-yellow: #fbbf24;
-}
-```
-
-### **BeTheme Hooks**
-
-```php
-// functions.php - przykład użycia hooków
-add_action('mfn_hook_top', 'voltmont_custom_header');
-add_action('mfn_hook_content_before', 'voltmont_breadcrumbs');
-add_filter('mfn_opts_get', 'voltmont_modify_theme_options');
-```
-
-## 📊 **SEO & Performance**
-
-### **Kluczowe frazy**
-- elektryk Trzebnica
-- instalacje elektryczne Dolny Śląsk
-- smart home Wrocław
-- modernizacja instalacji elektrycznych
-
-### **Optymalizacje**
-- ✅ Critical CSS inline
-- ✅ Lazy loading images
-- ✅ WebP format
-- ✅ Minified CSS/JS
-- ✅ Gzip compression
-- ✅ Browser caching
-- ✅ CDN integration ready
-
-## 🧪 **Testing**
-
-```bash
-# Unit testy PHP
-composer test
-
-# E2E testy (Cypress)
-npm run test:e2e
-
-# Accessibility test
-npm run test:a11y
-
-# Performance test
-npm run test:lighthouse
-```
-
-## 📦 **Deployment**
-
-### **Staging**
-```bash
-npm run deploy:staging
-```
-
-### **Production**
-```bash
-npm run deploy:production
-```
-
-Szczegóły w [DEPLOYMENT.md](docs/DEPLOYMENT.md)
-
-## 🤝 **Contributing**
-
-Zobacz [CONTRIBUTING.md](docs/CONTRIBUTING.md) dla szczegółów.
-
-### **Workflow**
-1. Fork repozytorium
-2. Stwórz feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit zmiany (`git commit -m 'Add AmazingFeature'`)
-4. Push do brancha (`git push origin feature/AmazingFeature`)
-5. Otwórz Pull Request
-
-## 📝 **Licencja**
-
-Projekt objęty licencją własnościową. Wszystkie prawa zastrzeżone © 2024 PB-MEDIA & Voltmont.
-
-## 👥 **Zespół**
-
-- **Developer**: [PB-MEDIA](https://pb-media.pl)
-- **Klient**: Voltmont - Instalacje Elektryczne
-- **Design**: PB-MEDIA Team
-
-## 📞 **Support**
-
-- **Email**: support@pb-media.pl
-- **Issues**: [GitHub Issues](https://github.com/PB-MEDIA-Strony-Sklepy-Marketing/trzebnica-elektryk.pl-wordpress-website/issues)
-- **Docs**: [Wiki](https://github.com/PB-MEDIA-Strony-Sklepy-Marketing/trzebnica-elektryk.pl-wordpress-website/wiki)
+Zobacz sekcję **"Co dalej?"** w tym README (poniżej), aby poznać sugerowane kolejne pliki i zadania.
 
 ---
 
-<div align="center">
-  <strong>⚡ Powered by WordPress & BeTheme</strong><br>
-  Made with ❤️ by <a href="https://pb-media.pl">PB-MEDIA</a>
-</div>
+## Co dalej?
+
+Sugestie kolejnych zadań / plików do wygenerowania:
+
+1. **Plik PHP z `schema.org` dla LocalBusiness + Service**
+   - Lokalizacja: `dist/wp-content/themes/hubag-child/inc/schema-localbusiness.php`
+   - Wstrzykiwanie JSON-LD w `wp_head`.
+2. **Globalne `functions-seo.php` w child theme**
+   - Konfiguracja:
+     - dynamiczne meta title/description
+     - OpenGraph + Twitter Cards
+     - integracja z danymi z ACF / Muffin Builder (jeśli używane)
+3. **Dedykowany SCSS/CSS dla sekcji "Oferta" i "Co nas wyróżnia?"**
+   - Oparty o brand colors z `FULL-BRAND-COLORS.scss`
+   - Dostosowany pod layout BeTheme/Muffin.
+4. **Plik `CONTRIBUTING.md`**
+   - Zasady PR, format commitów, standardy jakości.
+5. **Konfiguracja NPM (`package.json`) pod linting/build frontendu**
+   - Skrypty: `lint`, `lint:css`, `lint:js`, `build:css`, `build:js`.
+
+Jeśli chcesz, w kolejnym kroku mogę:
+
+- wygenerować kompletny moduł **schema.org LocalBusiness + Service + FAQ** dla Voltmont (PHP + JSON-LD),  
+- lub przygotować **`package.json` + podstawowy pipeline SCSS → CSS** dla `hubag-child` z integracją `FULL-BRAND-COLORS.scss`.
+
+Napisz, który z tych kierunków chcesz zrealizować jako następny.

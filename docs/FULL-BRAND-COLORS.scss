@@ -1,0 +1,155 @@
+// Voltmont - trzebnica-elektryk.pl
+// Full brand colors & design tokens
+// WCAG-friendly palette
+
+// Primary brand colors
+$color-theme-primary: #4d81e9; // Electric blue
+$color-theme-primary-light: #7da3f0;
+$color-theme-primary-lighter: #b3c7f6;
+$color-theme-primary-dark: #2a54a1;
+$color-theme-primary-darker: #163162;
+
+// Secondary / background
+$color-theme-secondary: #041028; // Deep navy
+$color-theme-secondary-light: #182848;
+$color-theme-secondary-dark: #020816;
+
+// Accent colors
+$color-accent-success: #28a745;
+$color-accent-warning: #ffc107;
+$color-accent-danger: #dc3545;
+$color-accent-info: #1fb6ff;
+
+// Neutral grayscale
+$color-neutral-50: #f8fafc;
+$color-neutral-100: #edf0fd;
+$color-neutral-200: #e2e8f0;
+$color-neutral-300: #cbd5e1;
+$color-neutral-400: #94a3b8;
+$color-neutral-500: #64748b;
+$color-neutral-600: #475569;
+$color-neutral-700: #334155;
+$color-neutral-800: #1e293b;
+$color-neutral-900: #0f172a;
+
+// Text colors
+$text-color-primary: #edf0fd;
+$text-color-on-light: #041028;
+$text-color-muted: #94a3b8;
+$text-color-inverted: #ffffff;
+
+// Background colors
+$background-theme-color: #163162;
+$background-page: #041028;
+$background-section-light: #0b1630;
+$background-section-dark: #020816;
+$background-card: #0f172a;
+
+// Buttons
+$button-theme-color: #4d81e9;
+$button-theme-color-hover: #2a54a1;
+$button-theme-color-active: #163162;
+$button-theme-color-outline: transparent;
+$button-theme-color-text: #ffffff;
+
+// Links
+$link-color: #4d81e9;
+$link-color-hover: #b3c7f6;
+$link-color-active: #2a54a1;
+
+// Borders
+$border-color-soft: rgba(237, 240, 253, 0.12);
+$border-color-strong: rgba(237, 240, 253, 0.3);
+
+// Shadows
+$shadow-soft: 0 10px 25px rgba(2, 8, 23, 0.35);
+$shadow-elevated: 0 20px 40px rgba(2, 8, 23, 0.5);
+
+// Radii
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 16px;
+$radius-pill: 999px;
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Z-index scale
+$z-base: 1;
+$z-header: 100;
+$z-modal: 1000;
+$z-overlay: 1100;
+$z-toast: 1200;
+
+// CSS variables export (for usage in BeTheme / WordPress)
+:root {
+  --color-theme-primary: #{$color-theme-primary};
+  --color-theme-primary-light: #{$color-theme-primary-light};
+  --color-theme-primary-lighter: #{$color-theme-primary-lighter};
+  --color-theme-primary-dark: #{$color-theme-primary-dark};
+  --color-theme-primary-darker: #{$color-theme-primary-darker};
+
+  --color-theme-secondary: #{$color-theme-secondary};
+  --color-theme-secondary-light: #{$color-theme-secondary-light};
+  --color-theme-secondary-dark: #{$color-theme-secondary-dark};
+
+  --color-accent-success: #{$color-accent-success};
+  --color-accent-warning: #{$color-accent-warning};
+  --color-accent-danger: #{$color-accent-danger};
+  --color-accent-info: #{$color-accent-info};
+
+  --color-neutral-50: #{$color-neutral-50};
+  --color-neutral-100: #{$color-neutral-100};
+  --color-neutral-200: #{$color-neutral-200};
+  --color-neutral-300: #{$color-neutral-300};
+  --color-neutral-400: #{$color-neutral-400};
+  --color-neutral-500: #{$color-neutral-500};
+  --color-neutral-600: #{$color-neutral-600};
+  --color-neutral-700: #{$color-neutral-700};
+  --color-neutral-800: #{$color-neutral-800};
+  --color-neutral-900: #{$color-neutral-900};
+
+  --text-color: #{$text-color-primary};
+  --text-color-on-light: #{$text-color-on-light};
+  --text-color-muted: #{$text-color-muted};
+  --text-color-inverted: #{$text-color-inverted};
+
+  --background-theme-color: #{$background-theme-color};
+  --background-page: #{$background-page};
+  --background-section-light: #{$background-section-light};
+  --background-section-dark: #{$background-section-dark};
+  --background-card: #{$background-card};
+
+  --button-theme-color: #{$button-theme-color};
+  --button-theme-color-hover: #{$button-theme-color-hover};
+  --button-theme-color-active: #{$button-theme-color-active};
+  --button-theme-color-outline: #{$button-theme-color-outline};
+  --button-theme-color-text: #{$button-theme-color-text};
+
+  --link-color: #{$link-color};
+  --link-color-hover: #{$link-color-hover};
+  --link-color-active: #{$link-color-active};
+
+  --border-color-soft: #{$border-color-soft};
+  --border-color-strong: #{$border-color-strong};
+
+  --shadow-soft: #{$shadow-soft};
+  --shadow-elevated: #{$shadow-elevated};
+
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-pill: #{$radius-pill};
+
+  --transition-fast: #{$transition-fast};
+  --transition-normal: #{$transition-normal};
+  --transition-slow: #{$transition-slow};
+
+  --z-base: #{$z-base};
+  --z-header: #{$z-header};
+  --z-modal: #{$z-modal};
+  --z-overlay: #{$z-overlay};
+  --z-toast: #{$z-toast};
+}
