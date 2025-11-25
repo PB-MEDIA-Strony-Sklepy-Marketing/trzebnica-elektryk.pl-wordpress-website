@@ -1,0 +1,96 @@
+name: Backup Automation
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # Daily at 2 AM
+  workflow_dispatch:
+    inputs:
+      backup_type:
+        description: 'Type of backup'
+        required: true
+        default: 'full'
+        type: choice
+        options:
+          - full
+          - database
+          - files
+
+jobs:
+  backup:
+    name: 🗄️ Create Backup
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        
+      - name: 🔧 Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
+          
+      - name: 💾 Create Database Backup
+        if: ${{ github.event.inputs.backup_type == 'database' || github.event.inputs.backup_type == 'full' || github.event_name == 'schedule' }}
+        run: |
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
+          # Create backup directory
+          mkdir -p /backups/database/$(date +%Y-%m-%d)
+          
+          # Dump database
+          wp db export /backups/database/$(date +%Y-%m-%d)/voltmont_$(date +%Y%m%d_%H%M%S).sql \
+            --path=/var/www/trzebnica-elektryk.pl
+          
+          # Compress backup
+          gzip /backups/database/$(date +%Y-%m-%d)/voltmont_$(date +%Y%m%d_%H%M%S).sql
+          
+          # Delete backups older than 30 days
+          find /backups/database -type f -mtime +30 -delete
+          
+          echo "✅ Database backup completed"
+          EOF
+          
+      - name: 📁 Create Files Backup
+        if: ${{ github.event.inputs.backup_type == 'files' || github.event.inputs.backup_type == 'full' }}
+        run: |
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
+          # Create backup directory
+          mkdir -p /backups/files/$(date +%Y-%m-%d)
+          
+          # Backup wp-content (excluding cache)
+          tar -czf /backups/files/$(date +%Y-%m-%d)/wp-content_$(date +%Y%m%d_%H%M%S).tar.gz \
+            --exclude='wp-content/cache' \
+            --exclude='wp-content/wflogs' \
+            /var/www/trzebnica-elektryk.pl/wp-content
+          
+          # Delete backups older than 14 days
+          find /backups/files -type f -mtime +14 -delete
+          
+          echo "✅ Files backup completed"
+          EOF
+          
+      - name: ☁️ Upload to Cloud Storage (Optional)
+        if: ${{ github.event.inputs.backup_type == 'full' || github.event_name == 'schedule' }}
+        run: |
+          # This is a placeholder for cloud upload
+          # Configure with your cloud provider (AWS S3, Google Cloud Storage, etc.)
+          echo "Cloud backup would be uploaded here"
+          
+      - name: 📧 Send Notification
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: '⚠️ Backup Failed - trzebnica-elektryk.pl'
+          body: 'Automated backup failed. Please check the logs.'
+          to: biuro@pbmediaonline.pl
+          from: noreply@trzebnica-elektryk.pl
+          
+      - name: ✅ Backup Summary
+        run: |
+          echo "## Backup Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Backup Type: ${{ github.event.inputs.backup_type || 'full' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Date: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- Status: ✅ Completed" >> $GITHUB_STEP_SUMMARY
