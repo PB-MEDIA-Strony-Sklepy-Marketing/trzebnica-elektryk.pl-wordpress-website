@@ -26,46 +26,109 @@ Projekt opiera się na komercyjnym motywie **BeTheme**, z własnym motywem pocho
 ## Struktura repozytorium
 
 ```text
-dist/
-  wp-content/
-    themes/
-      hubag/         # Motyw parent oparty na BeTheme, gotowy do produkcji
-      hubag-child/   # Customizacje dla trzebnica-elektryk.pl
-
-src/
-  wp-content/
-    themes/
-      betheme/       # Oryginalny motyw BeTheme
-      betheme-child/ # Oryginalny child BeTheme
-
-docs/
-  documentation/                 # Dokumentacja oryginalnego motywu
-  BRIEF-PROJECT.md              # Brief biznesowo-marketingowy
-  KOLORYSTYKA-ROOT-BRAND-COLOR-CSS.md
-  FULL-BRAND-COLORS.scss        # Rozszerzony system kolorów / design tokens
-
-.github/
-  workflows/
-    ci-wordpress.yml            # Lint PHP + weryfikacja pod WordPress
-    lint-and-style.yml          # Lint CSS/SCSS/JS
-    pagespeed-monitor.yml       # (opcjonalnie) Lighthouse / PageSpeed
-  ISSUE_TEMPLATE/               # 8 issue templates (bug, feature, security, etc.)
-    bug_report.md
-    feature_request.md
-    security_vulnerability.md
-    accessibility_issue.md
-    seo_issue.md
-    performance_issue.md
-    content_update.md
-    documentation.md
-    config.yml                  # Issue template configuration
-  PULL_REQUEST_TEMPLATE.md      # Comprehensive PR checklist
-
-docs/
-  README.md                     # Documentation index (START HERE!)
-  PR_REVIEW_GUIDE.md            # Code review guidelines
-  ONBOARDING_CHECKLIST.md       # New developer onboarding
-  (other documentation files...)
+trzebnica-elektryk.pl-wordpress-website/
+│
+├── dist/                               # Production WordPress
+│   └── wp-content/
+│       ├── themes/
+│       │   ├── hubag/                  # Parent theme (BeTheme-based)
+│       │   └── hubag-child/            # Child theme with customizations
+│       │       ├── inc/                # PHP includes
+│       │       │   ├── functions-seo.php
+│       │       │   ├── performance-optimization.php
+│       │       │   ├── schema-localbusiness.php
+│       │       │   ├── schema-portfolio.php
+│       │       │   ├── faq-schema.php
+│       │       │   └── breadcrumbs.php
+│       │       ├── template-service.php     # Service page template
+│       │       ├── functions.php
+│       │       └── style.css
+│       └── plugins/                    # WordPress plugins
+│
+├── src/                                # Source files
+│   ├── css/
+│   │   └── components/                 # CSS components
+│   │       ├── _navigation.css         # Header & navigation
+│   │       ├── _footer.css             # Footer component
+│   │       ├── _service.css            # Service page components
+│   │       └── README.md
+│   └── wp-content/
+│       └── themes/
+│           ├── betheme/                # Original BeTheme
+│           └── betheme-child/          # Original child
+│
+├── tests/                              # Automated tests
+│   ├── unit/                           # Jest unit tests
+│   ├── integration/                    # Integration tests
+│   ├── php/                            # PHPUnit tests
+│   │   ├── bootstrap.php
+│   │   └── README.md
+│   ├── package.json                    # Jest configuration
+│   ├── jest.setup.js                   # Test setup
+│   └── README.md
+│
+├── .github/                            # GitHub configuration
+│   ├── workflows/                      # CI/CD workflows
+│   │   ├── ci-wordpress.yml            # PHP linting
+│   │   ├── lint-and-style.yml          # CSS/JS linting
+│   │   ├── security.yml                # Security scanning
+│   │   ├── lighthouse-ci.yml           # Performance monitoring
+│   │   └── seo-monitor.yml             # SEO monitoring
+│   ├── ISSUE_TEMPLATE/                 # Issue templates
+│   │   ├── bug_report.md
+│   │   ├── feature_request.md
+│   │   ├── security_vulnerability.md
+│   │   ├── accessibility_issue.md
+│   │   ├── seo_issue.md
+│   │   ├── performance_issue.md
+│   │   ├── content_update.md
+│   │   ├── documentation.md
+│   │   └── config.yml
+│   └── PULL_REQUEST_TEMPLATE.md        # PR template
+│
+├── docs/                               # Documentation
+│   ├── documentation/                  # BeTheme docs
+│   ├── _brand-trzebnica-elektryk/      # Brand assets
+│   ├── README.md                       # Docs index (START HERE!)
+│   ├── BASE-KNOWLEDGE.md               # WordPress/BeTheme basics
+│   ├── BRIEF-PROJECT.md                # Business context
+│   ├── CODE_EXAMPLES.md                # Code snippets
+│   ├── COMPREHENSIVE_SEO_GUIDE.md      # SEO guide
+│   ├── PERFORMANCE_GUIDE.md            # Performance optimization
+│   ├── SCHEMA_ORG_GUIDE.md             # Schema.org implementation
+│   ├── TESTING_COMPONENTS_GUIDE.md     # Complete testing guide
+│   ├── PR_REVIEW_GUIDE.md              # Code review guidelines
+│   ├── ONBOARDING_CHECKLIST.md         # New developer onboarding
+│   ├── KOLORYSTYKA-ROOT-BRAND-COLOR-CSS.md
+│   ├── FULL-BRAND-COLORS.scss          # Design tokens
+│   └── SUMMARY-BRAND-COLORS.md
+│
+├── templates/                          # Documentation templates
+│   ├── TEMPLATE-SERVICE-PAGE.md
+│   └── TEMPLATE-PORTFOLIO-ITEM.md
+│
+├── .nvmrc                              # Node version (18.20.0)
+├── phpunit.xml                         # PHPUnit configuration
+├── package.json                        # Node dependencies
+├── webpack.config.js                   # Build configuration
+├── composer.json                       # PHP dependencies
+│
+└── Root Documentation:
+    ├── README.md                       # This file
+    ├── QUICK_START.md                  # 15-minute setup guide
+    ├── CLAUDE.md                       # Development guidelines
+    ├── ARCHITECTURE.md                 # Technical architecture
+    ├── SECURITY.md                     # Security best practices
+    ├── TESTING.md                      # Testing strategy
+    ├── DESIGN-SYSTEM.md                # CSS design system
+    ├── SEO-STRATEGY.md                 # SEO strategy
+    ├── DEPLOYMENT.md                   # Deployment guide
+    ├── CONTRIBUTING.md                 # Contribution guidelines
+    ├── CHANGELOG.md                    # Version history
+    ├── CODE_OF_CONDUCT.md              # Community standards
+    ├── LICENSE.md                      # License
+    ├── SUPPORT.md                      # Support resources
+    └── AUTHORS.md                      # Contributors
 ```
 
 ## 🚀 Quick Start
@@ -108,6 +171,63 @@ docs/
 
 ### All Documentation
 - **[docs/README.md](docs/README.md)** - Complete documentation index
+
+---
+
+## 📦 Key Components & Templates
+
+### Service Page Template
+- **Location:** `dist/wp-content/themes/hubag-child/template-service.php`
+- **Features:** Hero section, feature cards, FAQ accordion, contact form, related services
+- **Documentation:** [templates/TEMPLATE-SERVICE-PAGE.md](templates/TEMPLATE-SERVICE-PAGE.md)
+
+### CSS Components
+- **Location:** `src/css/components/`
+- **Components:**
+  - `_navigation.css` - Sticky header, mobile menu, dropdowns
+  - `_footer.css` - Multi-column footer, social links
+  - `_service.css` - Service page components (hero, cards, FAQ)
+- **Documentation:** [src/css/components/README.md](src/css/components/README.md)
+
+### PHP Includes
+- **Location:** `dist/wp-content/themes/hubag-child/inc/`
+- **Files:**
+  - `functions-seo.php` - SEO functions (meta tags, Open Graph, reading time)
+  - `performance-optimization.php` - Caching, WebP, lazy loading
+  - `schema-localbusiness.php` - LocalBusiness structured data
+  - `schema-portfolio.php` - Portfolio item schema
+  - `faq-schema.php` - FAQ schema for service pages
+  - `breadcrumbs.php` - Breadcrumb navigation
+
+### Testing
+- **JavaScript (Jest):** `tests/` - Unit and integration tests
+- **PHP (PHPUnit):** `tests/php/` - Theme function tests
+- **Configuration:** `phpunit.xml`, `tests/package.json`
+- **Complete Guide:** [docs/TESTING_COMPONENTS_GUIDE.md](docs/TESTING_COMPONENTS_GUIDE.md)
+
+---
+
+## 🧪 Running Tests
+
+### JavaScript Tests (Jest)
+
+```bash
+cd tests
+npm install
+npm test                  # Run all tests
+npm run test:coverage     # With coverage report
+npm run test:watch        # Watch mode
+```
+
+### PHP Tests (PHPUnit)
+
+```bash
+composer require --dev phpunit/phpunit
+./vendor/bin/phpunit
+./vendor/bin/phpunit --coverage-html tests/coverage/php
+```
+
+**See:** [TESTING.md](TESTING.md) and [docs/TESTING_COMPONENTS_GUIDE.md](docs/TESTING_COMPONENTS_GUIDE.md)
 
 ---
 

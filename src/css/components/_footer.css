@@ -1,0 +1,201 @@
+/**
+ * Footer Component - Voltmont Theme
+ * 
+ * Multi-column footer with contact info, links, and social media
+ */
+
+/* ============================================================================
+   Site Footer
+   ========================================================================= */
+
+.site-footer {
+    background: var(--color-secondary, #041028);
+    color: var(--color-text, #edf0fd);
+    padding: 3rem 0 0;
+    margin-top: 4rem;
+}
+
+.site-footer__top {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.site-footer__grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .site-footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .site-footer__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Footer Column
+   ========================================================================= */
+
+.site-footer__column {
+    display: flex;
+    flex-direction: column;
+}
+
+.site-footer__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--color-primary, #4d81e9);
+}
+
+/* Footer Links
+   ========================================================================= */
+
+.site-footer__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.site-footer__links li {
+    margin-bottom: 0.5rem;
+}
+
+.site-footer__links a {
+    color: var(--color-text, #edf0fd);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.site-footer__links a:hover,
+.site-footer__links a:focus {
+    opacity: 1;
+    color: var(--color-primary, #4d81e9);
+    padding-left: 0.25rem;
+}
+
+/* Footer Contact
+   ========================================================================= */
+
+.site-footer__contact {
+    font-style: normal;
+}
+
+.site-footer__contact p {
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+}
+
+.site-footer__contact a {
+    color: var(--color-text, #edf0fd);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-footer__contact a:hover,
+.site-footer__contact a:focus {
+    color: var(--color-primary, #4d81e9);
+}
+
+/* Social Media
+   ========================================================================= */
+
+.site-footer__social {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.site-footer__social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--color-text, #edf0fd);
+    transition: all 0.3s ease;
+}
+
+.site-footer__social a:hover,
+.site-footer__social a:focus {
+    background: var(--color-primary, #4d81e9);
+    transform: translateY(-2px);
+}
+
+.site-footer__social .icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Footer Bottom
+   ========================================================================= */
+
+.site-footer__bottom {
+    padding: 1.5rem 0;
+    text-align: center;
+}
+
+.site-footer__bottom p {
+    margin: 0;
+    opacity: 0.7;
+    font-size: 0.875rem;
+}
+
+/* Newsletter (optional)
+   ========================================================================= */
+
+.site-footer__newsletter {
+    margin-top: 1rem;
+}
+
+.site-footer__newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.site-footer__newsletter-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.25rem;
+    color: var(--color-text, #edf0fd);
+    font-size: 0.875rem;
+}
+
+.site-footer__newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.site-footer__newsletter-button {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary, #4d81e9);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.site-footer__newsletter-button:hover,
+.site-footer__newsletter-button:focus {
+    background: var(--color-hover-primary, #2a54a1);
+    transform: translateY(-2px);
+}
+
+/* Accessibility
+   ========================================================================= */
+
+.site-footer a:focus-visible {
+    outline: 2px solid var(--color-primary, #4d81e9);
+    outline-offset: 2px;
+}

@@ -1,52 +1,59 @@
 # Documentation Index - trzebnica-elektryk.pl
 
-**Central index for all project documentation**
+**Complete documentation for Voltmont WordPress project**
 
 ---
 
-## 📚 Getting Started
+## 🚀 START HERE
 
-**New to the project? Start here:**
+### For New Developers
+1. **[ONBOARDING_CHECKLIST.md](ONBOARDING_CHECKLIST.md)** - Complete onboarding guide
+2. **[../QUICK_START.md](../QUICK_START.md)** - 15-minute setup
+3. **[BASE-KNOWLEDGE.md](BASE-KNOWLEDGE.md)** - WordPress & BeTheme basics
+4. **[../CLAUDE.md](../CLAUDE.md)** - Development guidelines
 
-1. **[QUICK_START.md](../QUICK_START.md)** - 15-minute setup guide
-2. **[ONBOARDING_CHECKLIST.md](ONBOARDING_CHECKLIST.md)** - Complete onboarding for new developers
-3. **[README.md](../README.md)** - Project overview
-
----
-
-## 🏗️ Architecture & Development
-
-### Core Documentation
-
-- **[CLAUDE.md](../CLAUDE.md)** - Development guidelines and AI agent instructions
-- **[AGENTS.md](../AGENTS.md)** - AI agents configuration (Claude, Copilot, ChatGPT)
-- **[ARCHITECTURE.md](../ARCHITECTURE.md)** - Technical architecture overview
-- **[API_DOCUMENTATION.md](../API_DOCUMENTATION.md)** - API endpoints and integration
-
-### Frontend
-
-- **[DESIGN-SYSTEM.md](../DESIGN-SYSTEM.md)** - Design system, CSS variables, components
-- **[docs/FULL-BRAND-COLORS.scss](FULL-BRAND-COLORS.scss)** - Complete color palette (SCSS)
-
-### Backend & SEO
-
-- **WordPress Core:** dist/wp-content/themes/hubag-child/
-- **Custom Post Types:** See `inc/custom-post-types.php`
-- **Schema.org Implementation:** See [SCHEMA_ORG_GUIDE.md](SCHEMA_ORG_GUIDE.md)
-- **Schema Files:**
-  - `inc/schema-localbusiness.php` - LocalBusiness + Service
-  - `inc/schema-portfolio.php` - Portfolio CreativeWork
-  - `inc/faq-schema.php` - FAQ markup
-- **SEO Functions:** `inc/functions-seo.php`
+### Project Context
+- **[BRIEF-PROJECT.md](BRIEF-PROJECT.md)** - Business requirements & goals
+- **[../ARCHITECTURE.md](../ARCHITECTURE.md)** - Technical architecture
+- **[../SEO-STRATEGY.md](../SEO-STRATEGY.md)** - SEO & content strategy
 
 ---
 
-## 🔒 Security & Quality
+## 📚 Documentation Categories
 
-### Security
+### 🎨 Design & Brand
 
-- **[SECURITY.md](../SECURITY.md)** - Security best practices and guidelines
-- **[Responsible Disclosure](#)** - Report vulnerabilities to: biuro@pbmediaonline.pl
+#### Brand System
+- **[SUMMARY-BRAND-COLORS.md](SUMMARY-BRAND-COLORS.md)** - Brand color overview
+- **[KOLORYSTYKA-ROOT-BRAND-COLOR-CSS.md](KOLORYSTYKA-ROOT-BRAND-COLOR-CSS.md)** - CSS color variables
+- **[FULL-BRAND-COLORS.scss](FULL-BRAND-COLORS.scss)** - Complete design tokens
+- **[../DESIGN-SYSTEM.md](../DESIGN-SYSTEM.md)** - CSS design system
+- **[../src/css/components/README.md](../src/css/components/README.md)** - CSS components
+
+---
+
+## 🧪 Testing & Quality
+
+### Testing Documentation
+- **[TESTING_COMPONENTS_GUIDE.md](TESTING_COMPONENTS_GUIDE.md)** - Complete testing guide (26 KB)
+- **[../TESTING.md](../TESTING.md)** - Testing strategy
+- **[../tests/README.md](../tests/README.md)** - JavaScript (Jest) testing
+- **[../tests/php/README.md](../tests/php/README.md)** - PHP (PHPUnit) testing
+- **[SCHEMA_TESTING_CHECKLIST.md](SCHEMA_TESTING_CHECKLIST.md)** - Schema validation
+
+### Code Quality
+- **[PR_REVIEW_GUIDE.md](PR_REVIEW_GUIDE.md)** - Code review guidelines
+- **[../CONTRIBUTING.md](../CONTRIBUTING.md)** - Contribution guidelines
+
+---
+
+## 📄 Templates & Components
+
+- **[../templates/TEMPLATE-SERVICE-PAGE.md](../templates/TEMPLATE-SERVICE-PAGE.md)** - Service page docs
+- **[../templates/TEMPLATE-PORTFOLIO-ITEM.md](../templates/TEMPLATE-PORTFOLIO-ITEM.md)** - Portfolio docs
+- **Implementation:** `dist/wp-content/themes/hubag-child/template-service.php`
+
+---
 
 ### Code Quality
 
