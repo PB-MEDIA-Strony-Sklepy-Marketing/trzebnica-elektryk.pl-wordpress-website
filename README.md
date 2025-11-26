@@ -49,14 +49,67 @@ docs/
     ci-wordpress.yml            # Lint PHP + weryfikacja pod WordPress
     lint-and-style.yml          # Lint CSS/SCSS/JS
     pagespeed-monitor.yml       # (opcjonalnie) Lighthouse / PageSpeed
-  ISSUE_TEMPLATE/
+  ISSUE_TEMPLATE/               # 8 issue templates (bug, feature, security, etc.)
     bug_report.md
     feature_request.md
-  PULL_REQUEST_TEMPLATE.md
-  dependabot.yml
+    security_vulnerability.md
+    accessibility_issue.md
+    seo_issue.md
+    performance_issue.md
+    content_update.md
+    documentation.md
+    config.yml                  # Issue template configuration
+  PULL_REQUEST_TEMPLATE.md      # Comprehensive PR checklist
+
+docs/
+  README.md                     # Documentation index (START HERE!)
+  PR_REVIEW_GUIDE.md            # Code review guidelines
+  ONBOARDING_CHECKLIST.md       # New developer onboarding
+  (other documentation files...)
 ```
 
-## Jak poruszać się po projekcie
+## 🚀 Quick Start
+
+**New developer?** Get started in 15 minutes:
+
+1. **[QUICK_START.md](QUICK_START.md)** - Step-by-step setup guide
+2. **[docs/ONBOARDING_CHECKLIST.md](docs/ONBOARDING_CHECKLIST.md)** - Complete onboarding checklist
+3. Clone, install, build:
+   ```bash
+   git clone <repo-url>
+   cd trzebnica-elektryk.pl-wordpress-website
+   nvm use          # Use Node 18.20.0
+   npm install      # Install dependencies
+   npm run build    # Build assets
+   ```
+
+**Need help?** See [Documentation Index](docs/README.md)
+
+---
+
+## 📖 Essential Documentation
+
+### For Developers
+- **[CLAUDE.md](CLAUDE.md)** - Development guidelines (WordPress, security, SEO)
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Technical architecture
+- **[SECURITY.md](SECURITY.md)** - Security best practices
+- **[TESTING.md](TESTING.md)** - Testing strategy
+- **[DESIGN-SYSTEM.md](DESIGN-SYSTEM.md)** - CSS variables, components
+
+### For Contributors
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - How to contribute
+- **[docs/PR_REVIEW_GUIDE.md](docs/PR_REVIEW_GUIDE.md)** - Code review guidelines
+- **[.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md)** - PR template
+- **[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)** - Community standards
+
+### For SEO/Content
+- **[SEO-STRATEGY.md](SEO-STRATEGY.md)** - Keywords, schema.org strategy
+- **[docs/BRIEF-PROJECT.md](docs/BRIEF-PROJECT.md)** - Business context
+
+### All Documentation
+- **[docs/README.md](docs/README.md)** - Complete documentation index
+
+---
 
 - **Front-end produkcyjny**: szukaj plików w `dist/wp-content/themes/hubag-child/`
   - Custom CSS/SCSS: `style.css`, dodatkowe pliki w folderach `css/`, `scss/`
@@ -121,9 +174,107 @@ npx stylelint "**/*.{css,scss}"
 - Animacje:
   - Delikatne, 0.3s `ease`, bez nadmiernych efektów – szczególnie dla CTA i sekcji usług
 
-## SEO & schema.org
+## 🔍 SEO & schema.org
 
-- Dla kluczowych podstron (instalacje, modernizacje, WLZ, nadzór, SMART, odgromowe):
+### Implemented Structured Data
+
+- **LocalBusiness + Service:** Homepage and service pages
+  - Company information, contact details, opening hours
+  - Service catalog with 6 main offerings
+  - Location: Trzebnica, Dolnośląskie (51.3094, 17.0628)
+  
+- **FAQPage:** Service pages with FAQs
+  - Auto-extraction from content (BeTheme accordion, HTML headings)
+  - WordPress meta box for manual entry
+  - Google Rich Results ready
+  
+- **CreativeWork (Portfolio):** Individual portfolio items
+  - Project details (client, date, location)
+  - Featured image integration
+  - WordPress meta box for schema data
+  
+- **ItemList:** Portfolio archives
+  - List of all portfolio items
+  - Pagination support
+  
+- **BreadcrumbList:** All pages except homepage
+  - Navigation hierarchy
+  - Parent page support
+
+### SEO Meta Tags
+
+- **Dynamic meta descriptions** (150-160 chars)
+  - Homepage optimized for "elektryk Trzebnica"
+  - Service pages with location keywords
+  - Auto-generated from content
+  
+- **OpenGraph tags** for social sharing
+  - Facebook, LinkedIn optimization
+  - Dynamic images from featured image
+  - Business contact data
+  
+- **Twitter Cards**
+  - Summary large image format
+  - Dynamic content
+  
+- **Geo tags** for local SEO
+  - PL-DS region
+  - Trzebnica placename
+  - GPS coordinates
+
+**Full Documentation:** [docs/SCHEMA_ORG_GUIDE.md](docs/SCHEMA_ORG_GUIDE.md)
+
+---
+
+## ⚡ Performance Optimization
+
+### Implemented Optimizations
+
+**Transient Caching:**
+- Portfolio queries (12-hour cache)
+- Navigation menus (24-hour cache)
+- Taxonomy terms (24-hour cache)
+- Automatic cache invalidation on updates
+- Admin bar cache clear button
+
+**WebP Image Conversion:**
+- Automatic JPEG/PNG → WebP conversion
+- 85% quality (25-35% file size reduction)
+- All image sizes converted
+- Browser fallback support
+- Transparent PNG support
+
+**Lazy Loading:**
+- Native lazy loading (`loading="lazy"`)
+- Background image lazy loading (Intersection Observer)
+- Async image decoding
+- Applied to: content, featured images, avatars
+
+**CSS/JS Minification:**
+- Inline CSS minification
+- Inline JavaScript minification
+- Preserves JSON-LD schemas
+- Applied to: content, wp_head output
+
+**Additional:**
+- Preconnect to external domains
+- Heartbeat API optimization
+- Post revisions limited (5)
+- Autosave interval (2 minutes)
+
+**Expected Results:**
+- 🎯 PageSpeed Score: 90-95
+- 📉 Page Size: -50% reduction
+- ⚡ Load Time: -50% faster
+- 📊 Requests: -40% fewer
+
+**Full Documentation:** [docs/PERFORMANCE_GUIDE.md](docs/PERFORMANCE_GUIDE.md)
+
+---
+
+## 📚 SEO Strategy
+
+For kluczowych podstron (instalacje, modernizacje, WLZ, nadzór, SMART, odgromowe):
   - Używaj `LocalBusiness` + `Service` + `FAQPage` (JSON-LD)
 - Meta:
   - Tytuł: 50–60 znaków
@@ -133,9 +284,39 @@ npx stylelint "**/*.{css,scss}"
 - Wewnętrzne linkowanie:
   - Linkuj pomiędzy usługami (np. „instalacje odgromowe” → „modernizacja instalacji w blokach”, „nadzór elektryczny” itp.)
 
-## Dalsze kroki
+## 🐛 Reporting Issues
 
-Zobacz sekcję **"Co dalej?"** w tym README (poniżej), aby poznać sugerowane kolejne pliki i zadania.
+Found a bug or have a suggestion? We have templates for:
+
+- **Bug Report** - functional issues
+- **Feature Request** - new features or enhancements
+- **Security Vulnerability** - ⚠️ **EMAIL ONLY:** biuro@pbmediaonline.pl
+- **Accessibility Issue** - WCAG compliance problems
+- **SEO Issue** - search engine optimization problems
+- **Performance Issue** - speed/optimization issues
+- **Content Update** - content changes needed
+- **Documentation** - documentation improvements
+
+**[Create an issue →](https://github.com/PB-MEDIA-Strony-Sklepy-Marketing/trzebnica-elektryk.pl-wordpress-website/issues/new/choose)**
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how:
+
+1. **Read** [CONTRIBUTING.md](CONTRIBUTING.md)
+2. **Check** [docs/PR_REVIEW_GUIDE.md](docs/PR_REVIEW_GUIDE.md) for review standards
+3. **Create** a feature branch: `git checkout -b feature/your-feature`
+4. **Follow** [Conventional Commits](https://www.conventionalcommits.org/):
+   ```bash
+   git commit -m "feat: add new feature"
+   git commit -m "fix: resolve mobile menu issue"
+   git commit -m "docs: update README"
+   ```
+5. **Submit** PR using our [template](.github/PULL_REQUEST_TEMPLATE.md)
+
+**New contributor?** Look for issues labeled [`good first issue`](https://github.com/PB-MEDIA-Strony-Sklepy-Marketing/trzebnica-elektryk.pl-wordpress-website/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 
 ---
 

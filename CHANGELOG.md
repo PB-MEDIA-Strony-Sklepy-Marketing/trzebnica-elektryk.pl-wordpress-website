@@ -9,6 +9,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Complete GitHub Issue Templates (bug, feature, security, accessibility, seo, performance, content, documentation)
+- Pull Request Template with comprehensive checklist
+- PR Review Guide (docs/PR_REVIEW_GUIDE.md)
+- Onboarding Checklist for new developers (docs/ONBOARDING_CHECKLIST.md)
+- GitHub Issue Template config.yml with contact links
+- Documentation issue template
+- Enhanced QUICK_START.md with Git conventions and learning resources
+- Portfolio schema.org implementation (CreativeWork + ItemList)
+- Portfolio meta box for schema data (client, date, location)
+- Portfolio admin columns with sortable schema fields
+- FAQ schema automatic extraction from page content
+- FAQ meta box with dynamic fields in WordPress admin
+- **Transient caching for expensive queries (portfolio, menus, terms)**
+- **WebP automatic conversion for uploaded images (JPEG/PNG)**
+- **Lazy loading for all images (native + background images)**
+- **Inline CSS/JS minification in content**
+- **Admin bar cache clear button**
+- **Automatic cache invalidation on content updates**
+
+### Changed
+- Updated Pull Request Template with detailed quality, testing, accessibility, SEO, and security checklists
+- Improved QUICK_START.md with Conventional Commits guidelines and branch naming conventions
+- Enhanced issue reporting section with all available templates
+- Optimized meta descriptions with dynamic generation (150-160 chars)
+- Enhanced LocalBusiness schema with service offerings
+- Improved OpenGraph tags with article-specific metadata
+- **Expanded performance-optimization.php with caching, WebP, lazy loading, and minification**
+
+### Fixed
+- Meta description length optimization for better SEO
+- Schema.org structured data priorities (proper execution order)
+- **Performance improvements with transient caching (12-24h TTL)**
+- **Image optimization with automatic WebP conversion**
+
 ### Planned
 - Blog section implementation
 - Video content integration (YouTube embeds)

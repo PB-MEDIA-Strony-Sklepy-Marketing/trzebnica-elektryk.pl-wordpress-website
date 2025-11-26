@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🔒 Security Vulnerability
+    url: mailto:biuro@pbmediaonline.pl?subject=[SECURITY]%20trzebnica-elektryk.pl
+    about: Report security issues privately via email (DO NOT create public issue!)
+  - name: 💬 General Question / Discussion
+    url: https://github.com/PB-MEDIA-Strony-Sklepy-Marketing/trzebnica-elektryk.pl-wordpress-website/discussions
+    about: Ask questions or start discussions about the project
+  - name: 📖 Documentation
+    url: https://github.com/PB-MEDIA-Strony-Sklepy-Marketing/trzebnica-elektryk.pl-wordpress-website/blob/main/README.md
+    about: Read project documentation and guides
+  - name: 🚀 Quick Start Guide
+    url: https://github.com/PB-MEDIA-Strony-Sklepy-Marketing/trzebnica-elektryk.pl-wordpress-website/blob/main/QUICK_START.md
+    about: Getting started guide for new developers
+  - name: 📧 Contact PB-MEDIA
+    url: mailto:biuro@pbmediaonline.pl
+    about: Direct contact with the development team

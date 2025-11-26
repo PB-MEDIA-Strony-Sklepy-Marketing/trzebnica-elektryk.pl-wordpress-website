@@ -110,12 +110,56 @@ npm run dev
 npm run lint
 npm test
 
-# 6. Commit changes
+# 6. Commit changes (commit messages in English)
 git add .
 git commit -m "feat: add your feature description"
 
 # 7. Push and create PR
 git push origin feature/your-feature-name
+```
+
+### Git Commit Convention
+
+Używamy **Conventional Commits** dla czytelnej historii:
+
+```bash
+# Typy commitów:
+feat:      # Nowa funkcja
+fix:       # Poprawka błędu
+refactor:  # Refactoring kodu
+style:     # Zmiany CSS/UI (nie wpływające na logikę)
+perf:      # Optymalizacja wydajności
+docs:      # Zmiany w dokumentacji
+test:      # Dodanie/poprawka testów
+chore:     # Zmiany w build/config (nie wpływające na kod)
+ci:        # Zmiany w CI/CD
+
+# Przykłady:
+git commit -m "feat(schema): add FAQ schema for service pages"
+git commit -m "fix(contact-form): resolve email validation issue"
+git commit -m "perf(images): implement lazy loading"
+git commit -m "docs(readme): update installation steps"
+git commit -m "style(buttons): improve hover states"
+```
+
+### Branch Naming Convention
+
+```bash
+# Format: <type>/<short-description>
+
+feature/add-contact-form           # Nowa funkcja
+bugfix/fix-mobile-menu            # Poprawka błędu
+hotfix/critical-security-patch    # Krytyczna poprawka (direct to main)
+refactor/optimize-queries         # Refactoring
+docs/update-quick-start           # Dokumentacja
+style/improve-button-accessibility # Styling/UI
+perf/optimize-images              # Performance
+test/add-unit-tests               # Testy
+
+# Złe przykłady (unikaj):
+pawel-changes                     # ❌ Brak kontekstu
+my-branch                         # ❌ Nieopisowe
+fix123                            # ❌ Niejasne
 ```
 
 ### Important Commands
@@ -377,9 +421,18 @@ define('WP_DEBUG_DISPLAY', false);
 ### Found a Bug?
 
 1. Check if issue already exists: [GitHub Issues](https://github.com/PB-MEDIA-Strony-Sklepy-Marketing/trzebnica-elektryk.pl-wordpress-website/issues)
-2. If not, create new issue using template
+2. If not, create new issue using appropriate template:
+   - **Bug Report** - błędy funkcjonalne
+   - **Performance Issue** - problemy z wydajnością
+   - **Accessibility Issue** - problemy z dostępnością (WCAG)
+   - **SEO Issue** - problemy z pozycjonowaniem
+   - **Security Vulnerability** - luki bezpieczeństwa (EMAIL ONLY!)
+   - **Content Update** - aktualizacje treści
+   - **Feature Request** - propozycje nowych funkcji
+   - **Documentation** - poprawki w dokumentacji
+
 3. Include:
-   - Clear description
+   - Clear description (może być po polsku w issue)
    - Steps to reproduce
    - Expected vs actual behavior
    - Screenshots (if visual bug)
@@ -387,9 +440,10 @@ define('WP_DEBUG_DISPLAY', false);
 
 ### Security Issues
 
-**Do NOT create public GitHub issue!**
+**⚠️ Do NOT create public GitHub issue!**
 
-Email security issues to: biuro@pbmediaonline.pl
+Email security issues to: **biuro@pbmediaonline.pl**  
+Subject: `[SECURITY] trzebnica-elektryk.pl - [krótki opis]`
 
 ---
 
@@ -416,17 +470,58 @@ Now that you're set up:
 
 1. **Explore the codebase**
    - Read through `functions.php`
-   - Check out CSS components
+   - Check out CSS components in `assets/css/components/`
    - Review existing pages
+   - Read [CLAUDE.md](CLAUDE.md) for development guidelines
 
 2. **Pick a task**
-   - Check GitHub Issues for "good first issue" label
-   - Or ask team lead for assignment
+   - Check [GitHub Issues](https://github.com/PB-MEDIA-Strony-Sklepy-Marketing/trzebnica-elektryk.pl-wordpress-website/issues) for "good first issue" label
+   - Or ask team lead for assignment: biuro@pbmediaonline.pl
 
 3. **Make your first contribution**
    - Follow workflow above
    - Create small, focused PR
+   - Use [Pull Request Template](.github/PULL_REQUEST_TEMPLATE.md)
    - Get feedback and iterate
+
+4. **Join the team communication**
+   - Email: biuro@pbmediaonline.pl
+   - Be proactive - ask questions!
+   - Review others' PRs (learn from the team)
+
+---
+
+## 🎓 Learning Resources (Polish)
+
+### WordPress Development
+- [WordPress Codex (PL)](https://codex.wordpress.org/pl:Main_Page)
+- [WordPress Developer Handbook](https://developer.wordpress.org/)
+- [WP Kurs - Polskie tutoriale](https://wpkurs.pl/)
+
+### PHP & Modern Development
+- [PHP The Right Way (PL)](https://pl.phptherightway.com/)
+- [Laravel Poland Community](https://laravel.pl/) - dobre praktyki PHP
+- [PHP-FIG Standards](https://www.php-fig.org/psr/)
+
+### Frontend
+- [MDN Web Docs (PL)](https://developer.mozilla.org/pl/)
+- [CSS Tricks](https://css-tricks.com/)
+- [JavaScript.info (PL)](https://javascript.info/pl/)
+
+### Accessibility (WCAG)
+- [WCAG 2.2 Guidelines](https://www.w3.org/WAI/WCAG22/quickref/)
+- [WebAIM Resources](https://webaim.org/resources/)
+- [A11Y Project](https://www.a11yproject.com/)
+
+### SEO
+- [Google Search Central (PL)](https://developers.google.com/search?hl=pl)
+- [Moz Beginner's Guide to SEO](https://moz.com/beginners-guide-to-seo)
+- [Schema.org](https://schema.org/)
+
+### Git & Version Control
+- [Atlassian Git Tutorials (PL)](https://www.atlassian.com/pl/git/tutorials)
+- [Pro Git Book (PL)](https://git-scm.com/book/pl/v2)
+- [Conventional Commits](https://www.conventionalcommits.org/)
 
 ---
 

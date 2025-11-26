@@ -1228,6 +1228,7 @@ add_action('template_redirect', 'voltmont_redirect_404_to_home');
 
 $voltmont_inc_files = array(
     'schema-localbusiness.php',      // Schema.org LocalBusiness + Service structured data
+    'schema-portfolio.php',           // Portfolio CreativeWork schema with admin interface
     'functions-seo.php',              // SEO meta tags, OpenGraph, Twitter Cards
     'custom-shortcodes.php',          // Collection of 9 reusable shortcodes
     'performance-optimization.php',   // Performance utilities and optimizations
