@@ -89,6 +89,7 @@
 ## 🔍 SEO & Marketing
 
 - **[SEO-STRATEGY.md](../SEO-STRATEGY.md)** - SEO strategy and keywords
+- **[COMPREHENSIVE_SEO_GUIDE.md](COMPREHENSIVE_SEO_GUIDE.md)** - Complete SEO implementation guide (30+ features)
 - **[SCHEMA_ORG_GUIDE.md](SCHEMA_ORG_GUIDE.md)** - Complete schema.org implementation guide
 - **Schema.org implementations:**
   - **LocalBusiness** - `inc/schema-localbusiness.php` - Company info, services, location
@@ -97,6 +98,11 @@
   - **CreativeWork** - `inc/schema-portfolio.php` - Portfolio items
   - **ItemList** - `inc/schema-portfolio.php` - Portfolio archives
   - **BreadcrumbList** - `inc/schema-localbusiness.php` - Navigation breadcrumbs
+  - **Article** - `inc/functions-seo.php` - Blog posts
+  - **Organization** - `inc/functions-seo.php` - Company data
+  - **WebSite** - `inc/functions-seo.php` - Site structure
+  - **VideoObject** - `inc/functions-seo.php` - Embedded videos
+  - **Person** - `inc/functions-seo.php` - About page
 
 ---
 
