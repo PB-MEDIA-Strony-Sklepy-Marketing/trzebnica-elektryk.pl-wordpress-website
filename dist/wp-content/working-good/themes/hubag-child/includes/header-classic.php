@@ -88,11 +88,11 @@ if (mfn_opts_get('img-subheader-attachment') == 'parallax') {
                      * Dlatego dodajemy "margin-top: 160px" (średnia wysokość menu + top bar).
                      * Dodatkowo dodajemy pusty div (spacer), który wypchnie treść w dół.
                      */
-                    $subheader_style = 'position: relative; z-index: 10; padding: 60px 0 40px 0 !important; margin-top: 0;';
+                    $subheader_style = 'position: relative; z-index: 10; padding: 80px 0 60px 0 !important; margin-top: 0;';
                     
                     // Jeśli nagłówek jest "sticky" w opcjach motywu, musimy dodać margines
                     // Wymuszamy margines 130px (wysokość headera) na start, żeby odkleić się od góry.
-                    $spacer_style = 'display: block; height: 130px; width: 100%; visibility: hidden;';
+                    $spacer_style = 'display: block; height: 170px; width: 100%; visibility: hidden;';
 
 					if (is_search()) {
 

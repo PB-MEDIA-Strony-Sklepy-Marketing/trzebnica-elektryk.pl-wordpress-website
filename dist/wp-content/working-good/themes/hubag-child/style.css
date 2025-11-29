@@ -451,7 +451,7 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
 }
 
 #Subheader {
-    background-color: var(--background-theme-color);
+    background-color: var(--background-card);
 }
 
 #Footer .footer_action {
