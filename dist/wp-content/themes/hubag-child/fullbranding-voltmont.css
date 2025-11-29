@@ -1,0 +1,809 @@
+/**
+ * Voltmont - trzebnica-elektryk.pl
+ * Full Brand Colors & Design System
+ * WCAG-friendly palette with mobile-first approach
+ * 
+ * @author PB MEDIA
+ * @version 1.0.0
+ * @license MIT
+ */
+
+/* ========================================
+   CSS Custom Properties (CSS Variables)
+   Mobile-first design system
+   ======================================== */
+
+:root {
+  /* Primary Brand Colors */
+  --color-theme-primary: #4d81e9;
+  --color-theme-primary-light: #7da3f0;
+  --color-theme-primary-lighter: #b3c7f6;
+  --color-theme-primary-dark: #2a54a1;
+  --color-theme-primary-darker: #163162;
+
+  /* Secondary / Background Colors */
+  --color-theme-secondary: #041028;
+  --color-theme-secondary-light: #182848;
+  --color-theme-secondary-dark: #020816;
+
+  /* Accent Colors - WCAG AA Compliant */
+  --color-accent-success: #28a745;
+  --color-accent-warning: #ffc107;
+  --color-accent-danger: #dc3545;
+  --color-accent-info: #1fb6ff;
+
+  /* Neutral Grayscale Palette */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #edf0fd;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+
+  /* Text Colors */
+  --text-color: #edf0fd;
+  --text-color-primary: #edf0fd;
+  --text-color-on-light: #041028;
+  --text-color-muted: #94a3b8;
+  --text-color-inverted: #ffffff;
+
+  /* Background Colors */
+  --background-theme-color: #163162;
+  --background-page: #041028;
+  --background-section-light: #0b1630;
+  --background-section-dark: #020816;
+  --background-card: #0f172a;
+
+  /* Button Styles */
+  --button-theme-color: #4d81e9;
+  --button-theme-color-hover: #2a54a1;
+  --button-theme-color-active: #163162;
+  --button-theme-color-outline: transparent;
+  --button-theme-color-text: #ffffff;
+
+  /* Link Colors */
+  --link-color: #4d81e9;
+  --link-color-hover: #b3c7f6;
+  --link-color-active: #2a54a1;
+  --link-color-visited: #7da3f0;
+
+  /* Border Colors */
+  --border-color-soft: rgba(237, 240, 253, 0.12);
+  --border-color-strong: rgba(237, 240, 253, 0.3);
+  --border-color-primary: rgba(77, 129, 233, 0.4);
+
+  /* Shadow System */
+  --shadow-soft: 0 10px 25px rgba(2, 8, 23, 0.35);
+  --shadow-elevated: 0 20px 40px rgba(2, 8, 23, 0.5);
+  --shadow-sm: 0 2px 4px rgba(2, 8, 23, 0.1);
+  --shadow-md: 0 4px 6px rgba(2, 8, 23, 0.15);
+  --shadow-lg: 0 10px 15px rgba(2, 8, 23, 0.25);
+  --shadow-xl: 0 20px 25px rgba(2, 8, 23, 0.3);
+  --shadow-2xl: 0 25px 50px rgba(2, 8, 23, 0.4);
+
+  /* Border Radius System */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* Transition Timing */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-all: all 0.3s ease;
+  --transition-colors: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+
+  /* Z-Index Scale */
+  --z-base: 1;
+  --z-dropdown: 50;
+  --z-header: 100;
+  --z-modal-backdrop: 900;
+  --z-modal: 1000;
+  --z-overlay: 1100;
+  --z-toast: 1200;
+  --z-tooltip: 1300;
+
+  /* Typography Scale - Mobile First */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1. 25rem;
+  --font-size-2xl: 1. 5rem;
+  --font-size-3xl: 1. 875rem;
+  --font-size-4xl: 2. 25rem;
+  --font-size-5xl: 3rem;
+
+  /* Line Height */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --line-height-loose: 2;
+
+  /* Font Weight */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Spacing Scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  --spacing-4xl: 6rem;
+
+  /* Container Widths */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+  --container-max: 1920px;
+
+  /* Grid Gap */
+  --gap-xs: 0.5rem;
+  --gap-sm: 1rem;
+  --gap-md: 1.5rem;
+  --gap-lg: 2rem;
+  --gap-xl: 3rem;
+
+  /* Animation Durations */
+  --animation-duration-fast: 200ms;
+  --animation-duration-base: 300ms;
+  --animation-duration-slow: 500ms;
+  --animation-duration-slower: 1000ms;
+
+  /* Breakpoints for CSS */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+
+/* Background Utilities */
+.bg-primary { background-color: var(--color-theme-primary); }
+. bg-primary-light { background-color: var(--color-theme-primary-light); }
+.bg-primary-lighter { background-color: var(--color-theme-primary-lighter); }
+.bg-primary-dark { background-color: var(--color-theme-primary-dark); }
+.bg-primary-darker { background-color: var(--color-theme-primary-darker); }
+.bg-secondary { background-color: var(--color-theme-secondary); }
+.bg-secondary-light { background-color: var(--color-theme-secondary-light); }
+.bg-secondary-dark { background-color: var(--color-theme-secondary-dark); }
+.bg-page { background-color: var(--background-page); }
+.bg-card { background-color: var(--background-card); }
+.bg-section-light { background-color: var(--background-section-light); }
+.bg-section-dark { background-color: var(--background-section-dark); }
+
+/* Text Color Utilities */
+.text-primary { color: var(--text-color-primary); }
+. text-on-light { color: var(--text-color-on-light); }
+.text-muted { color: var(--text-color-muted); }
+.text-inverted { color: var(--text-color-inverted); }
+.text-brand { color: var(--color-theme-primary); }
+.text-success { color: var(--color-accent-success); }
+.text-warning { color: var(--color-accent-warning); }
+.text-danger { color: var(--color-accent-danger); }
+.text-info { color: var(--color-accent-info); }
+
+/* Shadow Utilities */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+.shadow-2xl { box-shadow: var(--shadow-2xl); }
+.shadow-soft { box-shadow: var(--shadow-soft); }
+.shadow-elevated { box-shadow: var(--shadow-elevated); }
+.shadow-none { box-shadow: none; }
+
+/* Border Radius Utilities */
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
+.rounded-pill { border-radius: var(--radius-pill); }
+.rounded-circle { border-radius: var(--radius-circle); }
+.rounded-none { border-radius: 0; }
+
+/* Transition Utilities */
+.transition-fast { transition: var(--transition-fast); }
+.transition-normal { transition: var(--transition-normal); }
+.transition-slow { transition: var(--transition-slow); }
+.transition-all { transition: var(--transition-all); }
+.transition-colors { transition: var(--transition-colors); }
+.transition-none { transition: none; }
+
+/* ========================================
+   Component Styles
+   ======================================== */
+
+/* Buttons */
+.btn-voltmont {
+  background-color: var(--button-theme-color);
+  color: var(--button-theme-color-text);
+  border: 2px solid var(--button-theme-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-weight: var(--font-weight-semibold);
+  transition: var(--transition-all);
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  text-align: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-voltmont:hover {
+  background-color: var(--button-theme-color-hover);
+  border-color: var(--button-theme-color-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-voltmont:active {
+  background-color: var(--button-theme-color-active);
+  border-color: var(--button-theme-color-active);
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-voltmont:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(77, 129, 233, 0.25);
+}
+
+.btn-voltmont-outline {
+  background-color: var(--button-theme-color-outline);
+  color: var(--button-theme-color);
+  border: 2px solid var(--button-theme-color);
+}
+
+.btn-voltmont-outline:hover {
+  background-color: var(--button-theme-color);
+  color: var(--button-theme-color-text);
+}
+
+/* Links */
+a {
+  color: var(--link-color);
+  transition: var(--transition-colors);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--link-color-hover);
+  text-decoration-thickness: 2px;
+}
+
+a:active {
+  color: var(--link-color-active);
+}
+
+a:visited {
+  color: var(--link-color-visited);
+}
+
+a:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Cards */
+.card-voltmont {
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition-all);
+}
+
+. card-voltmont:hover {
+  box-shadow: var(--shadow-elevated);
+  transform: translateY(-4px);
+  border-color: var(--border-color-strong);
+}
+
+/* Form Elements */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+input[type="url"],
+input[type="search"],
+textarea,
+select {
+  background-color: var(--background-card);
+  color: var(--text-color-primary);
+  border: 1px solid var(--border-color-soft);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-base);
+  transition: var(--transition-all);
+  width: 100%;
+  max-width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-theme-primary);
+  box-shadow: 0 0 0 3px rgba(77, 129, 233, 0.1);
+}
+
+/* ========================================
+   Responsive Typography
+   Mobile First Approach
+   ======================================== */
+
+/* Base Mobile Typography */
+html {
+  font-size: 16px;
+  line-height: var(--line-height-normal);
+  color: var(--text-color-primary);
+  background-color: var(--background-page);
+}
+
+body {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color-primary);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+}
+
+/* Mobile Typography Sizes */
+h1 { font-size: var(--font-size-3xl); }
+h2 { font-size: var(--font-size-2xl); }
+h3 { font-size: var(--font-size-xl); }
+h4 { font-size: var(--font-size-lg); }
+h5 { font-size: var(--font-size-base); }
+h6 { font-size: var(--font-size-sm); }
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ========================================
+   Media Queries - Mobile First
+   ======================================== */
+
+/* Small devices (landscape phones, 640px and up) */
+@media screen and (min-width: 640px) {
+  :root {
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 1.875rem;
+    --font-size-3xl: 2.25rem;
+    --font-size-4xl: 3rem;
+  }
+  
+  . container {
+    max-width: var(--container-sm);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+  :root {
+    --spacing-md: 1. 25rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 2.5rem;
+    --spacing-2xl: 3. 5rem;
+  }
+  
+  h1 { font-size: var(--font-size-4xl); }
+  h2 { font-size: var(--font-size-3xl); }
+  h3 { font-size: var(--font-size-2xl); }
+  h4 { font-size: var(--font-size-xl); }
+  h5 { font-size: var(--font-size-lg); }
+  
+  .container {
+    max-width: var(--container-md);
+  }
+  
+  .card-voltmont {
+    padding: var(--spacing-xl);
+  }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media screen and (min-width: 1024px) {
+  :root {
+    --font-size-base: 1. 125rem;
+    --font-size-lg: 1.375rem;
+    --font-size-xl: 1.75rem;
+    --font-size-2xl: 2.25rem;
+    --font-size-3xl: 3rem;
+    --font-size-4xl: 3.75rem;
+    --font-size-5xl: 4.5rem;
+  }
+  
+  . container {
+    max-width: var(--container-lg);
+  }
+  
+  .btn-voltmont {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* Extra large devices (large desktops, 1280px and up) */
+@media screen and (min-width: 1280px) {
+  . container {
+    max-width: var(--container-xl);
+  }
+  
+  h1 { font-size: var(--font-size-5xl); }
+  h2 { font-size: var(--font-size-4xl); }
+  h3 { font-size: var(--font-size-3xl); }
+  
+  .card-voltmont {
+    padding: var(--spacing-2xl);
+  }
+}
+
+/* 2XL devices (larger desktops, 1536px and up) */
+@media screen and (min-width: 1536px) {
+  .container {
+    max-width: var(--container-2xl);
+  }
+}
+
+/* Max width container for ultra-wide screens */
+@media screen and (min-width: 1920px) {
+  .container {
+    max-width: var(--container-max);
+  }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
+@media print {
+  :root {
+    --text-color-primary: #000000;
+    --background-page: #ffffff;
+    --link-color: #000000;
+  }
+  
+  body {
+    color: #000000;
+    background-color: #ffffff;
+  }
+  
+  .shadow-sm,
+  .shadow-md,
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl,
+  .shadow-soft,
+  .shadow-elevated {
+    box-shadow: none;
+  }
+  
+  a {
+    text-decoration: underline;
+    color: #000000;
+  }
+  
+  . btn-voltmont {
+    border: 1px solid #000000;
+    background-color: transparent;
+    color: #000000;
+  }
+}
+
+/* ========================================
+   Accessibility Features
+   ======================================== */
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--color-theme-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: var(--color-theme-primary);
+  color: var(--text-color-inverted);
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  z-index: var(--z-tooltip);
+}
+
+.skip-link:focus {
+  top: 10px;
+  left: 10px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border-color-soft: rgba(255, 255, 255, 0.5);
+    --border-color-strong: rgba(255, 255, 255, 0.8);
+    --shadow-soft: 0 0 0 1px rgba(255, 255, 255, 0.5);
+    --shadow-elevated: 0 0 0 2px rgba(255, 255, 255, 0.8);
+  }
+  
+  .btn-voltmont {
+    border-width: 3px;
+  }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-width: 3px;
+  }
+}
+
+/* Dark mode preference (optional - already dark theme) */
+@media (prefers-color-scheme: light) {
+  /* Override for users preferring light mode */
+  . light-mode {
+    --text-color-primary: var(--text-color-on-light);
+    --background-page: var(--color-neutral-50);
+    --background-card: var(--color-neutral-100);
+    --background-section-light: var(--color-neutral-100);
+    --background-section-dark: var(--color-neutral-200);
+    --border-color-soft: rgba(4, 16, 40, 0.12);
+    --border-color-strong: rgba(4, 16, 40, 0.3);
+    --shadow-soft: 0 10px 25px rgba(4, 16, 40, 0.1);
+    --shadow-elevated: 0 20px 40px rgba(4, 16, 40, 0. 15);
+  }
+}
+
+/* ========================================
+   BeTheme Integration Classes
+   ======================================== */
+
+/* Override BeTheme default colors */
+.mfn-main-slider,
+.mfn-rev-slider {
+  background-color: var(--background-theme-color);
+}
+
+.mcb-section {
+  background-color: var(--background-section-light);
+}
+
+.mcb-section. dark {
+  background-color: var(--background-section-dark);
+}
+
+. mcb-wrap {
+  padding: var(--spacing-lg) 0;
+}
+
+/* BeTheme header overrides */
+#Header {
+  background-color: var(--background-theme-color);
+  box-shadow: var(--shadow-soft);
+}
+
+#Header .menu > li > a {
+  color: var(--text-color-primary);
+  transition: var(--transition-colors);
+}
+
+#Header .menu > li > a:hover {
+  color: var(--color-theme-primary-light);
+}
+
+/* BeTheme footer overrides */
+#Footer {
+  background-color: var(--background-section-dark);
+  color: var(--text-color-primary);
+}
+
+#Footer a {
+  color: var(--link-color);
+}
+
+#Footer a:hover {
+  color: var(--link-color-hover);
+}
+
+/* ========================================
+   WordPress Core Overrides
+   ======================================== */
+
+/* WordPress admin bar fix */
+.admin-bar {
+  margin-top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+  . admin-bar {
+    margin-top: 46px;
+  }
+}
+
+/* WordPress alignment classes */
+.alignleft {
+  float: left;
+  margin-right: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.alignright {
+  float: right;
+  margin-left: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--spacing-md);
+}
+
+/* WordPress caption */
+.wp-caption {
+  max-width: 100%;
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color-soft);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm);
+}
+
+.wp-caption-text {
+  color: var(--text-color-muted);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  margin-top: var(--spacing-xs);
+}
+
+/* ========================================
+   Performance Optimizations
+   ======================================== */
+
+/* Hardware acceleration for animations */
+.transition-all,
+.transition-colors,
+. btn-voltmont,
+.card-voltmont {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Font loading optimization */
+body {
+  font-display: swap;
+}
+
+/* Image optimization */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+img[loading="lazy"] {
+  background-color: var(--background-card);
+}
+
+/* ========================================
+   Custom Scrollbar (Webkit browsers)
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-section-dark);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-theme-primary-dark);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--background-section-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-theme-primary);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-theme-primary-dark) var(--background-section-dark);
+}
+
+/* ========================================
+   Final Reset & Normalizations
+   ======================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+button, [role="button"] {
+  cursor: pointer;
+}
+
+/* End of Voltmont Brand CSS */
