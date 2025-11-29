@@ -410,30 +410,53 @@ function kodydobody(){
 </div>
 <!-- END PASKI BOCZNE PRAWE SLIDEOUT WYSUWANY VOLTMONT -->
 
-<!-- START OKIENKA POPUP VOLTMONT -->
-<!-- Okienko zamów rozmowę -->
-<div class="modal-containerhubag" id="modal-opened">
-  <div class="modalhubag">
-    <div class="modal__detailshubag">
-      <h1 class="modal__titlehubag">Zamów rozmowę</h1>
-      <p class="modal__descriptionhubag">Zostaw dane kontaktowe w formularzu poniżej</p>
+<!-- START OKIENKA POPUP VOLTMONT (PREMIUM DESIGN) -->
+<!-- Okienko: Zamów rozmowę -->
+<div class="voltmont-modal-overlay" id="modal-opened">
+    <a href="#modal-closed" class="voltmont-modal-backdrop-close" aria-label="Zamknij"></a>
+    <div class="voltmont-modal-card">
+        <a href="#modal-closed" class="voltmont-modal-close-btn">
+            <i class="fas fa-times"></i>
+        </a>
+        
+        <div class="voltmont-modal-header">
+            <div class="voltmont-modal-icon-glow">
+                <i class="fas fa-headset"></i>
+            </div>
+            <h2 class="voltmont-modal-title">Zamów rozmowę</h2>
+            <p class="voltmont-modal-subtitle">Zostaw numer telefonu, oddzwonimy błyskawicznie.</p>
+        </div>
+
+        <div class="voltmont-modal-body">
+            <?php echo do_shortcode('[contact-form-7 id="df648c3" title="Zamów rozmowę - formularz kontaktowy"]'); ?>
+        </div>
+        
+        <div class="voltmont-modal-footer">
+            <p>Gwarantujemy poufność Twoich danych.</p>
+        </div>
     </div>
-    <p class="modal__texthubag"><?php echo do_shortcode('[contact-form-7 id="df648c3" title="Zamów rozmowę - formularz kontaktowy"]'); ?></p>
-    <center style="margin-top: 4rem;"><a href="#modal-closed" style="color: #fff;"><button class="modal__btnhubag">Zamknij okno</button></a></center>
-    <a href="#modal-closed" class="link-2hubag">x</a>
-  </div>
 </div>
 
-<!-- Okienko aplikuj o prace -->
-<div class="modal-containerhubag" id="aplikuj-opened">
-  <div class="modalhubag">
-    <div class="modal__detailshubag">
-		<p class="modal__descriptionhubag">Aplikuj do pracy w HUBAG</p>
+<!-- Okienko: Aplikuj o pracę -->
+<div class="voltmont-modal-overlay" id="aplikuj-opened">
+    <a href="#aplikuj-closed" class="voltmont-modal-backdrop-close" aria-label="Zamknij"></a>
+    <div class="voltmont-modal-card">
+        <a href="#aplikuj-closed" class="voltmont-modal-close-btn">
+            <i class="fas fa-times"></i>
+        </a>
+        
+        <div class="voltmont-modal-header">
+            <div class="voltmont-modal-icon-glow">
+                <i class="fas fa-user-hard-hat"></i>
+            </div>
+            <h2 class="voltmont-modal-title">Dołącz do zespołu</h2>
+            <p class="voltmont-modal-subtitle">Szukamy najlepszych elektryków w regionie.</p>
+        </div>
+
+        <div class="voltmont-modal-body">
+            <?php echo do_shortcode('[contact-form-7 id="0416136" title="Aplikacja o prace - formularz kontaktowy"]'); ?>
+        </div>
     </div>
-    <p class="modal__texthubag"><?php echo do_shortcode('[contact-form-7 id="0416136" title="Aplikacja o prace - formularz kontaktowy"]'); ?></p>
-    <center style="margin-top: 4rem;"><a href="#aplikuj-closed" style="color: #fff;"><button class="modal__btnhubag">Zamknij okno</button></a></center>
-    <a href="#aplikuj-closed" class="link-2hubag">x</a>
-  </div>
 </div>
 <!-- END OKIENKA POPUP VOLTMONT -->
 

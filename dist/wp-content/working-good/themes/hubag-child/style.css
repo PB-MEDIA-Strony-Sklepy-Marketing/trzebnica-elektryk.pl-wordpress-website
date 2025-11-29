@@ -278,138 +278,6 @@ Version: 1.6.2
   }
 }
 
-/* modal */
-/* =============================================== */
-.modal-containerhubag {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background: hsla(0, 0%, 40%, .6);
-  z-index: 999;
-}
-
-/* using :target */
-.modal-containerhubag:target {
-  display: flex;
-}
-
-.modalhubag {
-  width: 60rem;
-  padding: 4rem 2rem;
-  border-radius: .8rem;
-  color: hsl(0, 0%, 100%);;
-  background: var(--background-theme-color);
-  box-shadow: .4rem .4rem 2.4rem .2rem hsla(236, 50%, 50%, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.modal__detailshubag {
-  text-align: center;
-  margin-bottom: 4rem;
-  padding-bottom: 4rem;
-  border-bottom: 1px solid hsla(0, 0%, 100%, .4);
-}
-
-.modal__titlehubag {
-  font-size: 3.2rem;
-}
-
-.modal__descriptionhubag {
-  margin-top: 2rem;
-  font-size: 1.6rem;
-  font-style: italic;
-}
-
-.modal__texthubag {
-  padding: 0 4rem;
-  margin-bottom: 4rem;
-  font-size: 1.6rem;
-  line-height: 2;
-}
-
-.modal__texthubag::before {
-  content: '';
-  position: absolute;
-  top: 0%;
-  left: 100%;
-  transform: translate(-50%, -50%);
-  width: 18rem;
-  height: 18rem;
-  border: 1px solid hsla(0, 0%, 100%, .2);
-  border-radius: 100rem;
-  pointer-events: none;
-}
-
-.modal__btnhubag {
-  padding: 1rem 1.6rem;
-  border: 1px solid hsla(0, 0%, 100%, .4);
-  border-radius: 100rem;
-
-  color: inherit;
-  background: transparent;
-  font-size: 1.4rem;
-  font-family: inherit;
-  letter-spacing: .2rem;
-
-  transition: .2s;
-  cursor: pointer;
-}
-
-.modal__btnhubag:hover,
-.modal__btnhubag:focus {
-  border-color: hsla(0, 0%, 100%, .6);
-  transform: translateY(-.2rem);
-}
-
-/* links */
-/* =============================================== */
-.link-1hubag {
-  color: #fff;
-  background: var(--button-theme-color);
-  border-radius: 100rem;
-  padding: 1.0rem 2.0rem;
-  transition: .2s;
-}
-
-.odstepgora {
-	margin-top: 5px;
-}
-
-.link-1hubag:hover {
-  background: var(--button-theme-color-hover);
-  color: #ddd;
-  transform: scale(1.1); /* Zwiększenie rozmiaru o 10% */
-}
-
-.link-2hubag {
-  width: 4rem;
-  height: 4rem;
-  border: 1px solid hsla(0, 0%, 100%, .4);
-  border-radius: 100rem;
-  color: inherit;
-  font-size: 2.2rem;
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: .2s;
-}
-
-.link-2hubag:hover,
-.link-2hubag:focus {
-  border-color: hsla(0, 0%, 100%, .6);
-  transform: translateY(-.2rem);
-}
-
 #Top_bar .top_bar_right a:not(.action_button) {
 	color: #fff;
 }
@@ -493,18 +361,6 @@ ul.clients .client_wrapper:hover {
 .wavesstopka {
 
 	}
-}
-
-@media only screen and (max-width: 1140px) {
-.modalhubag {
-	transform: scale(0.9);
-}
-}
-
-@media only screen and (max-width: 1070px) {
-.modalhubag {
-	transform: scale(0.8);
-}
 }
 
 #Top_bar .logo {
@@ -1389,11 +1245,11 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
 }
 
 /* ========================================
-   VOLTMONT SLIDEOUT WIDGETS - FIXED VERSION
+   VOLTMONT SLIDEOUT WIDGETS - FUNCTIONAL FIX
    Right Side Social & Contact Panels
    ======================================== */
 
-/* Kontener główny - poprawione pozycjonowanie */
+/* Kontener główny */
 .voltmont-social-widgets {
     position: fixed;
     right: 0;
@@ -1403,29 +1259,23 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    pointer-events: none;
+    pointer-events: none; /* Przepuszcza kliknięcia obok widgetów */
 }
 
-/* Pojedynczy widget - FIX rozjeżdżania */
+/* Pojedynczy widget */
 .voltmont-slideout {
     position: relative;
-    right: -300px;
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    right: 0;
     display: flex;
     align-items: center;
-    pointer-events: auto;
+    pointer-events: auto; /* Przywraca klikanie dla samego widgetu */
     height: auto;
 }
 
-/* Stan hover - wysunięcie */
-.voltmont-slideout:hover {
-    right: 0;
-}
-
-/* Handler (przycisk boczny) - ZWIĘKSZONA SZEROKOŚĆ */
+/* Handler (przycisk boczny) - ZAWSZE WIDOCZNY */
 .voltmont-slideout-handler {
-    position: absolute;
-    right: 315px;
+    position: relative;
+    right: 0;
     width: 70px;
     min-width: 70px;
     height: 100px;
@@ -1441,9 +1291,11 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
     transition: all 0.3s ease;
     overflow: visible;
     padding: 12px 8px;
+    z-index: 20; /* Handler musi być NAJWYŻEJ */
+    background: inherit; /* Dziedziczy gradient z widgetu */
 }
 
-/* Wrapper ikony w handlerze - POPRAWIONE WYMIARY */
+/* Wrapper ikony w handlerze */
 .voltmont-icon-wrapper {
     width: 36px;
     height: 36px;
@@ -1463,7 +1315,7 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
     color: white;
 }
 
-/* Tekst w handlerze - POPRAWIONA CZYTELNOŚĆ */
+/* Tekst w handlerze */
 .voltmont-handler-text {
     color: white;
     font-size: 9px;
@@ -1478,18 +1330,26 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
 }
 
 /* Hover efekt na handler */
-.voltmont-slideout:hover .voltmont-slideout-handler {
+.voltmont-slideout:hover .voltmont-slideout-handler,
+.voltmont-slideout.is-open .voltmont-slideout-handler {
     box-shadow: -6px 0 25px rgba(0, 0, 0, 0.3);
-    transform: translateX(-2px);
+    width: 70px; /* Utrzymuje szerokość */
 }
 
-.voltmont-slideout:hover .voltmont-icon-wrapper {
+.voltmont-slideout:hover .voltmont-icon-wrapper,
+.voltmont-slideout.is-open .voltmont-icon-wrapper {
     transform: scale(1.15);
     background: rgba(255, 255, 255, 0.3);
 }
 
-/* Zawartość widgetu - USUNIĘTE BIAŁE TŁO */
+/* Zawartość widgetu - DOMYŚLNIE UKRYTA */
 .voltmont-slideout-content {
+    position: absolute;
+    right: -450px; /* Całkowicie schowany */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    max-width: 300px;
     background: linear-gradient(135deg, 
         rgba(77, 129, 233, 0.98) 0%, 
         rgba(42, 84, 161, 0.98) 100%);
@@ -1498,9 +1358,33 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, visibility 0.3s;
+    z-index: 10; /* Pod handlerem */
+    opacity: 0;
+    visibility: hidden;
 }
 
-/* Wewnętrzna zawartość - UKRYTA IKONA */
+/* MECHANIZM WYSUWANIA - Działa na :hover ORAZ klasę .is-open z JS */
+.voltmont-slideout:hover .voltmont-slideout-content,
+.voltmont-slideout.is-open .voltmont-slideout-content {
+    right: 68px; /* Wysuwa się idealnie obok handlera (70px handler - 2px zakładki) */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Szerszy widget (dla mapy) */
+.voltmont-slideout-content.voltmont-slideout-wide {
+    width: 360px;
+    max-width: 360px;
+    right: -500px; /* Szerszy musi być dalej schowany */
+}
+
+.voltmont-slideout:hover .voltmont-slideout-content.voltmont-slideout-wide,
+.voltmont-slideout.is-open .voltmont-slideout-content.voltmont-slideout-wide {
+    right: 68px;
+}
+
+/* Wewnętrzna zawartość */
 .voltmont-content-inner {
     padding: 20px;
     display: flex;
@@ -1508,7 +1392,7 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
     gap: 15px;
 }
 
-/* Ikona w contencie - UKRYTA DOMYŚLNIE */
+/* Ikona w contencie */
 .voltmont-content-icon {
     width: 44px;
     height: 44px;
@@ -1521,15 +1405,6 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
     flex-shrink: 0;
     position: relative;
     background: rgba(255, 255, 255, 0.15);
-    opacity: 0;
-    transform: scale(0.8);
-    transition: all 0.4s ease;
-}
-
-/* Pokazanie ikony po hover na całym widgecie */
-.voltmont-slideout:hover .voltmont-content-icon {
-    opacity: 1;
-    transform: scale(1);
 }
 
 .voltmont-content-icon::before {
@@ -1602,7 +1477,7 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
     transform: translateX(2px);
 }
 
-/* Link telefoniczny - większy */
+/* Link telefoniczny */
 .voltmont-phone-link {
     font-size: 13px;
 }
@@ -1617,214 +1492,93 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
    Kolory dla poszczególnych widgetów
    ======================================== */
 
-/* Facebook - niebieski */
+/* Facebook */
 .voltmont-slideout-facebook .voltmont-slideout-handler {
     background: linear-gradient(135deg, #1877f2 0%, #0d5dbf 100%);
 }
-
 .voltmont-slideout-facebook .voltmont-slideout-content {
-    background: linear-gradient(135deg, 
-        rgba(24, 119, 242, 0.98) 0%, 
-        rgba(13, 93, 191, 0.98) 100%);
+    background: linear-gradient(135deg, rgba(24, 119, 242, 0.98) 0%, rgba(13, 93, 191, 0.98) 100%);
 }
 
-/* Email - ciemnoniebieski Voltmont */
+/* Email */
 .voltmont-slideout-email .voltmont-slideout-handler {
     background: linear-gradient(135deg, #4d81e9 0%, #2a54a1 100%);
 }
-
 .voltmont-slideout-email .voltmont-slideout-content {
-    background: linear-gradient(135deg, 
-        rgba(77, 129, 233, 0.98) 0%, 
-        rgba(42, 84, 161, 0.98) 100%);
+    background: linear-gradient(135deg, rgba(77, 129, 233, 0.98) 0%, rgba(42, 84, 161, 0.98) 100%);
 }
 
-/* Phone - zielony (pogotowie) */
+/* Phone */
 .voltmont-slideout-phone .voltmont-slideout-handler {
     background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
 }
-
 .voltmont-slideout-phone .voltmont-slideout-content {
-    background: linear-gradient(135deg, 
-        rgba(40, 167, 69, 0.98) 0%, 
-        rgba(30, 126, 52, 0.98) 100%);
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.98) 0%, rgba(30, 126, 52, 0.98) 100%);
 }
-
-/* Pulsująca animacja dla telefonu */
 .voltmont-slideout-phone .voltmont-icon-wrapper {
     animation: phone-pulse 2s infinite;
 }
 
 @keyframes phone-pulse {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
-    }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
 }
 
-/* Location - gradient Voltmont */
+/* Location */
 .voltmont-slideout-location .voltmont-slideout-handler {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
-
 .voltmont-slideout-location .voltmont-slideout-content {
-    background: linear-gradient(135deg, 
-        rgba(102, 126, 234, 0.98) 0%, 
-        rgba(118, 75, 162, 0.98) 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.98) 0%, rgba(118, 75, 162, 0.98) 100%);
 }
 
 /* ========================================
-   Pozycjonowanie widgetów - FIX UKŁADU
+   Responsywność
    ======================================== */
 
-/* Animacja wejścia przy załadowaniu strony */
-@keyframes slideInFromRight {
-    from {
-        right: -350px;
-        opacity: 0;
-    }
-    to {
-        right: -300px;
-        opacity: 1;
-    }
-}
-
-.voltmont-slideout {
-    animation: slideInFromRight 0.6s ease-out forwards;
-}
-
-.voltmont-slideout[data-position="1"] {
-    animation-delay: 0.1s;
-}
-
-.voltmont-slideout[data-position="2"] {
-    animation-delay: 0.2s;
-}
-
-.voltmont-slideout[data-position="3"] {
-    animation-delay: 0.3s;
-}
-
-.voltmont-slideout[data-position="4"] {
-    animation-delay: 0.4s;
-}
-
-/* ========================================
-   Responsywność - POPRAWIONA
-   ======================================== */
-
-/* Tablet */
 @media (max-width: 1024px) {
-    .voltmont-slideout-content {
-        width: 280px;
-        max-width: 280px;
-    }
-    
-    .voltmont-slideout-wide {
-        width: 320px;
-        max-width: 320px;
-    }
-    
-    .voltmont-slideout {
-        right: -280px;
-    }
-    
     .voltmont-slideout-handler {
-        right: 280px;
         width: 65px;
         min-width: 65px;
         height: 95px;
-        min-height: 95px;
     }
-    
-    .voltmont-icon-wrapper {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        min-height: 32px;
+    .voltmont-slideout:hover .voltmont-slideout-content,
+    .voltmont-slideout.is-open .voltmont-slideout-content {
+        right: 63px;
     }
-    
     .voltmont-handler-text {
         font-size: 8px;
     }
 }
 
-/* Mobile - ukryj widgety */
 @media (max-width: 768px) {
     .voltmont-social-widgets {
-        display: none ! important;
+        display: none !important;
     }
 }
 
-/* Bardzo duże ekrany */
 @media (min-width: 1920px) {
-    .voltmont-slideout-content {
-        width: 340px;
-        max-width: 340px;
-    }
-    
-    .voltmont-slideout-wide {
-        width: 400px;
-        max-width: 400px;
-    }
-    
     .voltmont-slideout-handler {
         width: 80px;
         min-width: 80px;
         height: 110px;
-        min-height: 110px;
     }
-    
-    .voltmont-content-text h4 {
-        font-size: 18px;
+    .voltmont-slideout:hover .voltmont-slideout-content,
+    .voltmont-slideout.is-open .voltmont-slideout-content {
+        right: 78px;
     }
-    
-    .voltmont-content-text p {
-        font-size: 13px;
-    }
+    .voltmont-content-text h4 { font-size: 18px; }
 }
 
 /* ========================================
-   Accessibility & Interactions
+   Accessibility
    ======================================== */
 
-/* Focus state dla dostępności */
 .voltmont-widget-link:focus {
     outline: 2px solid rgba(255, 255, 255, 0.6);
-    outline-offset: 2px;
 }
 
-/* Hover na całym widgecie */
-.voltmont-slideout-content:hover {
-    box-shadow: -12px 0 40px rgba(0, 0, 0, 0.35);
-}
-
-/* Prefers reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    .voltmont-slideout,
-    .voltmont-slideout-handler,
-    .voltmont-icon-wrapper,
-    .voltmont-widget-link,
-    .voltmont-content-icon {
-        transition: none !important;
-        animation: none !important;
-    }
-}
-
-/* High contrast mode */
-@media (prefers-contrast: high) {
-    .voltmont-slideout-content {
-        border: 2px solid white;
-    }
-    
-    .voltmont-widget-link {
-        border: 2px solid white;
-    }
-}
-
-/* Tooltips - POPRAWIONE */
+/* Tooltips */
 .voltmont-slideout-handler::after {
     content: attr(data-tooltip);
     position: absolute;
@@ -1847,56 +1601,285 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
     opacity: 1;
 }
 
-/* Print styles */
 @media print {
-    .voltmont-social-widgets {
-        display: none !important;
+    .voltmont-social-widgets { display: none !important; }
+}
+
+.voltmont-slideout * { box-sizing: border-box; }
+
+/* ========================================
+   VOLTMONT PREMIUM MODALS
+   Modern Glassmorphism & Gradient Design
+   ======================================== */
+
+/* Overlay (Tło) */
+.voltmont-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000; /* Najwyższa warstwa */
+    background: rgba(4, 16, 40, 0.85); /* Ciemny granat z przezroczystością */
+    backdrop-filter: blur(8px); /* Efekt rozmycia tła */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 20px;
+}
+
+/* Mechanizm otwierania (CSS Target) */
+.voltmont-modal-overlay:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Klikalne tło do zamknięcia */
+.voltmont-modal-backdrop-close {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: default;
+}
+
+/* Główna karta modala */
+.voltmont-modal-card {
+    position: relative;
+    width: 100%;
+    max-width: 950px;
+    background: linear-gradient(145deg, #163162 0%, #041028 100%);
+    border: 1px solid rgba(77, 129, 233, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efekt sprężystości */
+    overflow: hidden;
+    z-index: 10001;
+}
+
+/* Animacja wejścia karty */
+.voltmont-modal-overlay:target .voltmont-modal-card {
+    transform: scale(1) translateY(0);
+}
+
+/* Przycisk zamknięcia (X) */
+.voltmont-modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.voltmont-modal-close-btn:hover {
+    background: rgba(220, 53, 69, 0.2);
+    color: #ff6b6b;
+    transform: rotate(90deg);
+}
+
+/* Nagłówek modala */
+.voltmont-modal-header {
+    padding: 35px 30px 10px;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(77, 129, 233, 0.1), transparent);
+}
+
+/* Ikona w nagłówku */
+.voltmont-modal-icon-glow {
+    width: 60px;
+    height: 60px;
+    background: var(--color-theme-primary);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(77, 129, 233, 0.4);
+    font-size: 24px;
+    color: white;
+    position: relative;
+}
+
+.voltmont-modal-icon-glow::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: pulse-ring 2s infinite;
+}
+
+.voltmont-modal-title {
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    letter-spacing: -0.5px;
+}
+
+.voltmont-modal-subtitle {
+    color: var(--color-theme-primary-lighter);
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Ciało modala (formularz) */
+.voltmont-modal-body {
+    padding: 20px 40px 30px;
+}
+
+/* Stopka modala */
+.voltmont-modal-footer {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.voltmont-modal-footer p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 11px;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ========================================
+   STYLIZACJA FORMULARZY CF7 W MODALU
+   Dostosowanie inputów do ciemnego tła
+   ======================================== */
+
+.voltmont-modal-body input[type="text"],
+.voltmont-modal-body input[type="email"],
+.voltmont-modal-body input[type="tel"],
+.voltmont-modal-body textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(77, 129, 233, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 12px 15px !important;
+    color: white !important;
+    font-size: 15px !important;
+    margin-bottom: 15px !important;
+    transition: all 0.3s ease !important;
+}
+
+.voltmont-modal-body input:focus,
+.voltmont-modal-body textarea:focus {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: var(--color-theme-primary) !important;
+    box-shadow: 0 0 0 3px rgba(77, 129, 233, 0.2) !important;
+    outline: none !important;
+}
+
+.voltmont-modal-body label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Przycisk wyślij w CF7 */
+.voltmont-modal-body input[type="submit"] {
+    width: 100%;
+    background: linear-gradient(135deg, #4d81e9 0%, #2a54a1 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 15px !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    margin-top: 10px !important;
+    box-shadow: 0 4px 15px rgba(77, 129, 233, 0.3);
+}
+
+.voltmont-modal-body input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(77, 129, 233, 0.5);
+    filter: brightness(1.1);
+}
+
+/* Ukrycie domyślnych przycisków zamykania ze starego kodu jeśli są w shortcode */
+.voltmont-modal-body .modal__btnhubag,
+.voltmont-modal-body .link-2hubag {
+    display: none !important;
+}
+
+/* Responsywność */
+@media (max-width: 600px) {
+    .voltmont-modal-body {
+        padding: 20px 20px 30px;
+    }
+    
+    .voltmont-modal-title {
+        font-size: 24px;
+    }
+    
+    .voltmont-modal-header {
+        padding-top: 45px;
     }
 }
 
-/* Dodatkowe poprawki stabilności */
-.voltmont-slideout * {
-    box-sizing: border-box;
+/* links */
+/* =============================================== */
+.link-1hubag {
+  color: #fff;
+  background: var(--button-theme-color);
+  border-radius: 100rem;
+  padding: 1.0rem 2.0rem;
+  transition: .2s;
 }
 
-.voltmont-content-inner * {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+.odstepgora {
+	margin-top: 5px;
 }
 
-/* Ripple effect - UPROSZCZONY */
-.voltmont-widget-link {
-    position: relative;
-    overflow: hidden;
+.link-1hubag:hover {
+  background: var(--button-theme-color-hover);
+  color: #ddd;
+  transform: scale(1.1); /* Zwiększenie rozmiaru o 10% */
 }
 
-.voltmont-widget-link::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    transform: translate(-50%, -50%);
-    transition: width 0.5s, height 0.5s;
+.link-2hubag {
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid hsla(0, 0%, 100%, .4);
+  border-radius: 100rem;
+  color: inherit;
+  font-size: 2.2rem;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .2s;
 }
 
-.voltmont-widget-link:active::before {
-    width: 200px;
-    height: 200px;
-}
-
-/* Glow effect - ZMNIEJSZONY */
-.voltmont-slideout:hover .voltmont-slideout-handler {
-    box-shadow: -6px 0 25px rgba(0, 0, 0, 0.3);
-}
-
-/* Zapobieganie konfliktom z innymi elementami */
-.voltmont-social-widgets,
-.voltmont-social-widgets * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+.link-2hubag:hover,
+.link-2hubag:focus {
+  border-color: hsla(0, 0%, 100%, .6);
+  transform: translateY(-.2rem);
 }
 
