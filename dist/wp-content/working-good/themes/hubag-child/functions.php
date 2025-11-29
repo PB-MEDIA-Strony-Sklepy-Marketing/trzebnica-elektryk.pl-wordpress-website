@@ -410,6 +410,7 @@ function kodydobody(){
 </div>
 <!-- END PASKI BOCZNE PRAWE SLIDEOUT WYSUWANY VOLTMONT -->
 
+<!-- START OKIENKA POPUP VOLTMONT -->
 <!-- Okienko zamów rozmowę -->
 <div class="modal-containerhubag" id="modal-opened">
   <div class="modalhubag">
@@ -434,6 +435,8 @@ function kodydobody(){
     <a href="#aplikuj-closed" class="link-2hubag">x</a>
   </div>
 </div>
+<!-- END OKIENKA POPUP VOLTMONT -->
+
   <?php
 }
 
