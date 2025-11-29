@@ -437,29 +437,6 @@ function kodydobody(){
     </div>
 </div>
 
-<!-- Okienko: Aplikuj o pracę -->
-<div class="voltmont-modal-overlay" id="aplikuj-opened">
-    <a href="#aplikuj-closed" class="voltmont-modal-backdrop-close" aria-label="Zamknij"></a>
-    <div class="voltmont-modal-card">
-        <a href="#aplikuj-closed" class="voltmont-modal-close-btn">
-            <i class="fas fa-times"></i>
-        </a>
-        
-        <div class="voltmont-modal-header">
-            <div class="voltmont-modal-icon-glow">
-                <i class="fas fa-user-hard-hat"></i>
-            </div>
-            <h2 class="voltmont-modal-title">Dołącz do zespołu</h2>
-            <p class="voltmont-modal-subtitle">Szukamy najlepszych elektryków w regionie.</p>
-        </div>
-
-        <div class="voltmont-modal-body">
-            <?php echo do_shortcode('[contact-form-7 id="0416136" title="Aplikacja o prace - formularz kontaktowy"]'); ?>
-        </div>
-    </div>
-</div>
-<!-- END OKIENKA POPUP VOLTMONT -->
-
   <?php
 }
 
