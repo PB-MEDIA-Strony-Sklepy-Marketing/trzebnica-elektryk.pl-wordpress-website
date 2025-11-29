@@ -2516,3 +2516,143 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
     padding-top: 12rem;
     padding-bottom: 12rem;
 }
+
+/* ========================================
+   VOLTMONT PREMIUM IMAGE SECTION
+   Styling for BeTheme/Muffin Builder Section
+   Target: .mcb-section-0tiz731b
+   ======================================== */
+
+/* 1. Główna Sekcja - Tło i Odstępy */
+.section.mcb-section.mcb-section-0tiz731b {
+    position: relative;
+    padding: 60px 0 !important; /* Więcej oddechu dla wyglądu premium */
+    background-color: var(--color-neutral-50); /* Jasne tło bazowe */
+    overflow: hidden;
+}
+
+/* Dekoracyjny gradient w tle (subtelny) */
+.section.mcb-section.mcb-section-0tiz731b::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, #ffffff 0%, rgba(237, 240, 253, 0.5) 100%);
+    z-index: 0;
+}
+
+/* 2. Wrapper Obrazka (Ramka i Cień) */
+.mcb-section-0tiz731b .image_frame.image_item {
+    position: relative;
+    z-index: 2;
+    border-radius: 12px; /* Nowoczesne zaokrąglenia */
+    overflow: hidden;
+    background-color: #fff;
+    padding: 10px; /* Efekt ramki passe-partout */
+    border: 1px solid rgba(4, 16, 40, 0.05);
+    box-shadow: 
+        0 20px 40px rgba(4, 16, 40, 0.08), /* Główny cień */
+        0 5px 15px rgba(77, 129, 233, 0.05); /* Subtelna poświata brandowa */
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+
+/* Efekt Hover na kontenerze */
+.mcb-section-0tiz731b .image_frame.image_item:hover {
+    transform: translateY(-8px); /* Uniesienie */
+    box-shadow: 
+        0 30px 60px rgba(4, 16, 40, 0.12),
+        0 10px 25px rgba(77, 129, 233, 0.1);
+}
+
+/* 3. Sam Obrazek (Image) */
+.mcb-section-0tiz731b .image_wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Dopasowanie do ramki */
+    filter: grayscale(0) !important; /* Wymuszenie koloru (nadpisanie klasy greyscale z HTML) */
+    transition: transform 0.8s ease, filter 0.4s ease;
+    transform-origin: center center;
+}
+
+/* Efekt Zoom na zdjęciu przy najechaniu */
+.mcb-section-0tiz731b .image_frame.image_item:hover .image_wrapper img {
+    transform: scale(1.04); /* Delikatne przybliżenie */
+    filter: brightness(1.05) contrast(1.05) !important; /* Lekkie podbicie kolorów */
+}
+
+/* 4. Nakładka "Premium" (Overlay effect) */
+/* Wykorzystujemy istniejący wrapper, aby dodać błysk */
+.mcb-section-0tiz731b .image_wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.mcb-section-0tiz731b .image_wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    z-index: 2;
+    pointer-events: none;
+    /* Animacja błysku przy załadowaniu lub hoverze */
+    transition: left 0.8s ease;
+}
+
+.mcb-section-0tiz731b .image_frame.image_item:hover .image_wrapper::after {
+    left: 150%;
+    transition: left 1s ease;
+}
+
+/* 5. Elementy dekoracyjne brandu (z wykorzystaniem istniejących wrapperów) */
+/* Dodajemy linię akcentującą pod zdjęciem */
+.mcb-section-0tiz731b .mcb-column-inner::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--color-theme-primary); /* #4d81e9 */
+    margin: 20px auto 0 auto;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.mcb-section-0tiz731b .mcb-column:hover .mcb-column-inner::after {
+    width: 120px; /* Rozszerzenie linii przy hoverze */
+}
+
+/* ========================================
+   RESPONSYWNOŚĆ (Mobile Adjustments)
+   ======================================== */
+
+@media (max-width: 768px) {
+    .section.mcb-section.mcb-section-0tiz731b {
+        padding: 30px 0 !important;
+    }
+
+    .mcb-section-0tiz731b .image_frame.image_item {
+        padding: 5px;
+        box-shadow: 0 10px 20px rgba(4, 16, 40, 0.1);
+    }
+    
+    /* Wyłączenie efektu hover na dotykowych ekranach dla lepszej wydajności */
+    .mcb-section-0tiz731b .image_frame.image_item:hover {
+        transform: none;
+    }
+    
+    .mcb-section-0tiz731b .image_wrapper img {
+        transform: none !important;
+    }
+}
