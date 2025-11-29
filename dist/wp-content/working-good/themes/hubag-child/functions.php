@@ -1370,3 +1370,94 @@ function voltmont_enqueue_custom_js() {
     );
 }
 add_action('wp_enqueue_scripts', 'voltmont_enqueue_custom_js', 999);
+
+/**
+ * Rejestracja shortcode dla bannera pod sliderem
+ * Użycie: [voltmont_banner_bottom]
+ */
+function voltmont_banner_bottom_shortcode() {
+    ob_start();
+    
+    // Ścieżka do pliku szablonu
+    $template_path = get_stylesheet_directory() . '/template-banner-bottom-slider.php';
+    
+    if (file_exists($template_path)) {
+        include($template_path);
+    } else {
+        // Fallback w przypadku braku pliku (dla celów debugowania)
+        echo '<div class="alert alert-warning">Brak pliku szablonu: template-banner-bottom-slider.php</div>';
+    }
+    
+    return ob_get_clean();
+}
+add_shortcode('voltmont_banner_bottom', 'voltmont_banner_bottom_shortcode');
+
+/**
+ * Rejestracja lekkiego Hero Section (zastępstwo dla Slider Revolution)
+ * Użycie: [voltmont_hero]
+ */
+function voltmont_hero_shortcode() {
+    ob_start();
+    
+    // Pobierz obrazek tła (możesz tu wstawić URL do swojego głównego zdjęcia w tle)
+    // Sugeruję użyć tego samego zdjęcia co w sliderze, ale zoptymalizowanego do WebP
+    $bg_image = 'https://trzebnica-elektryk.pl/wp-content/uploads/2019/08/home_internet2_sliderbg12webp.webp'; 
+    ?>
+
+    <section class="voltmont-hero-section">
+        <!-- Tło z efektem Ken Burns -->
+        <div class="voltmont-hero-bg" style="background-image: url('<?php echo esc_url($bg_image); ?>');"></div>
+        
+        <!-- Overlay gradientowy dla czytelności -->
+        <div class="voltmont-hero-overlay"></div>
+
+        <!-- Dekoracyjne elementy elektryczne (SVG Background) -->
+        <div class="voltmont-electric-decoration"></div>
+
+        <div class="container h-100 position-relative paddingbottomtop" style="z-index: 10;">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-8 col-md-10 col-12">
+                    
+                    <div class="voltmont-hero-content">
+                        <span class="voltmont-hero-subtitle fade-in-up delay-1">
+                            <i class="fas fa-bolt text-primary me-2"></i> Witamy w Voltmont
+                        </span>
+                        
+                        <h1 class="voltmont-hero-title fade-in-up delay-2">
+                            Instalacje <span class="text-gradient">Elektryczne</span><br>
+                            z Gwarancją Jakości
+                        </h1>
+                        
+                        <p class="voltmont-hero-desc fade-in-up delay-3">
+                            Profesjonalne usługi elektryczne w Trzebnicy i Wrocławiu. 
+                            Sprawdzony partner dla klientów indywidualnych, firm i instytucji. 
+                            Zaufaj doświadczeniu i nowoczesnym technologiom.
+                        </p>
+
+                        <div class="voltmont-hero-buttons fade-in-up delay-4">
+                            <a href="/oferta/" class="btn-hero btn-hero-primary">
+                                Sprawdź Ofertę <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                            <a href="/o-firmie/" class="btn-hero btn-hero-outline">
+                                O Firmie
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <a href="#Content" class="voltmont-scroll-down fade-in-up delay-5" aria-label="Przewiń w dół">
+            <span class="mouse">
+                <span class="wheel"></span>
+            </span>
+        </a>
+    </section>
+
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('voltmont_hero', 'voltmont_hero_shortcode');
+

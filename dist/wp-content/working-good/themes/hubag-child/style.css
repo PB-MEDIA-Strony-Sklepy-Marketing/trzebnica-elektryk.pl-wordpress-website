@@ -2278,3 +2278,241 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
     }
 }
 
+/* ========================================
+   VOLTMONT HERO SECTION (Lightweight Replacement)
+   ======================================== */
+
+.voltmont-hero-section {
+    position: relative;
+    width: 100%;
+    height: 85vh; /* Wysokość ekranu (możesz zmienić na np. 700px) */
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    background-color: #041028; /* Fallback color */
+}
+
+/* 1. Tło i Animacja Ken Burns */
+.voltmont-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+    animation: kenBurns 20s ease-out infinite alternate;
+    will-change: transform;
+}
+
+@keyframes kenBurns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); }
+}
+
+/* 2. Overlay (Przyciemnienie) */
+.voltmont-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    /* Profesjonalny gradient: Ciemny granat z lewej -> Przezroczystość z prawej */
+    background: linear-gradient(90deg, rgba(4,16,40,0.95) 0%, rgba(4,16,40,0.8) 50%, rgba(4,16,40,0.4) 100%);
+}
+
+/* 3. Dekoracja "Elektryczna" (Tło) */
+.voltmont-electric-decoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 3;
+    background: radial-gradient(circle at 70% 30%, rgba(77,129,233,0.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* 4. Typografia i Treść */
+.voltmont-hero-subtitle {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #b3c7f6;
+    margin-bottom: 15px;
+    background: rgba(77, 129, 233, 0.1);
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: 1px solid rgba(77, 129, 233, 0.2);
+}
+
+.voltmont-hero-title {
+    font-family: "Exo 2", sans-serif; /* Zgodnie z Twoim motywem */
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    color: #ffffff;
+}
+
+/* Gradient na tekście "Elektryczne" */
+.text-gradient {
+    background: linear-gradient(120deg, #4d81e9, #7da3f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.voltmont-hero-desc {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #d3dadf;
+    max-width: 600px;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+/* 5. Przyciski Premium */
+.voltmont-hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-hero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 35px;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Przycisk Główny (Filled) */
+.btn-hero-primary {
+    background: linear-gradient(135deg, #4d81e9 0%, #2a54a1 100%);
+    color: #ffffff !important;
+    border: none;
+    box-shadow: 0 10px 25px rgba(77, 129, 233, 0.4);
+}
+
+.btn-hero-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(77, 129, 233, 0.6);
+    filter: brightness(1.1);
+}
+
+/* Przycisk Poboczny (Outline) */
+.btn-hero-outline {
+    background: transparent;
+    color: #ffffff !important;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-hero-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+    transform: translateY(-3px);
+}
+
+/* 6. Animacje Wejścia (CSS Only) */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1.2s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 7. Myszka Scroll Down */
+.voltmont-scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0; /* Animowane przez fade-in */
+}
+
+.mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 20px;
+    display: block;
+    position: relative;
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background: #4d81e9;
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s infinite;
+}
+
+@keyframes scrollWheel {
+    0% { top: 8px; opacity: 1; }
+    100% { top: 24px; opacity: 0; }
+}
+
+/* ========================================
+   RESPONSYWNOŚĆ
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .voltmont-hero-title { font-size: 3rem; }
+    .voltmont-hero-section { height: auto; padding: 120px 0; }
+}
+
+@media (max-width: 768px) {
+    .voltmont-hero-bg { animation: none; transform: scale(1); } /* Wyłącz zoom na mobile dla wydajności */
+    
+    .voltmont-hero-overlay {
+        background: rgba(4,16,40,0.85); /* Płaskie tło na mobile dla czytelności */
+    }
+    
+    .voltmont-hero-title { font-size: 2.2rem; }
+    .voltmont-hero-subtitle { font-size: 12px; letter-spacing: 1px; }
+    
+    .voltmont-hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-hero { width: 100%; }
+    .voltmont-scroll-down { display: none; }
+}
+
+.paddingbottomtop {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+}

@@ -92,7 +92,7 @@ if (mfn_opts_get('img-subheader-attachment') == 'parallax') {
                     
                     // Jeśli nagłówek jest "sticky" w opcjach motywu, musimy dodać margines
                     // Wymuszamy margines 130px (wysokość headera) na start, żeby odkleić się od góry.
-                    $spacer_style = 'display: block; height: 170px; width: 100%; visibility: hidden;';
+                    $spacer_style = 'display: block; width: 100%; visibility: hidden;';
 
 					if (is_search()) {
 
