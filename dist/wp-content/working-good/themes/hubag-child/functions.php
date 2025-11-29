@@ -293,40 +293,121 @@ function kodydobody(){
 <!-- END PASEK WYSUWANY VOLTMONT -->
   
 <!-- START PASKI BOCZNE PRAWE SLIDEOUT WYSUWANY VOLTMONT -->
-<div class="slideout-widget widget-facebook">
-		<div class="slideout-widget-handler">
-			<i class="fab fa-facebook-square"></i>
-		</div>
-		<div class="slideout-widget-content">
-			<a href="https://www.facebook.com/profile.php?id=100063601389747" target="_blank">Voltmont @ Facebook</a>
-		</div>
-	</div>
+<div class="voltmont-social-widgets">
+    
+    <!-- Facebook Widget -->
+    <div class="voltmont-slideout voltmont-slideout-facebook" data-position="1">
+        <div class="voltmont-slideout-handler">
+            <div class="voltmont-icon-wrapper">
+                <i class="fab fa-facebook-f"></i>
+            </div>
+            <span class="voltmont-handler-text">Facebook</span>
+        </div>
+        <div class="voltmont-slideout-content">
+            <div class="voltmont-content-inner">
+                <div class="voltmont-content-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="voltmont-content-text">
+                    <h4>Śledź nas na Facebook</h4>
+                    <p>Aktualne realizacje i porady elektryczne</p>
+                    <a href="https://www. facebook.com/profile.php? id=100063601389747" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="voltmont-widget-link"
+                       aria-label="Odwiedź naszą stronę Facebook">
+                        <span>Przejdź do profilu</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="slideout-widget widget-twitter">
-		<div class="slideout-widget-handler">
-			<i class="fas fa-envelope"></i>
-		</div>
-		<div class="slideout-widget-content">
-			<a href="mailto:biuro@trzebnica-elektryk.pl">Voltmont @ E-mail</a>
-		</div>
-	</div>
-<div class="slideout-widget widget-telefon">
-		<div class="slideout-widget-handler">
-			<i class="fas fa-phone-square"></i>
-		</div>
-		<div class="slideout-widget-content">
-			<a href="tel:+48691594820">Telefon @ +48 691 594 820</a>
-		</div>
-	</div>
+    <!-- Email Widget -->
+    <div class="voltmont-slideout voltmont-slideout-email" data-position="2">
+        <div class="voltmont-slideout-handler">
+            <div class="voltmont-icon-wrapper">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <span class="voltmont-handler-text">E-mail</span>
+        </div>
+        <div class="voltmont-slideout-content">
+            <div class="voltmont-content-inner">
+                <div class="voltmont-content-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="voltmont-content-text">
+                    <h4>Napisz do nas</h4>
+                    <p>Odpowiadamy w ciągu 24h</p>
+                    <a href="mailto:biuro@trzebnica-elektryk.pl" 
+                       class="voltmont-widget-link"
+                       aria-label="Wyślij email do Voltmont">
+                        <span>biuro@trzebnica-elektryk.pl</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="slideout-widget slideout-big widget-gplus-2">
-		<div class="slideout-widget-handler">
-			<i class="fab fa-google-plus-g"></i>
-		</div>
-		<div class="slideout-widget-content">
-			<a href="https://maps.app.goo.gl/uWX3H3oYdpkx4wAY6" target="_blank">Voltmont @ Lokalizacja Mapy Google</a>
-		</div>
-	</div>
+    <!-- Phone Widget -->
+    <div class="voltmont-slideout voltmont-slideout-phone" data-position="3">
+        <div class="voltmont-slideout-handler">
+            <div class="voltmont-icon-wrapper">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <span class="voltmont-handler-text">Telefon</span>
+        </div>
+        <div class="voltmont-slideout-content">
+            <div class="voltmont-content-inner">
+                <div class="voltmont-content-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="voltmont-content-text">
+                    <h4>Zadzwoń teraz</h4>
+                    <p>Dostępni 24/7</p>
+                    <a href="tel:+48691594820" 
+                       class="voltmont-widget-link voltmont-phone-link"
+                       aria-label="Zadzwoń do Voltmont">
+                        <span>+48 691 594 820</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Maps Widget -->
+    <div class="voltmont-slideout voltmont-slideout-location" data-position="4">
+        <div class="voltmont-slideout-handler">
+            <div class="voltmont-icon-wrapper">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <span class="voltmont-handler-text">Lokalizacja</span>
+        </div>
+        <div class="voltmont-slideout-content voltmont-slideout-wide">
+            <div class="voltmont-content-inner">
+                <div class="voltmont-content-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="voltmont-content-text">
+                    <h4>Nasza lokalizacja</h4>
+                    <p>Trzebnica • Wrocław • Dolny Śląsk</p>
+                    <a href="https://maps.app.goo.gl/uWX3H3oYdpkx4wAY6" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="voltmont-widget-link"
+                       aria-label="Zobacz lokalizację na mapie Google">
+                        <span>Zobacz na mapie Google</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 <!-- END PASKI BOCZNE PRAWE SLIDEOUT WYSUWANY VOLTMONT -->
 
 <!-- Okienko zamów rozmowę -->

@@ -414,12 +414,6 @@ Version: 1.6.2
 	color: #fff;
 }
 
-@media (max-width: 770px) {
-	.slideout-widget {
-		display: none;
-	}
-}
-
 pokoloruj {
     padding: 3px;
     color: #fff;
@@ -485,145 +479,6 @@ ul.clients .client_wrapper:hover {
 
 .podniesdogory .image_frame {
 	border: none;
-}
-
-.slideout-widget {
-	position: fixed;
-	right: -15em;
-	top: 50%;
-	transition: right .4s;
-	width: 15em;
-	z-index: 10;
-}
-
-.slideout-widget:hover {
-	right: 0;
-}
-
-.slideout-widget-handler,
-.slideout-widget-content {
-	background: #eee;
-	border: 1px solid #ddd;
-	padding: 1em .2em;
-}
-
-.slideout-widget-handler {
-	border-right: none;
-	left: -3em;
-	position: absolute;
-	text-align: center;
-	width: 3em;
-}
-.slideout-widget-content {
-	border-width: 1px 0;
-	overflow: hidden;
-	width: 100%;
-	z-index: 11;
-}
-
-.widget-facebook .slideout-widget-handler,
-.widget-facebook .slideout-widget-content {
-	background: #3c5b9b;
-	border: none;
-}
-
-.widget-facebook,
-.widget-facebook a {
-	color: #fff;
-	padding-left: 5px;
-}
-
-.widget-gplus .slideout-widget-handler,
-.widget-gplus .slideout-widget-content {
-	background: #d64136;
-	border: none;
-}
-
-.widget-gplus,
-.widget-gplus a {
-	color: #fff;
-	padding-left: 5px;
-}
-
-.widget-twitter .slideout-widget-handler,
-.widget-twitter .slideout-widget-content {
-	background: #00c6ff;
-	border: none;
-}
-
-.widget-telefon .slideout-widget-handler,
-.widget-telefon .slideout-widget-content {
-	background: #4b1664;;
-	border: none;
-}
-
-.widget-twitter,
-.widget-twitter a {
-	color: #fff;
-	padding-left: 5px;
-}
-.widget-telefon,
-.widget-telefon a {
-	color: #fff;
-	padding-left: 5px;
-}
-
-.slideout-big {
-	right: -20em;
-	width: 20em;
-}
-
-.widget-facebook-2 .slideout-widget-handler {
-	color: #3c5b9b;
-}
-
-.widget-gplus-2 .slideout-widget-handler {
-	color: #fff;
-}
-
-.widget-gplus-2 {
-	padding-left: 5px;
-}
-
-.widget-gplus-2 .slideout-widget-content, .widget-gplus-2 .slideout-widget-handler {
-	background-image: linear-gradient(135deg, #667eea 0%, #09153a 100%);
-	border: none;
-}
-
-.widget-gplus-2, .widget-gplus-2 a {
-    color: #fff;
-    padding-left: 5px;
-}
-
-/* demo */
-.widget-facebook {
-	top: 30%;
-}
-
-.widget-gplus {
-	top: 30%;
-	margin-top: 4em;
-}
-
-.widget-twitter {
-	top: 30%;
-	margin-top: 4em;
-}
-.widget-telefon {
-	top: 30%;
-	margin-top: 8em;
-}
-
-.widget-facebook-2 {
-	margin-top: 16em;
-	top: 30%;
-	z-index: 12;
-}
-
-.widget-gplus-2 {
-	margin-top: 12em;
-	top: 30%;
-	z-index: 11;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1519,7 +1374,7 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
 
 /* Dostosowanie do istniejących widgetów social */
 .voltmont-panel {
-    top: 35%; /* Ustaw wyżej aby nie kolidowało z widgetami social */
+    top: 45%; /* Ustaw wyżej aby nie kolidowało z widgetami social */
 }
 
 /* Integracja z istniejącymi modalnymi */
@@ -1531,5 +1386,500 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
 .voltmont-contact-link:hover {
     text-decoration: none;
     color: #b3c7f6;
+}
+
+/* ========================================
+   VOLTMONT SLIDEOUT WIDGETS - Premium Design
+   Right Side Social & Contact Panels
+   ======================================== */
+
+/* Kontener główny */
+.voltmont-social-widgets {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9997;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Pojedynczy widget */
+.voltmont-slideout {
+    position: relative;
+    right: -280px;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+}
+
+/* Stan hover - wysunięcie */
+.voltmont-slideout:hover {
+    right: 0;
+}
+
+/* Handler (przycisk boczny) */
+.voltmont-slideout-handler {
+    position: absolute;
+    right: 280px;
+    width: 60px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    border-radius: 12px 0 0 12px;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+/* Wrapper ikony w handlerze */
+.voltmont-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+. voltmont-icon-wrapper i {
+    font-size: 18px;
+    color: white;
+}
+
+/* Tekst w handlerze */
+. voltmont-handler-text {
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    writing-mode: horizontal-tb;
+    text-align: center;
+    opacity: 0. 95;
+}
+
+/* Hover efekt na handler */
+.voltmont-slideout:hover .voltmont-slideout-handler {
+    box-shadow: -6px 0 30px rgba(0, 0, 0, 0.25);
+}
+
+. voltmont-slideout:hover .voltmont-icon-wrapper {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Zawartość widgetu */
+.voltmont-slideout-content {
+    width: 280px;
+    background: white;
+    border-radius: 12px 0 0 12px;
+    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    border: 1px solid rgba(77, 129, 233, 0.1);
+}
+
+/* Szerszy widget (dla mapy) */
+.voltmont-slideout-wide {
+    width: 350px;
+}
+
+/* Wewnętrzna zawartość */
+.voltmont-content-inner {
+    padding: 25px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+/* Ikona w contencie */
+.voltmont-content-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+. voltmont-content-icon::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+. voltmont-content-icon i {
+    font-size: 24px;
+    color: white;
+    z-index: 1;
+}
+
+/* Tekst w contencie */
+.voltmont-content-text {
+    flex: 1;
+}
+
+. voltmont-content-text h4 {
+    color: var(--text-color-on-light);
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+}
+
+.voltmont-content-text p {
+    color: var(--text-color-muted);
+    font-size: 13px;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+}
+
+/* Link w widgecie */
+.voltmont-widget-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, var(--color-theme-primary) 0%, var(--color-theme-primary-dark) 100%);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(77, 129, 233, 0.25);
+}
+
+.voltmont-widget-link:hover {
+    background: linear-gradient(135deg, var(--color-theme-primary-light) 0%, var(--color-theme-primary) 100%);
+    box-shadow: 0 6px 16px rgba(77, 129, 233, 0.35);
+    transform: translateY(-2px);
+    color: white;
+}
+
+. voltmont-widget-link i {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.voltmont-widget-link:hover i {
+    transform: translateX(3px);
+}
+
+/* Link telefoniczny - większy */
+.voltmont-phone-link span {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   Kolory dla poszczególnych widgetów
+   ======================================== */
+
+/* Facebook - niebieski */
+.voltmont-slideout-facebook . voltmont-slideout-handler {
+    background: linear-gradient(135deg, #1877f2 0%, #0d5dbf 100%);
+}
+
+. voltmont-slideout-facebook . voltmont-content-icon {
+    background: #1877f2;
+}
+
+.voltmont-slideout-facebook .voltmont-content-icon::before {
+    background: #1877f2;
+}
+
+/* Email - ciemnoniebieski Voltmont */
+.voltmont-slideout-email .voltmont-slideout-handler {
+    background: linear-gradient(135deg, var(--color-theme-primary) 0%, var(--color-theme-primary-dark) 100%);
+}
+
+.voltmont-slideout-email .voltmont-content-icon {
+    background: var(--color-theme-primary);
+}
+
+.voltmont-slideout-email .voltmont-content-icon::before {
+    background: var(--color-theme-primary);
+}
+
+/* Phone - zielony (pogotowie) */
+.voltmont-slideout-phone .voltmont-slideout-handler {
+    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+}
+
+.voltmont-slideout-phone .voltmont-content-icon {
+    background: #28a745;
+}
+
+. voltmont-slideout-phone . voltmont-content-icon::before {
+    background: #28a745;
+}
+
+/* Pulsująca animacja dla telefonu */
+. voltmont-slideout-phone . voltmont-icon-wrapper {
+    animation: phone-pulse 2s infinite;
+}
+
+@keyframes phone-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+}
+
+/* Location - gradient Voltmont */
+.voltmont-slideout-location .voltmont-slideout-handler {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.voltmont-slideout-location .voltmont-content-icon {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.voltmont-slideout-location .voltmont-content-icon::before {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* ========================================
+   Pozycjonowanie widgetów
+   ======================================== */
+
+/* Odstępy między widgetami */
+.voltmont-slideout[data-position="1"] {
+    animation-delay: 0.1s;
+}
+
+.voltmont-slideout[data-position="2"] {
+    animation-delay: 0.2s;
+}
+
+.voltmont-slideout[data-position="3"] {
+    animation-delay: 0.3s;
+}
+
+. voltmont-slideout[data-position="4"] {
+    animation-delay: 0.4s;
+}
+
+/* Animacja wejścia przy załadowaniu strony */
+@keyframes slideInFromRight {
+    from {
+        right: -350px;
+        opacity: 0;
+    }
+    to {
+        right: -280px;
+        opacity: 1;
+    }
+}
+
+. voltmont-slideout {
+    animation: slideInFromRight 0.6s ease-out forwards;
+}
+
+/* ========================================
+   Responsywność
+   ======================================== */
+
+/* Tablet i mniejsze */
+@media (max-width: 1024px) {
+    .voltmont-slideout-content {
+        width: 260px;
+    }
+    
+    .voltmont-slideout-wide {
+        width: 300px;
+    }
+    
+    .voltmont-slideout {
+        right: -260px;
+    }
+    
+    . voltmont-slideout-handler {
+        right: 260px;
+        width: 55px;
+        height: 110px;
+    }
+}
+
+/* Mobile - ukryj widgety */
+@media (max-width: 768px) {
+    .voltmont-social-widgets {
+        display: none;
+    }
+}
+
+/* Bardzo duże ekrany */
+@media (min-width: 1920px) {
+    .voltmont-slideout-content {
+        width: 320px;
+    }
+    
+    .voltmont-slideout-wide {
+        width: 400px;
+    }
+    
+    .voltmont-content-text h4 {
+        font-size: 20px;
+    }
+    
+    .voltmont-content-text p {
+        font-size: 14px;
+    }
+}
+
+/* ========================================
+   Accessibility & Interactions
+   ======================================== */
+
+/* Focus state dla dostępności */
+.voltmont-widget-link:focus {
+    outline: 3px solid rgba(77, 129, 233, 0.4);
+    outline-offset: 2px;
+}
+
+/* Hover na całym widgecie */
+.voltmont-slideout-content:hover {
+    box-shadow: -12px 0 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    . voltmont-slideout,
+    .voltmont-slideout-handler,
+    .voltmont-icon-wrapper,
+    .voltmont-widget-link {
+        transition: none;
+        animation: none;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .voltmont-slideout-content {
+        border: 2px solid var(--color-theme-primary);
+    }
+    
+    . voltmont-widget-link {
+        border: 2px solid white;
+    }
+}
+
+/* Tooltips przy najechaniu na handler (opcjonalnie) */
+.voltmont-slideout-handler::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: calc(100% + 10px);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.voltmont-slideout-handler:hover::after {
+    opacity: 1;
+}
+
+/* Print styles - ukryj przy drukowaniu */
+@media print {
+    .voltmont-social-widgets {
+        display: none !important;
+    }
+}
+
+/* Dodaj na końcu poprzedniego CSS */
+
+/* Glow effect przy hover */
+.voltmont-slideout:hover .voltmont-slideout-handler {
+    box-shadow: -6px 0 30px rgba(0, 0, 0, 0.25), 0 0 20px currentColor;
+}
+
+/* Licznik nieprzeczytanych wiadomości (opcjonalnie) */
+.voltmont-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    background: #dc3545;
+    color: white;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: badge-pulse 2s infinite;
+}
+
+@keyframes badge-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Ripple effect przy kliknięciu */
+.voltmont-widget-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.voltmont-widget-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.voltmont-widget-link:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Gradient border animation */
+@keyframes gradient-border {
+    0% {
+        border-image-source: linear-gradient(135deg, var(--color-theme-primary) 0%, var(--color-theme-primary-dark) 100%);
+    }
+    50% {
+        border-image-source: linear-gradient(135deg, var(--color-theme-primary-light) 0%, var(--color-theme-primary) 100%);
+    }
+    100% {
+        border-image-source: linear-gradient(135deg, var(--color-theme-primary) 0%, var(--color-theme-primary-dark) 100%);
+    }
+}
+
+. voltmont-slideout-content:hover {
+    animation: gradient-border 3s infinite;
 }
 
