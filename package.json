@@ -70,7 +70,7 @@
     "husky": "^8.0.3",
     "image-webpack-loader": "^8.1.0",
     "imagemin-cli": "^7.0.0",
-    "jest": "^29.7.0",
+    "jest": "^30.2.0",
     "lighthouse": "^11.4.0",
     "lint-staged": "^15.2.0",
     "mini-css-extract-plugin": "^2.7.6",
