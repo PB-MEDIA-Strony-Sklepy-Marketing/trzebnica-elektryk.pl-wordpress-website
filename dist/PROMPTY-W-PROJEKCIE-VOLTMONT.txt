@@ -6,3 +6,7 @@ Używam motywu BeTheme dla WordPress z doimplementowanymi frameworkami Bootstrap
 
 
 Dalej to nic nie zmieniło i mamy dalej nakładający się ["Subheader"] z sekcja [<header>]. Wysyłam Ci Screenshota tego jak to wygląda na produkcji na stronie internetowej WordPress i aktualną wersję [header-classic.php]. Przeanalizuj to i wygeneruj mi nowy poprawiony działający kod do skopiowania i wklejenia.
+
+
+
+Do podanego kodu, dorób odpowiednie style CSS do tych klas które już są w kodzie nie dodając nowych. Wygeneruj odpowiednie style CSS dla tych znaczników ulepszając ich wygląd od domyślnego do wyglądu marki premium i brandingu firmy "Voltmont - trzebnica-elektryk.pl", tej przestrzeni i stosuj do tego instrukcję z tej przestrzeni. Wygeneruj odpowiednie kody do style.css motywu potomnego do skopiowania i wklejenia.
