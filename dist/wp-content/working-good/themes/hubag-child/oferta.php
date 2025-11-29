@@ -58,7 +58,7 @@ get_header();
                 </div>
                 <?php endif; ?>
 
-                <section style="background-color: #220302; background-repeat:no-repeat;background-position:center top;">
+                <section class="section-background-custom-post-type" style="">
                     <div class="container text-center">
                         <div class="row align-items-start">
                             <div class="col">
@@ -127,7 +127,7 @@ $posts = get_posts( array(
 ) );
 
 if ( $posts ) : ?>
-    <div class="section mcb-section mcb-section-87788b067" style="padding-top:60px; padding-bottom:60px; background-color: #220302; background-repeat:no-repeat;background-position:center top;">
+    <div class="section mcb-section mcb-section-87788b067 section-background-custom-post-type" style="padding-top:60px; padding-bottom:60px; background-repeat:no-repeat;background-position:center top;">
         <div class="container text-center">
             <div class="row align-items-start">
                 <div class="col">
@@ -270,7 +270,7 @@ if ( $posts ) : ?>
                             <div class="column mcb-column mcb-item-3c65087f6 one laptop-one tablet-one mobile-one column_column animate vb-item bounceIn" style="" data-anim-type="bounceIn">
                                 <div class="mcb-column-inner mfn-module-wrapper mcb-column-inner-3c65087f6 mcb-item-column-inner">
                                     <div class="column_attr mfn-inline-editor clearfix" style="">
-                                        <h2>Zamów <span style="color: #220302;">rozmowę</span> z nami!</h2>
+                                        <h2>Zamów <span class="themecolor">rozmowę</span> z nami!</h2>
                                         <p>Twój zaufany elektryk w Trzebnicy i całym Dolnym Śląsku. <br>Zadzwoń już dziś i umów się na bezpłatną wycenę!</p>
                                         <hr class="hr_excerpt_oferta" style="margin: 0 auto 15px auto; color: #fff; background-color: #fff; height: 3px;">
                                         <div><?php echo do_shortcode('[contact-form-7 id="9a19c07" title="Zamów rozmowę - formularz kontaktowy oferta page bottom"]'); ?></div>
