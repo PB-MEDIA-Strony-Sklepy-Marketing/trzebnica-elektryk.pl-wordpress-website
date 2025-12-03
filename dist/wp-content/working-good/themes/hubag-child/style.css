@@ -2656,3 +2656,2132 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
         transform: none !important;
     }
 }
+
+/* ========================================
+   VOLTMONT PREMIUM GALLERY IMAGE
+   Redesign for .single-photo-wrapper styling
+   ======================================== */
+
+/* 1. Główna ramka zdjęcia (Container) */
+.single-photo-wrapper .image_frame {
+    background-color: #ffffff;
+    padding: 10px; /* Efekt ramki passe-partout */
+    border: 1px solid rgba(4, 16, 40, 0.08); /* Subtelny obrys */
+    border-radius: 12px; /* Nowoczesne zaokrąglenie */
+    box-shadow: 0 10px 30px rgba(4, 16, 40, 0.06); /* Miękki cień spoczynkowy */
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                box-shadow 0.4s ease, 
+                border-color 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Efekt uniesienia przy najechaniu (Hover) */
+.single-photo-wrapper .image_frame:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(4, 16, 40, 0.15); /* Głębszy cień */
+    border-color: rgba(77, 129, 233, 0.3); /* Błękitny akcent ramki */
+}
+
+/* 2. Wrapper samego zdjęcia */
+.single-photo-wrapper .image_wrapper {
+    border-radius: 8px; /* Wewnętrzne zaokrąglenie dopasowane do ramki */
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Zdjęcie */
+.single-photo-wrapper .image_wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.8s ease, filter 0.4s ease;
+    filter: brightness(1);
+}
+
+/* Zoom zdjęcia przy hoverze */
+.single-photo-wrapper .image_frame:hover .image_wrapper img {
+    transform: scale(1.05);
+    filter: brightness(1.05); /* Lekkie rozjaśnienie */
+}
+
+/* 3. Nakładka (Overlay) i Linki */
+/* Nadpisujemy domyślną maskę BeTheme na styl premium */
+.single-photo-wrapper .image_wrapper .mask {
+    background-color: rgba(4, 16, 40, 0.4) !important; /* Ciemny granat Voltmont */
+    backdrop-filter: blur(2px); /* Efekt rozmycia tła */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.single-photo-wrapper .image_frame:hover .image_wrapper .mask {
+    opacity: 1;
+}
+
+/* Kontener linków/ikon */
+.single-photo-wrapper .image_links {
+    background: transparent !important; /* Reset tła */
+}
+
+/* 4. Ikona lupy (Zoom Icon) */
+.single-photo-wrapper .image_links .zoom {
+    background-color: #4d81e9 !important; /* Electric Blue */
+    width: 60px !important;
+    height: 60px !important;
+    line-height: 60px !important;
+    border-radius: 50% !important;
+    margin: -30px 0 0 -30px !important; /* Wyśrodkowanie */
+    box-shadow: 0 0 0 0 rgba(77, 129, 233, 0.7);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+/* Animacja wejścia ikony */
+.single-photo-wrapper .image_frame:hover .image_links .zoom {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(77, 129, 233, 0.5); /* Poświata */
+}
+
+.single-photo-wrapper .image_links .zoom:hover {
+    background-color: #2a54a1 !important; /* Ciemniejszy niebieski przy kliknięciu */
+    transform: scale(1.1);
+}
+
+/* Stylizacja SVG wewnątrz ikony */
+.single-photo-wrapper .image_links .zoom svg {
+    width: 24px;
+    height: 24px;
+    margin-top: 18px; /* Pozycjonowanie wertykalne */
+}
+
+.single-photo-wrapper .image_links .zoom svg .path {
+    stroke: #ffffff !important; /* Biała ikona */
+    stroke-width: 2px;
+    fill: none;
+    transition: stroke 0.3s ease;
+}
+
+/* 5. Podpis pod zdjęciem (Caption) */
+.single-photo-wrapper .wp-caption-text {
+    background: #fff;
+    color: #041028; /* Ciemny tekst dla kontrastu */
+    font-family: "Exo 2", sans-serif; /* Zgodność z typografią */
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.4;
+    padding: 18px 10px 8px 10px;
+    margin: 0;
+    text-align: center;
+    border-top: 1px solid rgba(0,0,0,0.03);
+    position: relative;
+}
+
+/* Dekoracyjna linia pod zdjęciem a nad tekstem */
+.single-photo-wrapper .wp-caption-text::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background-color: #4d81e9; /* Akcent marki */
+    transition: width 0.3s ease;
+}
+
+.single-photo-wrapper .image_frame:hover .wp-caption-text::before {
+    width: 80px; /* Rozszerzenie linii przy hoverze */
+}
+
+/* ========================================
+   RESPONSYWNOŚĆ (Mobile Tweaks)
+   ======================================== */
+
+@media only screen and (max-width: 767px) {
+    .single-photo-wrapper .image_frame {
+        padding: 5px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .single-photo-wrapper .image_frame:hover {
+        transform: none; /* Wyłączenie przesunięcia na dotyku */
+    }
+    
+    .single-photo-wrapper .wp-caption-text {
+        font-size: 14px;
+        padding: 12px 5px 5px;
+    }
+    
+    /* Ukrycie tekstu jeśli ma klasę hide-mobile (zgodnie z HTML) */
+    .single-photo-wrapper .wp-caption-text.hide-mobile {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   VOLTMONT PREMIUM GALLERY GRID
+   Redesign for .gallery-default structure
+   Target: #sc_gallery-1 and general WP galleries
+   ======================================== */
+
+/* 1. Kontener Galerii (Grid Layout) */
+.gallery-default {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Odstępy między kafelkami */
+    margin: 40px auto !important;
+    width: 100% !important;
+}
+
+/* Resetowanie domyślnych stylów WordPress/BeTheme dla galerii */
+.gallery-default .gallery-item {
+    float: none !important;
+    margin: 0 !important;
+    width: calc(25% - 20px) !important; /* Domyślnie 4 kolumny dla czytelności (zamiast 7) */
+    max-width: 100%;
+    padding: 0 !important;
+    position: relative;
+    clear: none !important;
+}
+
+/* 2. Karta Pojedynczego Elementu (Wrapper) */
+.gallery-default .gallery-item-wrapper {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(4, 16, 40, 0.06); /* Subtelny cień */
+    border: 1px solid rgba(237, 240, 253, 0.6);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Efekt Hover na karcie */
+.gallery-default .gallery-item-wrapper:hover {
+    transform: translateY(-6px); /* Uniesienie */
+    box-shadow: 0 20px 40px rgba(77, 129, 233, 0.15); /* Niebieska poświata cienia */
+    border-color: rgba(77, 129, 233, 0.4); /* Akcent ramki */
+}
+
+/* 3. Kontener Zdjęcia (Icon) */
+.gallery-default .gallery-icon {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid rgba(4, 16, 40, 0.03);
+}
+
+/* Zdjęcie */
+.gallery-default .gallery-icon img {
+    display: block;
+    width: 100%;
+    height: 220px !important; /* Ujednolicona wysokość */
+    object-fit: cover; /* Kadrowanie do formatu */
+    transition: transform 0.6s ease, filter 0.3s ease;
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* Zoom zdjęcia przy hover */
+.gallery-default .gallery-item-wrapper:hover .gallery-icon img {
+    transform: scale(1.08);
+}
+
+/* 4. Nakładka (Mask) - Efekt Premium */
+.gallery-default .gallery-icon .mask {
+    background: rgba(4, 16, 40, 0.5) !important; /* Ciemny granat */
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.gallery-default .gallery-item-wrapper:hover .gallery-icon .mask {
+    opacity: 1;
+}
+
+/* Dodanie ikony "+" na środku przy hoverze (pseudo-element) */
+.gallery-default .gallery-icon a::before {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    width: 40px;
+    height: 40px;
+    background-color: #4d81e9; /* Electric Blue */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 300;
+    opacity: 0;
+    z-index: 3;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.gallery-default .gallery-item-wrapper:hover .gallery-icon a::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* 5. Podpis (Caption) */
+.gallery-default .gallery-caption {
+    margin: 0 !important;
+    padding: 15px 15px !important;
+    background-color: #fff;
+    color: #334155; /* Ciemny szary tekst */
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    text-align: center;
+    font-weight: 500;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Zmiana koloru tekstu przy hover */
+.gallery-default .gallery-item-wrapper:hover .gallery-caption {
+    color: #4d81e9; /* Electric Blue */
+}
+
+/* ========================================
+   RESPONSYWNOŚĆ (Mobile First)
+   ======================================== */
+
+/* Tablet (2 kolumny zamiast 4) */
+@media (max-width: 1024px) {
+    .gallery-default .gallery-item {
+        width: calc(33.333% - 20px) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-default .gallery-item {
+        width: calc(50% - 15px) !important; /* 2 kolumny */
+        margin-bottom: 10px !important;
+    }
+    
+    .gallery-default .gallery-icon img {
+        height: 180px !important;
+    }
+}
+
+/* Mobile (1 kolumna) */
+@media (max-width: 480px) {
+    .gallery-default {
+        gap: 15px;
+    }
+    
+    .gallery-default .gallery-item {
+        width: 100% !important; /* Pełna szerokość */
+    }
+    
+    .gallery-default .gallery-item-wrapper {
+        flex-direction: row; /* Poziomy układ na mobile (zdjęcie + tekst obok) */
+        align-items: center;
+        height: auto;
+    }
+    
+    .gallery-default .gallery-icon {
+        width: 100px !important;
+        flex-shrink: 0;
+        border-bottom: none;
+        border-right: 1px solid rgba(4, 16, 40, 0.05);
+    }
+    
+    .gallery-default .gallery-icon img {
+        height: 80px !important;
+        width: 100px !important;
+    }
+    
+    .gallery-default .gallery-caption {
+        text-align: left;
+        padding: 10px 15px !important;
+        font-size: 12px !important;
+    }
+    
+    /* Ukrycie ikony plusa na mobile dla czystości */
+    .gallery-default .gallery-icon a::before {
+        display: none;
+    }
+}
+
+/* ========================================
+   VOLTMONT RELATED POSTS - GRID FIX 3 COLUMNS
+   Fixes layout issue: Forces 3 items in one row
+   ======================================== */
+
+/* 1. Kontener Postów - Wymuszenie Gridu */
+.section-post-related .section-related-ul {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Wymusza 3 równe kolumny */
+    gap: 30px !important; /* Odstęp między kartami */
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 2. Resetowanie stylów kolumn BeTheme dla dzieci Gridu */
+.section-post-related .column.post-related {
+    width: 100% !important; /* Karta zajmuje całą szerokość komórki gridu */
+    margin: 0 !important; /* Usuwamy marginesy BeTheme, bo używamy gap */
+    float: none !important; /* Wyłączamy float */
+    clear: none !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 3. Responsywność (Tablet i Mobile) */
+
+/* Tablet - 2 kolumny */
+@media (max-width: 1024px) {
+    .section-post-related .section-related-ul {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Mobile - 1 kolumna */
+@media (max-width: 767px) {
+    .section-post-related .section-related-ul {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    /* Reset marginesów dla pojedynczych kart na mobile */
+    .section-post-related .column.post-related {
+        margin-bottom: 20px !important;
+    }
+}
+
+/* ========================================
+   VOLTMONT RELATED POSTS (PREMIUM CARDS)
+   Target: .section-post-related
+   ======================================== */
+
+/* 1. Nagłówek sekcji "Powiązane wpisy" */
+.section-post-related .section-related-adjustment h4 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #041028; /* Ciemny granat */
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.section-post-related .section-related-adjustment h4::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #4d81e9; /* Electric Blue */
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* 2. Karta Wpisu (Pojedynczy element) */
+.section-post-related .column.post-related {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(4, 16, 40, 0.06);
+    border: 1px solid rgba(237, 240, 253, 0.8);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-bottom: 20px; /* Miejsce na dole karty */
+    margin-bottom: 30px !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hover na karcie */
+.section-post-related .column.post-related:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(4, 16, 40, 0.15);
+    border-color: rgba(77, 129, 233, 0.3);
+}
+
+/* 3. Obrazek (Thumbnail) */
+.section-post-related .image_frame {
+    margin-bottom: 0 !important;
+    border: none !important;
+    border-radius: 12px 12px 0 0; /* Tylko górne rogi */
+    overflow: hidden;
+    background: #000; /* Tło pod obrazkiem */
+}
+
+.section-post-related .image_wrapper img {
+    display: block;
+    width: 100%;
+    height: 240px !important; /* Stała wysokość dla równych kafelków */
+    object-fit: cover;
+    transition: transform 0.6s ease, opacity 0.3s ease;
+}
+
+/* Zoom obrazka przy hoverze na kartę */
+.section-post-related .column.post-related:hover .image_wrapper img {
+    transform: scale(1.08);
+    opacity: 0.9;
+}
+
+/* 4. Maski i Ikony na zdjęciu */
+.section-post-related .image_wrapper .mask {
+    background: rgba(4, 16, 40, 0.6) !important;
+    backdrop-filter: blur(2px);
+}
+
+/* Stylizacja ikon wewnątrz zdjęcia (lupa i link) */
+.section-post-related .image_links a {
+    background: #fff !important;
+    border-radius: 50%;
+    width: 44px !important;
+    height: 44px !important;
+    line-height: 44px !important;
+    margin: 0 5px !important;
+    transition: all 0.3s ease;
+}
+
+.section-post-related .image_links a svg .path {
+    stroke: #4d81e9 !important; /* Niebieski kolor ikon */
+}
+
+.section-post-related .image_links a:hover {
+    background: #4d81e9 !important;
+    transform: scale(1.1);
+}
+
+.section-post-related .image_links a:hover svg .path {
+    stroke: #ffffff !important;
+}
+
+/* Ukrycie domyślnego podpisu na zdjęciu (wp-caption), bo dubluje tytuł */
+.section-post-related .wp-caption-text {
+    display: none !important;
+}
+
+/* 5. Data publikacji */
+.section-post-related .date_label {
+    background-color: #f0f4fd;
+    color: #4d81e9;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 20px 20px 10px 20px; /* Odstępy wewnątrz karty */
+    width: auto;
+    letter-spacing: 0.5px;
+}
+
+/* 6. Treść (Tytuł, Excerpt) */
+.section-post-related .desc {
+    padding: 0 20px 10px 20px;
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Wyrównanie do lewej */
+}
+
+/* Tytuł wpisu */
+.section-post-related .desc h4 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.section-post-related .desc h4 a {
+    color: #041028;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 700;
+}
+
+.section-post-related .desc h4 a:hover {
+    color: #4d81e9;
+}
+
+/* Separator (HR) - zmiana na subtelną linię lub ukrycie */
+.section-post-related .hr_color {
+    display: none; /* Ukrywamy stary separator BeTheme */
+}
+
+/* Opis (Excerpt) */
+.section-post-related .desc p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #64748b; /* Szary neutralny */
+    margin-bottom: 20px;
+}
+
+/* 7. Przycisk "Czytaj dalej" */
+.section-post-related .desc .button.has-icon {
+    align-self: flex-start; /* Przycisk do lewej */
+    background: linear-gradient(135deg, #4d81e9 0%, #2a54a1 100%);
+    color: #ffffff !important;
+    border: none;
+    padding: 10px 25px !important;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(77, 129, 233, 0.3);
+    transition: all 0.3s ease;
+    margin-top: auto; /* Dopychanie do dołu jeśli karty mają różną wysokość */
+}
+
+.section-post-related .desc .button.has-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(77, 129, 233, 0.5);
+    background: linear-gradient(135deg, #2a54a1 0%, #163162 100%);
+}
+
+.section-post-related .button_icon i {
+    color: #fff !important;
+}
+
+section.section.section-post-related.mb-5.mt-5 > div > div > h4 {
+	color: #fff;
+}
+
+/* ========================================
+   VOLTMONT PREMIUM CERTIFICATES & REFERENCES
+   Fix: Sharp Images & Visible Captions
+   Target: .column_image_gallery
+   ======================================== */
+
+/* 1. Kontener Galerii - Flexbox Grid */
+.column_image_gallery .gallery {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 30px !important; /* Większy odstęp dla przejrzystości */
+    justify-content: center !important;
+    margin: 40px auto !important;
+}
+
+/* Resetowanie domyślnych stylów WordPress (nadpisanie inline CSS) */
+.column_image_gallery .gallery .gallery-item {
+    float: none !important;
+    width: calc(25% - 30px) !important; /* 4 kolumny na desktopie */
+    margin: 0 !important;
+    clear: none !important;
+    max-width: 100% !important;
+}
+
+/* 2. Karta Referencji (Wrapper) - Styl "Dokumentu" */
+.column_image_gallery .gallery-item-wrapper {
+    background-color: #ffffff;
+    border: 1px solid rgba(237, 240, 253, 1); /* Bardzo delikatna ramka */
+    border-radius: 8px;
+    padding: 15px; /* Padding wewnątrz karty */
+    box-shadow: 0 10px 25px rgba(4, 16, 40, 0.08); /* Wyraźny cień */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Rozpycha zdjęcie i podpis */
+}
+
+/* Efekt Hover na karcie */
+.column_image_gallery .gallery-item-wrapper:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(77, 129, 233, 0.15); /* Niebieska poświata */
+    border-color: #4d81e9; /* Akcent Electric Blue */
+}
+
+/* 3. Obrazek / Dokument - FIX OSTROŚCI */
+.column_image_gallery .gallery-icon {
+    margin: 0 !important;
+    width: 100% !important;
+    overflow: hidden;
+    position: relative;
+    background-color: transparent;
+    border-bottom: 1px solid #f0f0f0; /* Linia oddzielająca zdjęcie od opisu */
+    padding-bottom: 15px;
+    margin-bottom: 15px !important;
+}
+
+/* Stylizacja IMG dla maksymalnej ostrości */
+.column_image_gallery .gallery-icon img {
+    border: none !important;
+    display: block;
+    width: 100%;
+    height: auto !important; /* Naturalna wysokość - zapobiega deformacji i rozmyciu */
+    object-fit: contain; /* Gwarancja, że całe pismo jest widoczne */
+    
+    /* Fixy dla ostrości w przeglądarkach */
+    image-rendering: -webkit-optimize-contrast; /* Lepszy kontrast w Chrome */
+    transform: translateZ(0); /* Wymuszenie GPU renderingu */
+    backface-visibility: hidden;
+    
+    filter: none !important; /* Wyłączamy wszelkie filtry przyciemniające */
+    transition: transform 0.5s ease;
+}
+
+/* Zoom dokumentu przy hoverze */
+.column_image_gallery .gallery-item-wrapper:hover .gallery-icon img {
+    transform: scale(1.02); /* Bardzo delikatny zoom, żeby nie tracić jakości */
+}
+
+/* 4. Nakładka z Lupą (Interakcja) */
+.column_image_gallery .gallery-icon a {
+    display: block;
+    position: relative;
+}
+
+.column_image_gallery .gallery-icon .mask {
+    background-color: rgba(4, 16, 40, 0.3) !important; /* Mniej agresywne przyciemnienie */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/* Ikona lupy */
+.column_image_gallery .gallery-icon a::after {
+    content: '+'; /* Prosta, ostra ikona tekstowa zamiast fontu jeśli są problemy */
+    font-family: sans-serif;
+    font-weight: 300;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    color: white;
+    font-size: 32px;
+    background: #4d81e9;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 5;
+}
+
+.column_image_gallery .gallery-item-wrapper:hover .mask {
+    opacity: 1;
+}
+
+.column_image_gallery .gallery-item-wrapper:hover .gallery-icon a::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* 5. Podpis (Caption) - FIX WIDOCZNOŚCI */
+.column_image_gallery .gallery-caption {
+    display: block !important;
+    visibility: visible !important;
+    margin: 0 !important;
+    padding: 5px 0 0 0 !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    color: #041028 !important; /* Ciemny granat dla kontrastu */
+    font-weight: 600 !important;
+    text-align: center;
+    text-transform: none !important; /* Naturalna wielkość liter jest czytelniejsza */
+    min-height: 40px; /* Rezerwacja miejsca na 2 linie tekstu */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Zmiana koloru tekstu przy hoverze na kartę */
+.column_image_gallery .gallery-item-wrapper:hover .gallery-caption {
+    color: #4d81e9 !important;
+}
+
+/* ========================================
+   RESPONSYWNOŚĆ (Mobile First Override)
+   ======================================== */
+
+/* Tablet (Poniżej 1024px) - 3 kolumny */
+@media (max-width: 1024px) {
+    .column_image_gallery .gallery .gallery-item {
+        width: calc(33.333% - 30px) !important;
+    }
+}
+
+/* Mniejszy Tablet (Poniżej 768px) - 2 kolumny */
+@media (max-width: 768px) {
+    .column_image_gallery .gallery {
+        gap: 20px !important;
+    }
+    
+    .column_image_gallery .gallery .gallery-item {
+        width: calc(50% - 20px) !important;
+    }
+}
+
+/* Telefon (Poniżej 480px) - 1 kolumna */
+@media (max-width: 480px) {
+    .column_image_gallery .gallery .gallery-item {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* Na mobile układ poziomy: Miniaturka po lewej, tekst po prawej */
+    .column_image_gallery .gallery-item-wrapper {
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+        text-align: left;
+    }
+    
+    .column_image_gallery .gallery-icon {
+        width: 80px !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        border-bottom: none !important;
+        margin-right: 15px !important;
+        border-right: 1px solid #eee;
+    }
+    
+    .column_image_gallery .gallery-caption {
+        text-align: left;
+        justify-content: flex-start;
+        font-size: 13px !important;
+    }
+}
+
+/* ========================================
+   VOLTMONT "DLACZEGO WARTO" - BOOTSTRAP FIX & PREMIUM LOOK
+   ======================================== */
+
+/* 1. Kontener Sekcji */
+.vm-why-us-section {
+    position: relative;
+    padding: 0px;
+    /* Jeśli chcesz ciemne tło sekcji, odkomentuj linię poniżej: */
+    /* background-color: #041028; */ 
+    background-color: transparent; /* Przezroczyste, przyjmie tło z ustawień sekcji BeBuildera */
+    z-index: 10;
+}
+
+/* 2. Nagłówki */
+.vm-section-title {
+    /* Kolor nagłówka - zmienna CSS lub biały, jeśli tło jest ciemne */
+    color: #ffffff; 
+    font-weight: 800;
+    font-size: 36px;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+/* Jeśli sekcja jest na białym tle, zmień kolor na granatowy: */
+/* .vm-why-us-section.light-mode .vm-section-title { color: #041028; } */
+
+.vm-section-desc {
+    color: #dbe4ea; /* Jasny szary dla czytelności na ciemnym tle */
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.vm-section-subtitle {
+    color: #4d81e9; /* Electric Blue */
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.vm-divider {
+    width: 80px;
+    height: 3px;
+    background: #4d81e9;
+    margin-bottom: 20px;
+    border-radius: 2px;
+}
+
+.vm-divider.full-width {
+    width: 100%;
+    height: 1px;
+    background: #ffffff;
+}
+
+/* 3. Karta (Card) - Klikalna */
+.vm-card-link {
+    display: block;
+    text-decoration: none !important; /* Reset stylów linku */
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.vm-card-link:hover {
+    transform: translateY(-10px);
+}
+
+/* Ciało Karty */
+.vm-card-body {
+    background-color: #ffffff; /* Białe tło karty - ZAWSZE czytelne */
+    border-radius: 15px;
+    padding: 35px 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Cień oddzielający od tła */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dekoracyjny pasek na górze karty */
+.vm-card-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #4d81e9, #2a54a1);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.vm-card-link:hover .vm-card-body::before {
+    transform: scaleX(1);
+}
+
+/* 4. Ikona */
+.vm-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(77, 129, 233, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.vm-icon-wrapper i {
+    font-size: 30px;
+    color: #4d81e9; /* Kolor ikony */
+}
+
+.vm-card-link:hover .vm-icon-wrapper {
+    background-color: #4d81e9;
+    transform: rotate(360deg);
+}
+
+.vm-card-link:hover .vm-icon-wrapper i {
+    color: #ffffff;
+}
+
+/* 5. Treść Karty */
+.vm-card-title {
+    color: #041028; /* Ciemny granat - kontrastuje z białym tłem karty */
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.vm-card-text {
+    color: #64748b; /* Szary tekst */
+    font-size: 14px;
+    line-height: 1.6;
+    flex-grow: 1; /* Dopycha stopkę do dołu */
+    margin-bottom: 20px;
+}
+
+/* 6. Stopka karty ("Więcej") */
+.vm-card-footer {
+    margin-top: auto;
+}
+
+.vm-read-more {
+    font-size: 12px;
+    font-weight: 700;
+    color: #4d81e9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: letter-spacing 0.3s ease;
+}
+
+.vm-card-link:hover .vm-read-more {
+    letter-spacing: 2px;
+}
+
+/* 7. Responsywność - Poprawki dla Bootstrapa w BeTheme */
+@media (min-width: 992px) {
+    /* Wymuszenie 3 kolumn, jeśli coś by nadpisywało Bootstrapa */
+    .col-lg-4 {
+        flex: 0 0 auto;
+        width: 33.33333333%;
+    }
+}
+
+/* Reset marginów BeTheme dla nagłówków wewnątrz naszych kart */
+.vm-why-us-section h2, 
+.vm-why-us-section h4, 
+.vm-why-us-section p {
+    margin-top: 0;
+}
+
+/* ========================================
+   VOLTMONT PREMIUM SERVICE SLIDER
+   Component: .vm-offer-section
+   ======================================== */
+
+/* 1. Kontener Sekcji */
+.vm-offer-section {
+    padding: 60px 0px 60px 0px;
+    background-color: #edf0fd; /* Czyste tło dla kontrastu */
+    position: relative;
+}
+
+/* 2. Nagłówki */
+.vm-offer-heading {
+    color: #041028;
+    font-weight: 800;
+    font-size: 36px;
+    margin-bottom: 20px;
+		text-align: center;
+}
+
+.vm-text-highlight {
+    color: #4d81e9; /* Voltmont Blue */
+}
+
+.vm-offer-divider {
+    width: 60px;
+    height: 3px;
+    background: #4d81e9;
+    margin: 0 auto 20px;
+}
+
+.vm-offer-intro {
+    color: #64748b;
+    max-width: 100%;
+    margin: 0 auto;
+		text-align: center;
+}
+
+/* 3. Główny Wrapper Komponentu */
+.vm-offer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* Brak odstępu, nawigacja styka się z contentem */
+    box-shadow: 0 20px 50px rgba(4, 16, 40, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    background: #fff;
+    margin-top: 30px;
+}
+
+/* 4. Nawigacja (Ikony) */
+.vm-offer-nav-wrapper {
+    background-color: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    overflow-x: auto; /* Scrollowanie na mobile */
+    scrollbar-width: none; /* Firefox ukrycie paska */
+    -ms-overflow-style: none; 
+}
+
+.vm-offer-nav-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome/Safari ukrycie paska */
+}
+
+.vm-offer-nav {
+    display: flex;
+    min-width: 100%;
+}
+
+/* Przycisk (Tab) */
+.vm-offer-tab {
+    flex: 1;
+    min-width: 120px; /* Minimalna szerokość na mobile */
+    border: none;
+    background: transparent;
+    padding: 20px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-right: 1px solid #e2e8f0;
+    position: relative;
+    outline: none;
+}
+
+.vm-offer-tab:last-child {
+    border-right: none;
+}
+
+/* Ikona w Tabie */
+.vm-tab-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #e2e8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.vm-tab-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #64748b;
+    text-align: center;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+    display: block; /* Pokaż tekst */
+}
+
+/* Stan Aktywny i Hover Taba */
+.vm-offer-tab:hover .vm-tab-icon,
+.vm-offer-tab.active .vm-tab-icon {
+    background-color: #4d81e9;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(77, 129, 233, 0.3);
+}
+
+.vm-offer-tab.active .vm-tab-label {
+    color: #041028;
+}
+
+.vm-offer-tab.active {
+    background-color: #fff;
+    box-shadow: inset 0 -3px 0 #4d81e9; /* Niebieska linia na dole */
+}
+
+/* 5. Kontent (Panele) */
+.vm-offer-content-wrapper {
+    position: relative;
+    min-height: 450px; /* Stała wysokość minimalna */
+    background-color: #fff;
+}
+
+.vm-offer-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s;
+    z-index: 1;
+}
+
+.vm-offer-panel.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    position: relative; /* Na mobile może się rozciągać */
+}
+
+/* Obrazek */
+.vm-panel-image-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    min-height: 300px; /* Dla mobile */
+}
+
+.vm-panel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.vm-offer-panel:hover .vm-panel-image {
+    transform: scale(1.05);
+}
+
+.vm-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 80%, rgba(255,255,255,1) 100%); /* Przejście do białego po prawej */
+}
+
+/* Tekst */
+.vm-panel-text {
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+
+.vm-panel-icon-bg {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 120px;
+    color: rgba(77, 129, 233, 0.05); /* Bardzo blada ikona w tle */
+    z-index: 0;
+    pointer-events: none;
+}
+
+.vm-panel-title {
+    color: #041028;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.vm-panel-divider {
+    width: 40px;
+    height: 3px;
+    background-color: #4d81e9;
+    margin-bottom: 20px;
+}
+
+.vm-panel-desc {
+    color: #556c7a;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Przycisk CTA */
+.vm-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #4d81e9 0%, #2a54a1 100%);
+    color: #fff !important;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    box-shadow: 0 5px 15px rgba(77, 129, 233, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.vm-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(77, 129, 233, 0.5);
+}
+
+/* Responsywność */
+@media (max-width: 991px) {
+    .vm-image-overlay {
+        background: linear-gradient(180deg, rgba(255,255,255,0) 70%, rgba(255,255,255,1) 100%);
+    }
+    
+    .vm-panel-text {
+        padding: 30px 20px;
+    }
+    
+    .vm-offer-panel {
+        position: relative; /* Na tablecie/mobile panele nie mogą być absolute */
+        display: none; /* Ukrywamy nieaktywne */
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .vm-offer-panel.active {
+        display: block; /* Pokazujemy aktywny */
+    }
+    
+    .vm-panel-image-container {
+        height: 300px; /* Fix wysokości obrazka */
+    }
+}
+
+@media (max-width: 768px) {
+    .vm-tab-label {
+        display: none; /* Na telefonach same ikony w nawigacji dla oszczędności miejsca */
+    }
+    
+    .vm-offer-tab {
+        min-width: 70px;
+        padding: 15px 5px;
+    }
+}
+
+/* ========================================
+   VOLTMONT PREMIUM PORTFOLIO SLIDER
+   Component: .vm-portfolio-section
+   ======================================== */
+
+/* 1. Kontener Sekcji */
+.vm-portfolio-section {
+    padding: 60px 0px 60px 0px;
+    background-color: #edf0fd; /* Lekko szare tło dla odróżnienia od Oferty */
+    position: relative;
+}
+
+/* 2. Nagłówki */
+.vm-portfolio-heading {
+    color: #041028;
+    font-weight: 800;
+    font-size: 36px;
+    margin-bottom: 20px;
+		text-align: center;
+}
+
+.vm-portfolio-highlight {
+    color: #4d81e9; /* Voltmont Blue */
+}
+
+.vm-portfolio-divider {
+    width: 60px;
+    height: 3px;
+    background: #4d81e9;
+    margin: 0 auto 20px;
+}
+
+.vm-portfolio-intro {
+    color: #64748b;
+    max-width: 100%;
+    margin: 0 auto;
+		text-align: center;
+}
+
+/* 3. Główny Wrapper Komponentu */
+.vm-portfolio-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    box-shadow: 0 20px 50px rgba(4, 16, 40, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    background: #fff;
+    margin-top: 30px;
+}
+
+/* 4. Nawigacja (Tablist) */
+.vm-portfolio-nav-wrapper {
+    background-color: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
+}
+
+.vm-portfolio-nav-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.vm-portfolio-nav {
+    display: flex;
+    min-width: 100%;
+}
+
+/* Tab Button */
+.vm-portfolio-tab {
+    flex: 1;
+    min-width: 140px; /* Nieco szersze dla tytułów realizacji */
+    border: none;
+    background: transparent;
+    padding: 25px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-right: 1px solid #e2e8f0;
+    position: relative;
+    outline: none;
+}
+
+.vm-portfolio-tab:last-child {
+    border-right: none;
+}
+
+/* Ikona w Tabie */
+.vm-ptab-icon {
+    width: 44px;
+    height: 44px;
+    background-color: #e2e8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.vm-ptab-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #64748b;
+    text-align: center;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Max 2 linie tytułu */
+    -webkit-box-orient: vertical;
+}
+
+/* Stan Aktywny */
+.vm-portfolio-tab:hover .vm-ptab-icon,
+.vm-portfolio-tab.active .vm-ptab-icon {
+    background-color: #4d81e9;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(77, 129, 233, 0.3);
+}
+
+.vm-portfolio-tab.active .vm-ptab-label {
+    color: #041028;
+}
+
+.vm-portfolio-tab.active {
+    background-color: #fff;
+    box-shadow: inset 0 -3px 0 #4d81e9;
+}
+
+/* 5. Kontent (Panele) */
+.vm-portfolio-content-wrapper {
+    position: relative;
+    min-height: 500px; /* Większa wysokość dla realizacji */
+    background-color: #fff;
+}
+
+.vm-portfolio-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s;
+    z-index: 1;
+}
+
+.vm-portfolio-panel.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    position: relative;
+}
+
+/* Obrazek */
+.vm-ppanel-image-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    min-height: 350px;
+}
+
+.vm-ppanel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.vm-portfolio-panel:hover .vm-ppanel-image {
+    transform: scale(1.05);
+}
+
+.vm-ppanel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 85%, rgba(255,255,255,1) 100%);
+}
+
+/* Badge Kategorii */
+.vm-ppanel-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #4d81e9;
+    color: #fff;
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+/* Tekst */
+.vm-ppanel-text {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+
+.vm-ppanel-icon-bg {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 140px;
+    color: rgba(77, 129, 233, 0.05);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.vm-ppanel-title {
+    color: #041028;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    line-height: 1.2;
+}
+
+.vm-ppanel-divider {
+    width: 50px;
+    height: 3px;
+    background-color: #4d81e9;
+    margin-bottom: 25px;
+}
+
+.vm-ppanel-desc {
+    color: #556c7a;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Przycisk */
+.vm-pbtn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 35px;
+    background: linear-gradient(135deg, #4d81e9 0%, #2a54a1 100%);
+    color: #fff !important;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    box-shadow: 0 6px 20px rgba(77, 129, 233, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.vm-pbtn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(77, 129, 233, 0.5);
+}
+
+/* Responsywność */
+@media (max-width: 991px) {
+    .vm-ppanel-overlay {
+        background: linear-gradient(180deg, rgba(255,255,255,0) 70%, rgba(255,255,255,1) 100%);
+    }
+    
+    .vm-ppanel-text {
+        padding: 35px 25px;
+    }
+    
+    .vm-portfolio-panel {
+        position: relative;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .vm-portfolio-panel.active {
+        display: block;
+    }
+    
+    .vm-ppanel-image-container {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .vm-portfolio-tab {
+        min-width: 100px;
+        padding: 15px 10px;
+    }
+    
+    .vm-ptab-label {
+        font-size: 10px;
+    }
+}
+
+.fullwidth {
+	max-width: 100%!important;
+}
+
+/* ==========================================================================
+   SafePilot - Responsywne klasy margin i padding
+   Bazowe wartości dla desktop (width >= 1107px)
+   ========================================================================== */
+
+/* Desktop - domyślne (width >= 1107px) */
+.margin-extech-shortcode-footer {
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.padding-extech-shortcode-footer {
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+
+.padding-extech-shortcode-footer2 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.margin-extech-shortcode {
+    margin-left: 10rem;
+    margin-right: 10rem;
+}
+
+/* ==========================================================================
+   TABLET (768px - 1106px)
+   ========================================================================== */
+@media (max-width: 1106px) and (min-width: 768px) {
+    .margin-extech-shortcode-footer {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    .padding-extech-shortcode-footer {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+
+    .padding-extech-shortcode-footer2 {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .margin-extech-shortcode {
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+}
+
+/* ==========================================================================
+   MOBILE (width < 768px)
+   ========================================================================== */
+@media (max-width: 767px) {
+    .margin-extech-shortcode-footer {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .padding-extech-shortcode-footer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .padding-extech-shortcode-footer2 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .margin-extech-shortcode {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
+
+/* ========================================
+   VOLTMONT FACEBOOK FEED (PREMIUM)
+   Component: .vm-fb-section
+   ======================================== */
+
+/* 1. Sekcja i Nagłówek */
+.vm-fb-section {
+    padding: 80px 0;
+    background-color: #edf0fd; /* Jasne tło dla kontrastu */
+    font-family: 'Inter', sans-serif; /* Wymuszenie nowoczesnego fontu */
+}
+
+.vm-fb-heading {
+    color: #041028;
+    font-weight: 800;
+    font-size: 36px;
+    margin-bottom: 20px;
+		text-align: center;
+}
+
+.vm-fb-highlight {
+    color: #1877f2; /* Facebook Blue, ale pasujący do Voltmont */
+}
+
+.vm-fb-divider {
+    width: 60px;
+    height: 3px;
+    background: #1877f2;
+    margin: 0 auto 20px;
+}
+
+.vm-fb-intro {
+    color: #64748b;
+    max-width: 100%;
+    margin: 0 auto;
+		text-align: center;
+}
+
+/* 2. Główna Karta (Container) */
+.vm-fb-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(4, 16, 40, 0.08);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.5);
+    max-width: 1100px;
+    margin: 40px auto 0;
+}
+
+/* 3. Sidebar (Lewa kolumna) */
+.vm-fb-sidebar {
+    background: linear-gradient(160deg, #ffffff 0%, #f8fafd 100%);
+    border-right: 1px solid #eef2f6;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Profil */
+.vm-fb-profile {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.vm-fb-avatar-wrapper {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    position: relative;
+}
+
+.vm-fb-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.vm-fb-status {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 18px;
+    height: 18px;
+    background: #31a24c; /* FB Active Green */
+    border: 3px solid #fff;
+    border-radius: 50%;
+}
+
+.vm-fb-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #041028;
+    margin-bottom: 5px;
+}
+
+.vm-fb-handle {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.vm-fb-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    transform: scale(1.1); /* Powiększenie przycisków FB */
+}
+
+/* 4. Menu Nawigacyjne (Linki do zasobów) */
+.vm-fb-menu {
+    flex-grow: 1;
+}
+
+.vm-fb-menu-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    font-weight: 700;
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+.vm-fb-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    color: #041028;
+}
+
+.vm-fb-link:hover {
+    border-color: #1877f2;
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(24, 119, 242, 0.1);
+}
+
+.vm-fb-icon {
+    width: 36px;
+    height: 36px;
+    background: #eff6ff;
+    color: #1877f2;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+.vm-fb-text {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.vm-fb-text strong {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.vm-fb-text span {
+    font-size: 11px;
+    color: #64748b;
+}
+
+.vm-fb-arrow {
+    font-size: 12px;
+    color: #cbd5e1;
+    transition: color 0.3s;
+}
+
+.vm-fb-link:hover .vm-fb-arrow {
+    color: #1877f2;
+}
+
+/* Footer Sidebara */
+.vm-btn-fb-full {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: #1877f2;
+    color: #fff !important;
+    text-align: center;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.3s;
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+}
+
+.vm-btn-fb-full:hover {
+    background: #1464cc;
+}
+
+/* 5. Prawa Kolumna (Feed) */
+.vm-fb-content {
+    padding: 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.vm-fb-feed-header {
+    padding: 20px 30px;
+    border-bottom: 1px solid #eef2f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+}
+
+.vm-feed-title {
+    font-weight: 700;
+    color: #041028;
+    font-size: 16px;
+}
+
+.vm-live-indicator {
+    font-size: 11px;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+}
+
+.vm-live-indicator .dot {
+    width: 8px;
+    height: 8px;
+    background: #ff3b30;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.vm-fb-feed-container {
+    flex-grow: 1;
+    overflow: hidden;
+    /* Wymuszenie scrolla wewnątrz kontenera, jeśli feed jest długi */
+    height: 600px; 
+    position: relative;
+}
+
+/* Hack CSS aby iframe FB był responsywny */
+.fb-page, 
+.fb-page span, 
+.fb-page iframe {
+    width: 100% !important;
+}
+
+/* Responsywność */
+@media (max-width: 991px) {
+    .vm-fb-sidebar {
+        border-right: none;
+        border-bottom: 1px solid #eef2f6;
+        padding: 30px 20px;
+    }
+    
+    .vm-fb-card {
+        border-radius: 12px;
+    }
+    
+    .vm-fb-feed-container {
+        height: 500px;
+    }
+}
+
+/* ========================================
+   VOLTMONT FACEBOOK FEED (PREMIUM)
+   Component: .vm-fb-section
+   ======================================== */
+
+/* ... (Poprzednie style nagłówka bez zmian) ... */
+
+.vm-fb-section {
+    padding: 80px 0;
+    background-color: #f2f5f9;
+    font-family: 'Inter', sans-serif;
+}
+.vm-fb-heading {
+    color: #041028;
+    font-weight: 800;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.vm-fb-highlight { color: #1877f2; }
+.vm-fb-divider {
+    width: 60px;
+    height: 3px;
+    background: #1877f2;
+    margin: 0 auto 20px;
+}
+.vm-fb-intro {
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* KARTA GŁÓWNA */
+.vm-fb-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(4, 16, 40, 0.08);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.5);
+    max-width: 1100px;
+    margin: 40px auto 0;
+}
+
+/* SIDEBAR */
+.vm-fb-sidebar {
+    background: linear-gradient(160deg, #ffffff 0%, #f8fafd 100%);
+    border-right: 1px solid #eef2f6;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Profil */
+.vm-fb-profile { text-align: center; margin-bottom: 40px; }
+.vm-fb-avatar-wrapper {
+    width: 100px; height: 100px; margin: 0 auto 15px; position: relative;
+}
+.vm-fb-avatar {
+    width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+    border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.vm-fb-status {
+    position: absolute; bottom: 5px; right: 5px; width: 18px; height: 18px;
+    background: #31a24c; border: 3px solid #fff; border-radius: 50%;
+}
+.vm-fb-name { font-size: 18px; font-weight: 700; color: #041028; margin-bottom: 5px; }
+.vm-fb-handle { font-size: 13px; color: #64748b; margin-bottom: 20px; }
+.vm-fb-actions { display: flex; justify-content: center; gap: 10px; transform: scale(1.1); }
+
+/* Menu */
+.vm-fb-menu { flex-grow: 1; }
+.vm-fb-menu-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+    color: #94a3b8; font-weight: 700; margin-bottom: 15px; padding-left: 10px;
+}
+.vm-fb-link {
+    display: flex; align-items: center; padding: 12px 15px;
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+    margin-bottom: 10px; text-decoration: none !important;
+    transition: all 0.3s ease; color: #041028;
+}
+.vm-fb-link:hover {
+    border-color: #1877f2; transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(24, 119, 242, 0.1);
+}
+.vm-fb-icon {
+    width: 36px; height: 36px; background: #eff6ff; color: #1877f2;
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    margin-right: 15px; font-size: 16px;
+}
+.vm-fb-text { flex-grow: 1; display: flex; flex-direction: column; }
+.vm-fb-text strong { font-size: 14px; font-weight: 600; }
+.vm-fb-text span { font-size: 11px; color: #64748b; }
+.vm-fb-arrow { font-size: 12px; color: #cbd5e1; transition: color 0.3s; }
+.vm-fb-link:hover .vm-fb-arrow { color: #1877f2; }
+
+/* Footer */
+.vm-btn-fb-full {
+    display: block; width: 100%; padding: 14px; background: #1877f2;
+    color: #fff !important; text-align: center; border-radius: 50px;
+    font-weight: 600; text-decoration: none; font-size: 14px;
+    transition: background 0.3s; box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+}
+.vm-btn-fb-full:hover { background: #1464cc; }
+
+/* PRAWA KOLUMNA (Feed) */
+.vm-fb-content {
+    padding: 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+.vm-fb-feed-header {
+    padding: 20px 30px; border-bottom: 1px solid #eef2f6;
+    display: flex; justify-content: space-between; align-items: center; background: #fff;
+}
+.vm-feed-title { font-weight: 700; color: #041028; font-size: 16px; }
+.vm-live-indicator { font-size: 11px; color: #64748b; display: flex; align-items: center; }
+.vm-live-indicator .dot {
+    width: 8px; height: 8px; background: #ff3b30; border-radius: 50%;
+    display: inline-block; margin-right: 6px; animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.vm-fb-feed-container {
+    flex-grow: 1;
+    overflow: hidden;
+    height: 700px; /* Wysokość feeda */
+    position: relative;
+    background-color: #f0f2f5; /* Tło feeda FB */
+}
+
+/* ========================================
+   FIX FOR 100% WIDTH FACEBOOK PLUGIN
+   ======================================== */
+.vm-fb-feed-container .fb-page, 
+.vm-fb-feed-container .fb-page span, 
+.vm-fb-feed-container .fb-page iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+}
+
+/* Hack dla responsywności na mobile */
+@media (max-width: 991px) {
+    .vm-fb-sidebar {
+        border-right: none;
+        border-bottom: 1px solid #eef2f6;
+        padding: 30px 20px;
+    }
+    .vm-fb-card { border-radius: 12px; }
+    .vm-fb-feed-container { height: 500px; }
+}

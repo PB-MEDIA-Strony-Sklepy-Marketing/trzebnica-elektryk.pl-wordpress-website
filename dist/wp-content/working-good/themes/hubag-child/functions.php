@@ -1438,3 +1438,57 @@ function voltmont_hero_shortcode() {
 }
 add_shortcode('voltmont_hero', 'voltmont_hero_shortcode');
 
+/**
+ * Shortcode dla sekcji "Dlaczego Warto"
+ * Użycie: [voltmont_dlaczego_warto]
+ */
+function voltmont_dlaczego_warto_shortcode() {
+    ob_start();
+    $template_path = get_stylesheet_directory() . '/template-dlaczego-warto.php';
+    
+    if (file_exists($template_path)) {
+        include($template_path);
+    } else {
+        echo '<div class="alert alert-error">Brak pliku szablonu: template-dlaczego-warto.php</div>';
+    }
+    
+    return ob_get_clean();
+}
+add_shortcode('voltmont_dlaczego_warto', 'voltmont_dlaczego_warto_shortcode');
+
+/**
+ * Shortcode dla sekcji "Oferta Slider" (Ikony zamiast zdjęć w nawigacji)
+ * Użycie: [voltmont_oferta_slider]
+ */
+function voltmont_oferta_slider_shortcode() {
+    ob_start();
+    $template_path = get_stylesheet_directory() . '/template-oferta-slider-section.php';
+    
+    if (file_exists($template_path)) {
+        include($template_path);
+    } else {
+        echo '<div class="alert alert-error">Brak pliku szablonu: template-oferta-slider-section.php</div>';
+    }
+    
+    return ob_get_clean();
+}
+add_shortcode('voltmont_oferta_slider', 'voltmont_oferta_slider_shortcode');
+
+/**
+ * Shortcode dla sekcji "Portfolio Slider" (Dynamiczny z CPT)
+ * Użycie: [voltmont_portfolio_slider]
+ */
+function voltmont_portfolio_slider_shortcode() {
+    ob_start();
+    $template_path = get_stylesheet_directory() . '/template-portfolio-slider-section.php';
+    
+    if (file_exists($template_path)) {
+        include($template_path);
+    } else {
+        echo '<div class="alert alert-error">Brak pliku szablonu: template-portfolio-slider-section.php</div>';
+    }
+    
+    return ob_get_clean();
+}
+add_shortcode('voltmont_portfolio_slider', 'voltmont_portfolio_slider_shortcode');
+
