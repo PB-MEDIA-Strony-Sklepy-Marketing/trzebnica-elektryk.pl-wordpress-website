@@ -37,7 +37,7 @@ $grid_icons = [
 ?>
 
 <section id="voltmont-portfolio-section" class="vm-portfolio-section">
-    <div class="container fullwidth padding-extech-shortcode-footer2">
+    <div class="container fullwidth">
         
         <!-- Nagłówek Sekcji -->
         <div class="row justify-content-center mb-5 mx-0">
@@ -185,7 +185,7 @@ $grid_icons = [
                                 <div class="vm-mini-icon">
                                     <i class="<?php echo esc_attr($grid_icon); ?>"></i>
                                 </div>
-                                <h5 class="vm-mini-title"><?php the_title(); ?></h5>
+                                <h5 class="vm-mini-title themecolor"><?php the_title(); ?></h5>
                                 <span class="vm-mini-arrow"><i class="fas fa-chevron-right"></i></span>
                             </a>
                         </div>

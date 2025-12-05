@@ -6,8 +6,9 @@
 
 $fb_page_url = 'https://www.facebook.com/profile.php?id=100063601389747';
 // Fallback image
-$profile_img = 'https://graph.facebook.com/100063601389747/picture?type=large';
+$profile_img = 'https://scontent-waw2-2.xx.fbcdn.net/v/t39.30808-6/302140302_513597900770252_2487654727386729886_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=grH_f_SBddsQ7kNvwGlbHc6&_nc_oc=AdndXr7zZerGz5WY6K_MiCd6WQoDBo4BZ3F4kV6uzqZKBpHVmEL40z3w85VZXKNLMRxip4SK1OI3ms91X3YcdYxH&_nc_zt=23&_nc_ht=scontent-waw2-2.xx&_nc_gid=EPfPdAvUAq6e_LCwOvdfMQ&oh=00_AflRMNxkhYvdo0obBPh-gyivyRJjLCg-XJ5RcL5-dGGfOw&oe=69357950';
 ?>
+
 
 <div id="fb-root"></div>
 <script>
@@ -15,7 +16,7 @@ $profile_img = 'https://graph.facebook.com/100063601389747/picture?type=large';
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v18.0";
+        js.src = "https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v24.0&appId=464369106147391";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>

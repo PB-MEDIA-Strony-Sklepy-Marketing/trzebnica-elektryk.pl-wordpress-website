@@ -305,7 +305,7 @@ ul.clients .client_wrapper:hover {
 }
 
 .hover-3 {
-  border-bottom: 3px #ee7700 dashed;
+  border-bottom: 3px #4d81e9 dashed;
 	display: inline;
 }
 
@@ -319,7 +319,7 @@ ul.clients .client_wrapper:hover {
 }
 
 .czarnenapisy .trailer_box .desc h2 {
-	color: #ee7700;
+	color: #4d81e9;
 	text-shadow: 2px 2px 2px #000;
 }
 
@@ -437,7 +437,7 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
 #Side_slide .extras .action_button {
     float: none;
     margin: 0px;
-		background: #ee7700;
+		background: #4d81e9;
 }
 
 #Footer .footer_copy .copyright {
@@ -611,7 +611,7 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
 }
 
 .page-category-title a {
-	color: #ee7700;
+	color: #4d81e9;
 	font-size: 0.7em;
 	line-height: 0;
 }
@@ -623,7 +623,7 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
 
 .page-category-button {
 	color: hsl(0, 0%, 100%);
-    background: #ee7700;
+    background: #4d81e9;
     border-radius: 100rem;
     padding: 0.8rem 0.8rem 0.8em 0.8em;;
     transition: .2s;
@@ -671,8 +671,8 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
 
 /* Hover efekt */
 .pagination-wrapper .page-numbers:hover {
-    background: var(--themecolor, #ee7700);
-    border-color: var(--themecolor, #ee7700);
+    background: var(--themecolor, #4d81e9);
+    border-color: var(--themecolor, #4d81e9);
     color: #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     transform: translateY(-2px);
@@ -680,8 +680,8 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
 
 /* Aktywna strona */
 .pagination-wrapper .page-numbers.current {
-    background: var(--themecolor, #ee7700);
-    border-color: var(--themecolor, #ee7700);
+    background: var(--themecolor, #4d81e9);
+    border-color: var(--themecolor, #4d81e9);
     color: #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
@@ -696,7 +696,7 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
 /* Hover dla poprzednia/następna */
 .pagination-wrapper .page-numbers.prev:hover,
 .pagination-wrapper .page-numbers.next:hover {
-    background: var(--themecolor, #ee7700);
+    background: var(--themecolor, #4d81e9);
     color: #fff;
 }
 
@@ -2515,6 +2515,13 @@ h3, .woocommerce ul.products li.product h3, .woocommerce #customer_login h2 {
 .paddingbottomtop {
     padding-top: 12rem;
     padding-bottom: 12rem;
+}
+
+@media (max-width: 768px) {
+  .paddingbottomtop {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+  }
 }
 
 /* ========================================

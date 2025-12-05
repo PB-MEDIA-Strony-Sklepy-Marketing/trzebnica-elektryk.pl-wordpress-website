@@ -82,10 +82,10 @@ $services = [
 ?>
 
 <section id="voltmont-services-section" class="vm-offer-section">
-    <div class="container">
+    <div class="container fullwidth">
         
         <!-- Nagłówek Sekcji -->
-        <div class="justify-content-center mb-5">
+        <div class="row justify-content-center mb-5 mx-0">
             <div class="col-lg-12 text-center">
                 <h2 class="vm-offer-heading text-center">Oferta <span class="vm-text-highlight">firmy</span> VOLTMONT</h2>
                 <div class="vm-offer-divider"></div>

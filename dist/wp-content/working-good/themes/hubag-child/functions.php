@@ -674,8 +674,6 @@ add_filter( 'wp_mail_from_name', function ( $original_email_from ) {
     return 'Voltmont - www.trzebnica-elektryk.pl';
 } );
 
-add_action( 'wp_body_open', 'wpl_gtm_body_code' );
-
 // Wyłączenie aktualizacji Wordpress i odmowa dostępu
 // === Ustawienia globalne ===
 // Sprawdzenie, czy aktualny użytkownik nie ma uprawnień (czyli nie jest 'admin')
@@ -1492,3 +1490,20 @@ function voltmont_portfolio_slider_shortcode() {
 }
 add_shortcode('voltmont_portfolio_slider', 'voltmont_portfolio_slider_shortcode');
 
+/**
+ * Shortcode dla Facebook Feed
+ * Użycie: [voltmont_facebook]
+ */
+function voltmont_facebook_shortcode() {
+    ob_start();
+    $template_path = get_stylesheet_directory() . '/template-facebook-feed.php';
+    
+    if (file_exists($template_path)) {
+        include($template_path);
+    } else {
+        echo '<div class="alert alert-error">Brak pliku szablonu: template-facebook-feed.php</div>';
+    }
+    
+    return ob_get_clean();
+}
+add_shortcode('voltmont_facebook', 'voltmont_facebook_shortcode');
